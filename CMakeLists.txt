@@ -4,8 +4,8 @@ project(Jogo_Tecprog)
 set(CMAKE_CXX_STANDARD 11)
 
 # Define as pastas de origem e inclusão
-file(GLOB_RECURSE SOURCES "src/*.cpp")
-file(GLOB_RECURSE HEADERS "include/*.h")
+file(GLOB_RECURSE SOURCES "src/*.cpp" "src/**/*.cpp")
+file(GLOB_RECURSE HEADERS "include/*.h" "include/**/*.h")
 
 # Encontre a biblioteca SFML
 find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
@@ -27,7 +27,7 @@ target_link_libraries(${PROJECT_NAME} sfml-system sfml-window sfml-graphics sfml
 # Adiciona a biblioteca do Google Test e cria o executável de testes
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
-file(GLOB_RECURSE TEST_SOURCES "testes/*.cpp")
+file(GLOB_RECURSE TEST_SOURCES "testes/*.cpp" "testes/**/*.cpp")
 add_executable(testes ${TEST_SOURCES} ${SOURCES} ${HEADERS})
 target_link_libraries(testes ${GTEST_BOTH_LIBRARIES} pthread)
 

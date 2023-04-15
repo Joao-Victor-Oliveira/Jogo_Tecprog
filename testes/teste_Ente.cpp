@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include <stdio.h>
+#include "../include/stdafx"
+
 TEST(TesteSoma, integral) {
     EXPECT_EQ(5, 5);
 }

@@ -686,7 +686,7 @@
 						"$ref": "XqTvRQqsnkuWZZwgQBMH+AAA"
 					},
 					"name": "Gerenciador_Colisões",
-					"stereotype": "Mediador - STL",
+					"stereotype": "Observer",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -4791,7 +4791,7 @@
 											"top": 845,
 											"width": 115.63916015625,
 											"height": 11,
-											"text": "«Estados»"
+											"text": "«Estado concreto»"
 										},
 										{
 											"_type": "LabelView",
@@ -5075,7 +5075,7 @@
 											"top": 387,
 											"width": 136,
 											"height": 11,
-											"text": "«Infraestrutura - SFML»"
+											"text": "«Singleton»"
 										},
 										{
 											"_type": "LabelView",
@@ -9530,8 +9530,8 @@
 									"visible": null,
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
-									"left": 484,
-									"top": 937,
+									"left": 560,
+									"top": 953,
 									"height": 11,
 									"alpha": 1,
 									"distance": 30,
@@ -9549,8 +9549,8 @@
 									"visible": false,
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
-									"left": 476,
-									"top": 950,
+									"left": 552,
+									"top": 966,
 									"height": 11,
 									"alpha": 1,
 									"distance": 15,
@@ -9568,8 +9568,8 @@
 									"visible": false,
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
-									"left": 476,
-									"top": 975,
+									"left": 552,
+									"top": 991,
 									"height": 11,
 									"alpha": -1,
 									"distance": 15,
@@ -9588,7 +9588,7 @@
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
 									"left": 880,
-									"top": 962,
+									"top": 978,
 									"height": 11,
 									"alpha": 0,
 									"distance": 30
@@ -9605,7 +9605,7 @@
 									"visible": false,
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
-									"left": 468,
+									"left": 544,
 									"top": 945,
 									"height": 11,
 									"alpha": 0,
@@ -9624,7 +9624,7 @@
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
 									"left": 893,
-									"top": 962,
+									"top": 978,
 									"width": 6.11767578125,
 									"height": 11,
 									"alpha": 0,
@@ -9642,12 +9642,12 @@
 									},
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
-									"left": 471,
-									"top": 929,
+									"left": 547,
+									"top": 928,
 									"width": 6.11767578125,
 									"height": 11,
-									"alpha": 0.40489230708857504,
-									"distance": 15.231546211727817,
+									"alpha": 0.4324081969507363,
+									"distance": 14.317821063276353,
 									"edgePosition": 2,
 									"text": "1"
 								},
@@ -9664,7 +9664,7 @@
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
 									"left": 870,
-									"top": 962,
+									"top": 978,
 									"height": 11,
 									"alpha": 0,
 									"distance": 40
@@ -9681,7 +9681,7 @@
 									"visible": false,
 									"fillColor": "#FFFFFF",
 									"font": "Arial;11;0",
-									"left": 468,
+									"left": 544,
 									"top": 955,
 									"height": 11,
 									"alpha": 0,
@@ -9701,8 +9701,8 @@
 									"lineColor": "#008000",
 									"fillColor": "#FFFFB9",
 									"font": "Arial;11;0",
-									"left": -392,
-									"top": -764,
+									"left": -352,
+									"top": -748,
 									"width": 50,
 									"height": 10
 								},
@@ -9719,8 +9719,8 @@
 									"lineColor": "#008000",
 									"fillColor": "#FFFFB9",
 									"font": "Arial;11;0",
-									"left": -392,
-									"top": -764,
+									"left": -352,
+									"top": -748,
 									"width": 50,
 									"height": 10
 								}
@@ -9734,7 +9734,7 @@
 							"tail": {
 								"$ref": "AAAAAAGHX0DrpiKJ3YI="
 							},
-							"points": "468:921;468:968;910:968",
+							"points": "544:921;544:984;910:984",
 							"showVisibility": true,
 							"showProperty": false,
 							"nameLabel": {
@@ -11671,7 +11671,7 @@
 											"top": 319,
 											"width": 155,
 											"height": 11,
-											"text": "«Mediador - STL»"
+											"text": "«Observer»"
 										},
 										{
 											"_type": "LabelView",
@@ -13293,7 +13293,7 @@
 									"visible": false,
 									"lineColor": "#800000",
 									"font": "Arial;13;0",
-									"left": 327,
+									"left": 350,
 									"top": 695,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -13315,7 +13315,7 @@
 									"visible": null,
 									"lineColor": "#800000",
 									"font": "Arial;13;0",
-									"left": 327,
+									"left": 350,
 									"top": 680,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -13337,7 +13337,7 @@
 									"visible": false,
 									"lineColor": "#800000",
 									"font": "Arial;13;0",
-									"left": 327,
+									"left": 350,
 									"top": 725,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -13356,7 +13356,7 @@
 							"tail": {
 								"$ref": "AAAAAAGHXzjmHuJPB5k="
 							},
-							"points": "286:716;368:716",
+							"points": "333:716;368:716",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGHXzkMdupaW3o="
@@ -13695,7 +13695,7 @@
 											"top": 693,
 											"width": 106.15185546875,
 											"height": 13,
-											"text": "«Abstrata»"
+											"text": "«Estado»"
 										},
 										{
 											"_type": "LabelView",
@@ -13890,9 +13890,9 @@
 											"font": "Arial;13;0",
 											"left": 221,
 											"top": 709,
-											"width": 61.4326171875,
+											"width": 108.4052734375,
 											"height": 13,
-											"text": "«Estados»"
+											"text": "«Estado concreto»"
 										},
 										{
 											"_type": "LabelView",
@@ -13905,7 +13905,7 @@
 											"font": "Arial;13;1",
 											"left": 221,
 											"top": 724,
-											"width": 61.4326171875,
+											"width": 108.4052734375,
 											"height": 13,
 											"text": "Opções"
 										},
@@ -13946,7 +13946,7 @@
 									"font": "Arial;13;0",
 									"left": 216,
 									"top": 704,
-									"width": 71.4326171875,
+									"width": 118.4052734375,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGHXzjmHuJRC+Q="
@@ -13975,7 +13975,7 @@
 									"font": "Arial;13;0",
 									"left": 216,
 									"top": 742,
-									"width": 71.4326171875,
+									"width": 118.4052734375,
 									"height": 10
 								},
 								{
@@ -13992,7 +13992,7 @@
 									"font": "Arial;13;0",
 									"left": 216,
 									"top": 752,
-									"width": 71.4326171875,
+									"width": 118.4052734375,
 									"height": 10
 								},
 								{
@@ -14038,7 +14038,7 @@
 							"containerChangeable": true,
 							"left": 216,
 							"top": 704,
-							"width": 71.4326171875,
+							"width": 118.4052734375,
 							"height": 58,
 							"nameCompartment": {
 								"$ref": "AAAAAAGHXzjmHuJQb2U="
@@ -15139,7 +15139,7 @@
 						"$ref": "IoH8RzmxEE6xOc9zvj2jawAA"
 					},
 					"name": "Gerenciador_Grafico",
-					"stereotype": "Infraestrutura - SFML"
+					"stereotype": "Singleton"
 				},
 				{
 					"_type": "UMLAssociation",
@@ -15738,7 +15738,7 @@
 							}
 						}
 					],
-					"stereotype": "Estados"
+					"stereotype": "Estado concreto"
 				},
 				{
 					"_type": "UMLClass",
@@ -15844,7 +15844,7 @@
 							}
 						}
 					],
-					"stereotype": "Estados"
+					"stereotype": "Estado concreto"
 				},
 				{
 					"_type": "UMLClass",
@@ -15853,7 +15853,7 @@
 						"$ref": "IoH8RzmxEE6xOc9zvj2jawAA"
 					},
 					"name": "MenuComponent",
-					"stereotype": "Abstrata",
+					"stereotype": "Estado",
 					"isAbstract": true
 				}
 			],

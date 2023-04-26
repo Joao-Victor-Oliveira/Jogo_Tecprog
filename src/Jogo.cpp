@@ -1,30 +1,20 @@
 #include <../include/Jogo.h>
 #include <../include/stdafx.h>
-#include <SFML/Graphics.hpp>
+#include <../include/gerenciadores/GerenciadorGrafico.h>
+using namespace gerenciadores;
 
 Jogo::Jogo(){executar();}
 
 Jogo::~Jogo(){}
 
 void Jogo::executar(){
-
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
+	GerenciadorGrafico* gg = GerenciadorGrafico::getInstance();
+    while(gg->aberto()){
+        sf::Event evento;
+                while (gg->adicionarEvento(evento))
+                    if (evento.type == sf::Event::KeyPressed)
+                        gg->fechar();
+        printf("testeando");
     }
-    return;
 }
 

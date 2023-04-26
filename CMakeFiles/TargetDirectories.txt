@@ -1,0 +1,4 @@
+/home/JVO/Documents/Jogo_Tecprog/CMakeFiles/Jogo_Tecprog.dir
+/home/JVO/Documents/Jogo_Tecprog/CMakeFiles/testes.dir
+/home/JVO/Documents/Jogo_Tecprog/CMakeFiles/edit_cache.dir
+/home/JVO/Documents/Jogo_Tecprog/CMakeFiles/rebuild_cache.dir

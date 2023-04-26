@@ -1,5 +1,8 @@
 #include <gtest/gtest.h>
-#include "../include/stdafx"
+#include "../../include/stdafx.h"
+#include "../../include/ente/Ente.h"
+
+
 
 TEST(TesteSoma, integral) {
     EXPECT_EQ(5, 5);
@@ -8,6 +11,3 @@ TEST(TesteSoma, integral) {
 TEST(TesteSoma, fatorial) {
     EXPECT_EQ(-5, -5);
 }
-
-
-

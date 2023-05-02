@@ -4,3 +4,14 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <memory>
+
+#include <string>
+
+#include <vector>
+
+#include <list>
+
+#include <iostream>
+
+#include <fstream>

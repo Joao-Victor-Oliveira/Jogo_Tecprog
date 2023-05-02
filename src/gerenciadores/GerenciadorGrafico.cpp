@@ -17,6 +17,10 @@ void GerenciadorGrafico::desenhar(sf::Drawable& objeto) {
     janela.draw(objeto);
 }
 
+void GerenciadorGrafico::desenhar(sf::Text& objeto) {
+    janela.draw(objeto);
+}   
+
 void GerenciadorGrafico::limpar() {
     janela.clear();
 }

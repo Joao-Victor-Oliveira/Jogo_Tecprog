@@ -10,6 +10,7 @@ public:
     GerenciadorGrafico& operator=(const GerenciadorGrafico&) = delete;
 
     void desenhar(sf::Drawable& objeto);
+    void desenhar(sf::Text& objeto);
     bool adicionarEvento(sf::Event& evento);
 
 

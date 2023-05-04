@@ -1,6 +1,6 @@
-#include <../include/Jogo.h>
-#include <../include/stdafx.h>
-#include <../include/gerenciadores/GerenciadorGrafico.h>
+#include "../include/Jogo.h"
+#include "../include/stdafx.h"
+#include "../include/gerenciadores/GerenciadorGrafico.h"
 using namespace gerenciadores;
 
 Jogo::Jogo(){executar();}

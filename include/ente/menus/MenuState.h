@@ -1,11 +1,11 @@
 #pragma once
-#include "MenuComponent.h"
+#include "MenuItem.h"
 
 class Menu;
 
 class MenuState: public MenuComponent {
     protected:
-    std::vector<MenuComponent*> opcoes;
+    std::vector<MenuItem*> opcoes;
     static Menu* menu;
 
     class Contador{
@@ -23,12 +23,10 @@ class MenuState: public MenuComponent {
     Contador indice;
 
     public:
-    MenuState(std::string s = "");
+    MenuState();
     virtual ~MenuState();
-    
-    static void setMenu(Menu* m);
 
-    void add(MenuComponent& agregado);
+    void add(MenuItem& agregado);
     virtual void draw();
     virtual void executar();
 };

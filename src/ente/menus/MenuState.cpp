@@ -1,7 +1,9 @@
 #include "../../../include/ente/menus/MenuState.h"
+
+
     Menu* MenuState::menu = nullptr;
 
-    MenuState::MenuState(std::string s):MenuComponent(s){
+    MenuState::MenuState(){
     }
     
     MenuState::~MenuState(){
@@ -16,13 +18,9 @@
         }
     }
 
-    void MenuState::add(MenuComponent& agregado){
+    void MenuState::add(MenuItem& agregado){
         opcoes.push_back(&agregado);
-    }
-
-    void MenuState::setMenu(Menu* m){
-        menu = m;
-    }
+    };
     
     void MenuState::executar(){
         indice.setMax(opcoes.size());
@@ -38,16 +36,7 @@
                     else if (evento.key.code == sf::Keyboard::Down)
                         indice.operator--();
                     else if(evento.key.code== sf::Keyboard::Enter)
-                    {
-                        /*
-                        MenuState* aux = dynamic_cast<MenuState*> opçoes[indice.cont];
-                        if(aux!=NULL)
-                            menu->setEstado(aux);
-                        else
-                            opcoes[indice]->executar();
-                        break;
-                        */
-                    }
+                        opcoes[indice.cont]->executar();
                 }
             }
 

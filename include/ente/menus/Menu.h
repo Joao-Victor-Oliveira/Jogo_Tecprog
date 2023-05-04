@@ -1,6 +1,15 @@
 #pragma once
-#include "MenuState.h"
+#include "../Ente.h"
+
+class MenuState;
 
 class Menu:public Ente{
-    
+    private:
+    MenuState* estado;
+    public:
+    Menu();
+    ~Menu();
+
+    void executar();
+    void draw();
 };

@@ -24,7 +24,7 @@ class MenuState: public MenuComponent{
     Contador indice;
 
     public:
-    MenuState(const int op);
+    MenuState(const int op=0);
     virtual ~MenuState();
     void destacar(const int indice);
 

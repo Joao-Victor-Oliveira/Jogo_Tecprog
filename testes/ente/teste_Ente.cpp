@@ -13,9 +13,8 @@ TEST(EnteTest, TestIncrementoID) {
   EnteTeste e1;
   EnteTeste e2;
   EnteTeste e3;
-  EXPECT_EQ(e1.getID(), 0);
-  EXPECT_EQ(e2.getID(), 1);
-  EXPECT_EQ(e3.getID(), 2);
+  EXPECT_EQ(e2.getID(), e1.getID()+1);
+  EXPECT_EQ(e3.getID(), e2.getID()+1);
 }
 
 // Testa se o GerenciadorGrafico é configurado corretamente

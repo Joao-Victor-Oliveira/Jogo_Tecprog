@@ -15,11 +15,21 @@ GerenciadorGrafico::~GerenciadorGrafico() {
 }
 
 void GerenciadorGrafico::desenhar(sf::Drawable& objeto) {
-    janela.draw(objeto);
+    sf::Drawable* ptr = &objeto;
+    if(ptr)
+        janela.draw(objeto);
+    else{
+        throw std::invalid_argument("evento nulo");
+    }
 }
 
 void GerenciadorGrafico::desenhar(sf::Text& objeto) {
-    janela.draw(objeto);
+    sf::Text* ptr = &objeto;
+    if(ptr)
+        janela.draw(objeto);
+    else{
+        throw std::invalid_argument("evento nulo");
+    }
 }   
 
 void GerenciadorGrafico::limpar() {
@@ -35,7 +45,12 @@ bool GerenciadorGrafico::aberto() {
 }
 
 bool GerenciadorGrafico::adicionarEvento(sf::Event& evento) {
-    return janela.pollEvent(evento);
+    sf::Event* ptr = &evento;
+    if(ptr)
+        return janela.pollEvent(evento);
+    else{
+        throw std::invalid_argument("evento nulo");
+    }
 }
 
 void GerenciadorGrafico::fechar(){

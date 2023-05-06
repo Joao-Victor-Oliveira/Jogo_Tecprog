@@ -19,9 +19,11 @@
     }
 
     void MenuState::draw(){
-        for(int i=0;i<tam;i++){
+        if(!gg)
+            setGG(gerenciadores::GerenciadorGrafico::getInstance());
+        
+        for(int i=0;i<tam;i++)
             gg->desenhar(*opcoes[i]);
-        }
     }
     
     void MenuState::loop(){
@@ -39,12 +41,14 @@
                         indice.operator--();
                     else if(evento.key.code== sf::Keyboard::Enter){
                         comando = indice.cont;
+                        gg->limpar();
                         return;
                     }
                 }
                 if (evento.type == sf::Event::Closed){
                         gg->fechar();
-                        break;
+                        gg->limpar();
+                        return;
                 }
             }
             destacar(indice.cont);

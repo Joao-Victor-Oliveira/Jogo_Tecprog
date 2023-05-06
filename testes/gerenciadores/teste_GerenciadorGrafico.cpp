@@ -40,3 +40,12 @@ TEST(GerenciadorGraficoTest, DesenharTexto) {
 
     ASSERT_TRUE(gerenciador->aberto());
 }
+
+TEST(GerenciadorGraficoTest, Argumentos_inválidos){
+    auto gerenciador = gerenciadores::GerenciadorGrafico::getInstance();
+    sf::Drawable* ptr=nullptr;
+    sf::Text* ptr2=nullptr;
+
+    EXPECT_THROW(gerenciador->desenhar(*ptr),std::invalid_argument);
+    EXPECT_THROW(gerenciador->desenhar(*ptr2),std::invalid_argument);
+}

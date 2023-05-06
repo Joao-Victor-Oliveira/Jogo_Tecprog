@@ -42,4 +42,3 @@ target_include_directories(testes PUBLIC "${CMAKE_SOURCE_DIR}/include" "${CMAKE_
 # Link the SFML library to every file, directory, and subdirectory in the project
 target_link_libraries(${PROJECT_NAME} sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
 target_link_libraries(testes sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
-

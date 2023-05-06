@@ -7,13 +7,6 @@ int Soma(int a, int b) {
 
 #include <gtest/gtest.h>
 
-TEST(TesteSoma, SomaPositivos) {
-    EXPECT_EQ(Soma(2, 3), 5);
-}
-
-TEST(TesteSoma, SomaNegativos) {
-    EXPECT_EQ(Soma(-2, -3), -5);
-}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

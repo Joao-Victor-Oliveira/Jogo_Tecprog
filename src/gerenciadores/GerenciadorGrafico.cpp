@@ -1,5 +1,6 @@
-#include "../include/gerenciadores/GerenciadorGrafico.h"
+#include <gerenciadores/GerenciadorGrafico.h>
 using namespace gerenciadores;
+
 GerenciadorGrafico* GerenciadorGrafico::getInstance() {
     static GerenciadorGrafico gerenciador;
     return &gerenciador;

@@ -1,4 +1,4 @@
-#include "../../include/ente/Ente.h"
+#include <ente/Ente.h>
 
 using namespace gerenciadores;
 int Ente::counter(0);

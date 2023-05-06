@@ -1,6 +1,6 @@
 #pragma once
-#include "../gerenciadores/GerenciadorGrafico.h"
-#include "../stdafx.h"
+#include <gerenciadores/GerenciadorGrafico.h>
+#include <stdafx.h>
 
 class Ente{
     private:
@@ -19,5 +19,4 @@ class Ente{
 
     virtual void executar()=0;
     virtual void draw()=0;
-    virtual void setPos(sf::Vector2f pos)=0;
 };

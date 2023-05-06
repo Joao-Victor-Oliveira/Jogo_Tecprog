@@ -1,12 +1,13 @@
 #pragma once
-#include "MenuItem.h"
+#include "MenuComponent.h"
 
-class Menu;
-
-class MenuState: public MenuComponent {
+class MenuState: public MenuComponent{
     protected:
-    std::vector<MenuItem*> opcoes;
-    static Menu* menu;
+    
+    static sf::Font fonte;
+    std::vector<sf::Text*> opcoes;
+    const int tam;
+    int comando;
 
     class Contador{
         private:
@@ -15,7 +16,7 @@ class MenuState: public MenuComponent {
         int cont;
         Contador(){cont=0;max=0;}
         ~Contador(){}
-        void setMax(int max){this->max=max;}
+        void setMax(int max){this->max=max-1;}
         void operator++(){(cont==max)?cont=0:cont++;}
         void operator--(){(cont==0)?cont=max:cont--;}
     };
@@ -23,10 +24,15 @@ class MenuState: public MenuComponent {
     Contador indice;
 
     public:
-    MenuState();
+    MenuState(const int op);
     virtual ~MenuState();
+    void destacar(const int indice);
 
-    void add(MenuItem& agregado);
+    static void setfonte(const char* s);
+
     virtual void draw();
-    virtual void executar();
+    virtual void executar()=0;
+
+    virtual void loop();
+    virtual void setTextos()=0;
 };

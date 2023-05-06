@@ -1,21 +1,23 @@
-#include "../../../include/ente/menus/Menu.h"
-#include "../../../include/ente/menus/MenuState.h"
+#include <ente/menus/Menu.h>
+#include <ente/menus/MenuState.h>
 
-Menu::Menu(){
-    estado=NULL;
+Menu::Menu():estado(nullptr){
+    MenuState::setMenu(this);
 }
 
 Menu::~Menu(){
     estado=NULL;
 }
 
+void Menu::setEstado(MenuState* est){
+    estado=est;
+}
+
 void Menu::executar(){
-    try {
-    if(estado)
-        estado->executar(); 
-    } catch(const std::exception& e) {
-    std::cerr << "Erro: Menu sem Estado " << e.what() << std::endl;
-    }   
+    while(estado){
+        estado->loop();
+        estado->executar();
+    } 
 }
 
 void Menu::draw(){

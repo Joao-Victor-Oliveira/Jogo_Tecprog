@@ -1,12 +1,11 @@
 #include <gtest/gtest.h>
-#include "../../include/stdafx.h"
-#include "../../include/ente/Ente.h"
+#include <stdafx.h>
+#include <ente/Ente.h>
 
 class EnteTeste : public Ente {
 public:
     void executar() override {}
     void draw() override {}
-    void setPos(sf::Vector2f pos) override {}
     const gerenciadores::GerenciadorGrafico* GetGG() const {return gg;}
 };
 // Testa se o ID dos Entes é incrementado corretamente

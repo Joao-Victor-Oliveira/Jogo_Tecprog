@@ -1,4 +1,4 @@
-#include "../../../include/ente/menus/MenuComponent.h"
+#include <ente/menus/MenuComponent.h>
     
     Menu* MenuComponent::menu = nullptr;
 

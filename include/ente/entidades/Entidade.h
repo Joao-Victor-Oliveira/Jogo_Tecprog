@@ -2,13 +2,13 @@
 #include <ente/Ente.h>
 
 class Entidade: public Ente{
-    private:
+    protected:
     sf::RectangleShape corpo;
     sf::Vector2f velocidade;
     sf::Vector2f posicao;
 
     public:
-    Entidade(std::string caminho="", float px, float py);
+    Entidade(const std::string caminho="", const sf::Vector2f pos=sf::Vector2f(0.f,0.f));
     ~Entidade();
     
     void setVelocidade(sf::Vector2f vel);

@@ -1,8 +1,9 @@
 #pragma once
 #include "Entidade.h"
 
+namespace Entidades{
 class Personagem: public Entidade{
-    private:
+    protected:
     int num_vidas;
     
     public:
@@ -16,3 +17,4 @@ class Personagem: public Entidade{
     virtual void atacar();
     virtual void danar_se(const int dano);
 };
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include <ente/Ente.h>
 
+namespace Entidades{
 class Entidade: public Ente{
     protected:
     sf::RectangleShape corpo;
@@ -20,3 +21,4 @@ class Entidade: public Ente{
     virtual void executar(); 
     virtual void draw(); //Não sei se vou usar o virtual , qualquer coisa lembrar de tirar
 };
+}

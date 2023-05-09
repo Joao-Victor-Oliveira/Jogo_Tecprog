@@ -1,4 +1,5 @@
 #include <ente/entidades/Entidade.h>
+using namespace Entidades;
 
 Entidade::Entidade(const std::string caminho, const sf::Vector2f pos):velocidade(0.f,0.f),posicao(pos){
     sf::Texture texture;

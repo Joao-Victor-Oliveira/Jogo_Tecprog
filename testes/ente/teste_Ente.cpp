@@ -6,7 +6,7 @@ class EnteTeste : public Ente {
 public:
     void executar() override {}
     void draw() override {}
-    const gerenciadores::GerenciadorGrafico* GetGG() const {return gg;}
+    const Gerenciadores::GerenciadorGrafico* GetGG() const {return gg;}
 };
 // Testa se o ID dos Entes é incrementado corretamente
 TEST(EnteTest, TestIncrementoID) {
@@ -19,7 +19,7 @@ TEST(EnteTest, TestIncrementoID) {
 
 // Testa se o GerenciadorGrafico é configurado corretamente
 TEST(EnteTest, TestSetGerenciadorGrafico) {
-  Ente::setGG(gerenciadores::GerenciadorGrafico::getInstance());
+  Ente::setGG(Gerenciadores::GerenciadorGrafico::getInstance());
   EnteTeste e1;
   EnteTeste e2;
   EXPECT_EQ(e1.GetGG(),e2.GetGG());

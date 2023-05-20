@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-namespace gerenciadores{
+namespace Gerenciadores{
 class GerenciadorGrafico {
 public:
     static GerenciadorGrafico* getInstance();

@@ -13,6 +13,8 @@ class ListaInimigos{
     void adicionar(Entidades::Inimigo* elem);
     void remover(const int indice);
 
+    const int getTamanho();
+
     Entidades::Inimigo* operator[](const int i);
 
     void percorrer();

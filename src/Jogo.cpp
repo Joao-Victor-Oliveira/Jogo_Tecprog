@@ -1,7 +1,7 @@
 #include <Jogo.h>
 #include <stdafx.h>
 #include <gerenciadores/GerenciadorGrafico.h>
-using namespace gerenciadores;
+using namespace Gerenciadores;
 #include <ente/menus/estados/MenuPrincipal.h>
 #include <ente/entidades/inimigos/Inimigo.h>
 using namespace Entidades;

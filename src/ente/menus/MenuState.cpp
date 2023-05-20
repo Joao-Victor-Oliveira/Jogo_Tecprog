@@ -13,14 +13,14 @@
             if(opcoes[i])
                 delete opcoes[i];
             else
-                printf("warning: MenuState error memória");
+                printf("warning: MenuState error memória\n");
         }
         opcoes.clear();
     }
 
     void MenuState::draw(){
         if(!gg)
-            setGG(gerenciadores::GerenciadorGrafico::getInstance());
+            setGG(Gerenciadores::GerenciadorGrafico::getInstance());
         
         for(int i=0;i<tam;i++)
             gg->desenhar(*opcoes[i]);

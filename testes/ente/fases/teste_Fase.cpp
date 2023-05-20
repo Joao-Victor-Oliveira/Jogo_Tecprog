@@ -60,7 +60,7 @@ TEST(CriadorEntidadesTest, EntidadeNula){
 
 TEST(FaseTest,Execucao){
     signal(SIGSEGV, segfault_handler2);
-    Ente::setGG(gerenciadores::GerenciadorGrafico::getInstance());
+    Ente::setGG(Gerenciadores::GerenciadorGrafico::getInstance());
     Fase teste01(new CriadorTeste),teste02;
     EXPECT_NO_THROW(teste01.executar());
     EXPECT_NO_THROW(teste02.executar());

@@ -15,6 +15,7 @@ class ListaObstaculos{
 
     Entidades::Obstaculo* operator[](const int i);
     
+    const int getTamanho();
 
     void percorrer();
 

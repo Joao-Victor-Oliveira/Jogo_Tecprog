@@ -6,14 +6,14 @@
 /// @param  
 /// @param  
 TEST(GerenciadorGraficoTest, Singleton) {
-    auto gerenciador1 = gerenciadores::GerenciadorGrafico::getInstance();
-    auto gerenciador2 = gerenciadores::GerenciadorGrafico::getInstance();
+    auto gerenciador1 = Gerenciadores::GerenciadorGrafico::getInstance();
+    auto gerenciador2 = Gerenciadores::GerenciadorGrafico::getInstance();
 
     ASSERT_EQ(gerenciador1, gerenciador2);
 }
 
 TEST(GerenciadorGraficoTest, DesenharObjeto) {
-    auto gerenciador = gerenciadores::GerenciadorGrafico::getInstance();
+    auto gerenciador = Gerenciadores::GerenciadorGrafico::getInstance();
 
     sf::RectangleShape objeto(sf::Vector2f(50, 50));
     objeto.setPosition(100, 100);
@@ -26,7 +26,7 @@ TEST(GerenciadorGraficoTest, DesenharObjeto) {
 }
 
 TEST(GerenciadorGraficoTest, DesenharTexto) {
-    auto gerenciador = gerenciadores::GerenciadorGrafico::getInstance();
+    auto gerenciador = Gerenciadores::GerenciadorGrafico::getInstance();
 
     sf::Font fonte;
     fonte.loadFromFile("../../Lobster-Regular.ttf");
@@ -42,7 +42,7 @@ TEST(GerenciadorGraficoTest, DesenharTexto) {
 }
 
 TEST(GerenciadorGraficoTest, Argumentos_inválidos){
-    auto gerenciador = gerenciadores::GerenciadorGrafico::getInstance();
+    auto gerenciador = Gerenciadores::GerenciadorGrafico::getInstance();
     sf::Drawable* ptr=nullptr;
     sf::Text* ptr2=nullptr;
 

@@ -28,3 +28,7 @@ void Personagem::atacar(){
 void Personagem::danar_se(const int dano){
     num_vidas-=1;
 }
+
+void Personagem::colid(Obstaculo* pObs){}
+void Personagem::colid(Inimigo* pIni){}
+void Personagem::colid(Jogador* pJog){}

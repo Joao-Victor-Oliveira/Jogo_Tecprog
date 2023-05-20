@@ -1,7 +1,12 @@
 #pragma once
 #include "Entidade.h"
 
+
 namespace Entidades{
+class Obstaculo;
+class Jogador;
+class Inimigo;
+
 class Personagem: public Entidade{
     protected:
     int num_vidas;
@@ -16,5 +21,10 @@ class Personagem: public Entidade{
 
     virtual void atacar();
     virtual void danar_se(const int dano);
+
+    virtual void colid(Obstaculo* pObs);
+    virtual void colid(Inimigo* pIni);
+    virtual void colid(Jogador* pJog);
 };
+
 }

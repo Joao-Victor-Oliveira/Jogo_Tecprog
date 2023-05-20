@@ -36,3 +36,5 @@ void ListaInimigos::draw(){
 }
 
 bool ListaInimigos::vazia(){return inimigos.empty();}
+
+const int ListaInimigos::getTamanho(){return inimigos.getTamanho();}

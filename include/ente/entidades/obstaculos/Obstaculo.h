@@ -11,5 +11,7 @@ class Obstaculo: public Entidade{
     Obstaculo(sf::Vector2f pos, sf::Vector2f tam);
 
     virtual ~Obstaculo();
+
+    virtual void executar();
 };
 }

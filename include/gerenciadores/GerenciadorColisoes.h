@@ -18,7 +18,7 @@ class GerenciadorColisoes{
     void setLista(Listas::ListaInimigos* li,Listas::ListaObstaculos* lo);
     void setLista(Listas::ListaObstaculos* lo,Listas::ListaInimigos* li);
 
-    void percorrer();
+    void colidir();
 
 };
 

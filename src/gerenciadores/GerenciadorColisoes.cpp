@@ -12,7 +12,7 @@ void GerenciadorColisoes::setLista(Listas::ListaInimigos* li,Listas::ListaObstac
 void GerenciadorColisoes::setLista(Listas::ListaObstaculos* lo,Listas::ListaInimigos* li){pli=li;plo=lo;}
 
 #define ERRO 0.2
-void GerenciadorColisoes::percorrer(){
+void GerenciadorColisoes::colidir(){
     int tam = pli->getTamanho(),tam2 = plo->getTamanho();
     for(int i=0;i<tam;i++){
         //Inimigo com obstaculo

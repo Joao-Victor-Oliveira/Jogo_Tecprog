@@ -34,3 +34,5 @@ void ListaInimigos::draw(){
         inimigos[i]->draw();
     }
 }
+
+bool ListaInimigos::vazia(){return inimigos.empty();}

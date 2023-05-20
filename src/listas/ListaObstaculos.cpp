@@ -35,3 +35,5 @@ void ListaObstaculos::draw(){
         obstaculos[i]->draw();
     }
 }
+
+bool ListaObstaculos::vazia(){return obstaculos.empty();}

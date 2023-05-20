@@ -45,7 +45,7 @@ namespace Listas {
             pPrimeiro = NULL;
             pUltimo = NULL;
         }
-
+        
         ~Lista() {
             Elemento<TL> *aux1 = pPrimeiro, *aux2 = NULL;
             while (aux1 != NULL) {

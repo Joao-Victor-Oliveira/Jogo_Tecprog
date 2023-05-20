@@ -1,14 +1,19 @@
 #pragma once
-#include "FMFase.h"
+#include <ente/Ente.h>
+#include "CriadorEntidades.h"
 
 namespace Fases{
 
-class Fase:public Ente, public FMFase{
+class Fase:public Ente{
     protected:
-    
+    Listas::ListaInimigos listaI;
+    Listas::ListaObstaculos listaO;
     public:
-    void executar();
-    void draw();
-    };
+    Fase(CriadorEntidades* ce=NULL);
+    ~Fase();
+    virtual void executar();
+    virtual void draw();
+    virtual void loop();
+};
 
 }

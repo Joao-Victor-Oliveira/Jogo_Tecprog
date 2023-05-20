@@ -1,3 +1,4 @@
+#pragma once
 #include "Lista.h"
 #include <ente/entidades/inimigos/Inimigo.h>
 
@@ -17,5 +18,6 @@ class ListaInimigos{
     void percorrer();
 
     void draw();
+    bool vazia();
 };
 }

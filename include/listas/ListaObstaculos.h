@@ -1,3 +1,4 @@
+#pragma once
 #include "Lista.h"
 #include <ente/entidades/obstaculos/Obstaculo.h>
 
@@ -13,9 +14,11 @@ class ListaObstaculos{
     void remover(const int indice);
 
     Entidades::Obstaculo* operator[](const int i);
+    
 
     void percorrer();
 
     void draw();
+    bool vazia();
 };
 }

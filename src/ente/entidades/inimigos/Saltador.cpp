@@ -10,3 +10,4 @@ Saltador::Saltador(sf::Vector2f pos):Inimigo("../../imagens/inimigos/Saltador.pn
 Saltador::~Saltador(){
 
 }
+

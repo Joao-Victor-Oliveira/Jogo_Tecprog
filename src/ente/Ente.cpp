@@ -1,6 +1,6 @@
 #include <ente/Ente.h>
 
-using namespace gerenciadores;
+using namespace Gerenciadores;
 int Ente::counter(0);
 
 GerenciadorGrafico* Ente::gg = nullptr;

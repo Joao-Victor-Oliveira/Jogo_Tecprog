@@ -37,3 +37,5 @@ void ListaObstaculos::draw(){
 }
 
 bool ListaObstaculos::vazia(){return obstaculos.empty();}
+
+const int ListaObstaculos::getTamanho(){return obstaculos.getTamanho();}

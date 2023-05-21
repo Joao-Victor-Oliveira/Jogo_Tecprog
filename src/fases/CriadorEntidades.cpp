@@ -4,7 +4,7 @@ using namespace Listas;
 
 CriadorEntidades::CriadorEntidades(){}
 
-CriadorEntidades::~CriadorEntidades(){printf("Foram criadas %d entidades", num_entidades);}
+CriadorEntidades::~CriadorEntidades(){printf("Foram criadas %d entidades\n", num_entidades);}
 
 void CriadorEntidades::add(ListaInimigos* li ,Entidades::Inimigo* i){
     num_entidades++;

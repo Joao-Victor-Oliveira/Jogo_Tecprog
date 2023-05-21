@@ -15,9 +15,9 @@ Fase::~Fase(){
 
 void Fase::executar(){
     if(!gg)
-        setGG(gerenciadores::GerenciadorGrafico::getInstance());
+        setGG(Gerenciadores::GerenciadorGrafico::getInstance());
     if(listaI.vazia() && listaO.vazia())
-        printf("sem entidades");
+        printf("sem entidades\n");
 }   
 
 void Fase::loop(){

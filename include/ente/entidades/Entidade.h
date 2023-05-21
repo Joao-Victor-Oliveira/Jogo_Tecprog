@@ -1,6 +1,8 @@
 #pragma once
 #include <ente/Ente.h>
 
+#define GRAVIDADE 10
+
 namespace Entidades{
 class Entidade: public Ente{
     protected:
@@ -9,7 +11,7 @@ class Entidade: public Ente{
     sf::Vector2f posicao;
 
     public:
-    Entidade(const std::string caminho="../../default.png", const sf::Vector2f pos=sf::Vector2f(0.f,0.f));
+    Entidade(const std::string caminho="../../imagens/default.png", const sf::Vector2f pos=sf::Vector2f(0.f,0.f));
     ~Entidade();
     
     void setVelocidade(sf::Vector2f vel);

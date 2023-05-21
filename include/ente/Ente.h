@@ -7,13 +7,13 @@ class Ente{
     static int counter; //exclusivo para criação do id
     const int id; //NAO USAR (boa pratica)
     protected:
-    static gerenciadores::GerenciadorGrafico* gg;//singleton
+    static Gerenciadores::GerenciadorGrafico* gg;//singleton
     
     public:
     Ente();
     ~Ente();
     
-    static void setGG(gerenciadores::GerenciadorGrafico* g);
+    static void setGG(Gerenciadores::GerenciadorGrafico* g);
 
     const int getID() const; //NAO USAR
 

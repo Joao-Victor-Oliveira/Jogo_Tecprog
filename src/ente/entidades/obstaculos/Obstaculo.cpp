@@ -7,3 +7,5 @@ Obstaculo::Obstaculo(const std::string s,sf::Vector2f pos,const int d):Entidade(
 }
 
 Obstaculo::~Obstaculo(){}
+
+void Obstaculo::executar(){}

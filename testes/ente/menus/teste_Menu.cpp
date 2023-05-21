@@ -27,7 +27,7 @@ TEST(MenuTest, SegfaultTest){
     //Estado genérico
 TEST(MenuTest, SegfaultTest2){
     Menu m;
-    Ente::setGG( gerenciadores::GerenciadorGrafico::getInstance());
+    Ente::setGG( Gerenciadores::GerenciadorGrafico::getInstance());
     MenuTest* mt=nullptr;
     m.setEstado(dynamic_cast <MenuState*> (mt));
     EXPECT_NO_THROW(m.executar());

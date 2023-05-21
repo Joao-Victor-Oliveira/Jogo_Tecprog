@@ -1,6 +1,6 @@
 #pragma once
 #include <listas/ListaInimigos.h>
-#include <ListaObstaculos.h>
+#include <listas/ListaObstaculos.h>
 
 namespace Gerenciadores{
 

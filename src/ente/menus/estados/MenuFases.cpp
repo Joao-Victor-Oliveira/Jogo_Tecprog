@@ -1,14 +1,13 @@
-#include <ente/menus/estados/MenuPrincipal.h>
 #include <ente/menus/estados/MenuFases.h>
+#include <ente/menus/estados/MenuPrincipal.h>
 
-MenuPrincipal::MenuPrincipal():MenuState(3){
+MenuFases::MenuFases(MenuPrincipal* mp):MenuState(3),pMP(mp){
     setTextos();
-    pFases = new MenuFases(this);
 }
 
-MenuPrincipal::~MenuPrincipal(){delete pFases;}
+MenuFases::~MenuFases(){}
 
-void MenuPrincipal::setTextos(){
+void MenuFases::setTextos(){
     for(int i=0;i<tam;i++){
             opcoes[i]->setFont(fonte);
             opcoes[i]->setCharacterSize(40);
@@ -17,24 +16,20 @@ void MenuPrincipal::setTextos(){
             opcoes[i]->setPosition(sf::Vector2f(400,200+100*i));
     }
 
-    opcoes[0]->setString("Jogar");
-    opcoes[1]->setString("opcoes");
-    opcoes[2]->setString("sair");
+    opcoes[0]->setString("Fase 1");
+    opcoes[1]->setString("Fase 2");
+    opcoes[2]->setString("Voltar");
 }
 
-void MenuPrincipal::executar(){
-    if(!menu)
-        return;
-
+void MenuFases::executar(){
     switch (comando){
         case 0:
-            if(pFases)
-            menu->setEstado(pFases);    
         break;
         case 1:
         break;
         case 2:
-            menu->setEstado(NULL);
+        if(menu)
+            menu->setEstado(static_cast<MenuState*>(pMP));
         break;
     }
 }

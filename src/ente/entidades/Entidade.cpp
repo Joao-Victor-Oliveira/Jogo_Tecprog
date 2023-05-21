@@ -28,10 +28,11 @@ const sf::Vector2f Entidade::getVelocidade()const{return velocidade;}
 const sf::Vector2f Entidade::getPosicao()const{return posicao;}
 const sf::Vector2f Entidade::getTamanho()const{return corpo.getSize();}
 
-#define GRAVIDADE 10
 
 void Entidade::executar(){
     posicao+=velocidade;
     velocidade.y-= GRAVIDADE;
 }
+
+
 void Entidade::draw(){gg->desenhar(corpo);}

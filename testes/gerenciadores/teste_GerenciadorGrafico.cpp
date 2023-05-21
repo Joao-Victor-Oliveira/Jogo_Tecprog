@@ -29,7 +29,7 @@ TEST(GerenciadorGraficoTest, DesenharTexto) {
     auto gerenciador = Gerenciadores::GerenciadorGrafico::getInstance();
 
     sf::Font fonte;
-    fonte.loadFromFile("../../Lobster-Regular.ttf");
+    fonte.loadFromFile("../../imagens/Lobster-Regular.ttf");
 
     sf::Text texto("Teste de Texto", fonte, 20);
     texto.setPosition(200, 200);

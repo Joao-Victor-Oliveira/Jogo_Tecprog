@@ -8,7 +8,7 @@ class Obstaculo: public Entidade{
     //Jogador* jg;
     bool solido;
     public:
-    Obstaculo(const std::string s= "../../default.png",sf::Vector2f pos= sf::Vector2f(0.f,0.f),const int d=0);
+    Obstaculo(const std::string s= "../../imagens/default.png",sf::Vector2f pos= sf::Vector2f(0.f,0.f),const int d=0);
     Obstaculo(sf::Vector2f pos, sf::Vector2f tam);
 
     virtual ~Obstaculo();

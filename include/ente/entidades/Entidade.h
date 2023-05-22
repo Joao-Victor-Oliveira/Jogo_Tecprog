@@ -1,7 +1,7 @@
 #pragma once
 #include <ente/Ente.h>
 
-#define GRAVIDADE 10
+#define GRAVIDADE 1
 
 namespace Entidades{
 class Entidade: public Ente{
@@ -9,9 +9,10 @@ class Entidade: public Ente{
     sf::RectangleShape corpo;
     sf::Vector2f velocidade;
     sf::Vector2f posicao;
+    sf::Texture texture;
 
     public:
-    Entidade(const std::string caminho="../../imagens/default.png", const sf::Vector2f pos=sf::Vector2f(0.f,0.f));
+    Entidade(const std::string caminho="../../imagens/default.png", const sf::Vector2f pos=sf::Vector2f(0.f,0.f),const sf::Vector2f tam= sf::Vector2f(0.f,0.f));
     ~Entidade();
     
     void setVelocidade(sf::Vector2f vel);

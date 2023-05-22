@@ -1,7 +1,7 @@
 #include <ente/entidades/Persongem.h>
 using namespace Entidades;
 
-Personagem::Personagem(const std::string s,const sf::Vector2f pos):Entidade(s,pos),num_vidas(3){
+Personagem::Personagem(const std::string s,const sf::Vector2f pos,const sf::Vector2f tam):Entidade(s,pos,tam),num_vidas(3){
 
 }
 

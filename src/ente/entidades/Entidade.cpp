@@ -1,8 +1,7 @@
 #include <ente/entidades/Entidade.h>
 using namespace Entidades;
 
-Entidade::Entidade(const std::string caminho, const sf::Vector2f pos):velocidade(0.f,0.f),posicao(pos){
-    sf::Texture texture;
+Entidade::Entidade(const std::string caminho, const sf::Vector2f pos,const sf::Vector2f tam):velocidade(0.f,0.f),posicao(pos){
     try {
         if (!texture.loadFromFile(caminho)) {
             throw std::runtime_error("Não foi possível carregar a textura:"+caminho+'\n');
@@ -12,10 +11,10 @@ Entidade::Entidade(const std::string caminho, const sf::Vector2f pos):velocidade
         std::cerr << e.what() << std::endl;
         corpo.setFillColor(sf::Color::Red);
     }
-    corpo.setSize(sf::Vector2f(pos));
-    corpo.setOrigin(pos/2.f);
-
-    corpo.setTexture(&texture);
+    //corpo.setTexture(&texture);
+    corpo.setSize(tam);
+    corpo.setOrigin(tam/2.f);
+    corpo.setPosition(pos);
 }
 
 Entidade::~Entidade(){}
@@ -31,7 +30,8 @@ const sf::Vector2f Entidade::getTamanho()const{return corpo.getSize();}
 
 void Entidade::executar(){
     posicao+=velocidade;
-    velocidade.y-= GRAVIDADE;
+    velocidade.y+= GRAVIDADE;
+    corpo.setPosition(posicao);
 }
 
 

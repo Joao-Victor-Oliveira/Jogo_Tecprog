@@ -1,4 +1,5 @@
 #include <fases/Fase.h>
+
 using namespace Fases;
 
 Fase::Fase(CriadorEntidades* ce):listaI(),listaO(){
@@ -8,9 +9,12 @@ Fase::Fase(CriadorEntidades* ce):listaI(),listaO(){
             //foi feito pra receber um new static_cast<CriadorEntidades*> new alguma_coisa derivada do CriadorEntidades, então é importante nesse caso
         delete ce;
     }
+    gc = new Gerenciadores::GerenciadorColisoes();
+    gc->setLista(&listaI,&listaO);
 }
 
 Fase::~Fase(){
+    delete gc;
 }
 
 void Fase::executar(){
@@ -33,9 +37,11 @@ void Fase::loop(){
         }
         draw();
         gg->mostrar();
-        gg->limpar();
         listaI.percorrer();
         listaO.percorrer();
+        gc->colidir();
+        gg->limpar();
+        sf::sleep(sf::milliseconds(25));
     }
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <listas/ListaInimigos.h>
 #include <listas/ListaObstaculos.h>
+#include <ente/entidades/Jogador.h>
 
 namespace Gerenciadores{
 
@@ -8,9 +9,9 @@ class GerenciadorColisoes{
     private:
     Listas::ListaInimigos* pli;
     Listas::ListaObstaculos* plo;
-    //Entidades::Jogador* pJg;
+    Entidades::Jogador* pPl;
     public:
-    GerenciadorColisoes();
+    GerenciadorColisoes(Entidades::Jogador* p=NULL);
     ~GerenciadorColisoes();
     
     void setLista(Listas::ListaInimigos* li);

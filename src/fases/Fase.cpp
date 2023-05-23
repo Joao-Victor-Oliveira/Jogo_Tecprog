@@ -9,12 +9,14 @@ Fase::Fase(CriadorEntidades* ce):listaI(),listaO(){
             //foi feito pra receber um new static_cast<CriadorEntidades*> new alguma_coisa derivada do CriadorEntidades, então é importante nesse caso
         delete ce;
     }
-    gc = new Gerenciadores::GerenciadorColisoes();
+    player = new Entidades::Jogador;
+    gc = new Gerenciadores::GerenciadorColisoes(player);
     gc->setLista(&listaI,&listaO);
 }
 
 Fase::~Fase(){
     delete gc;
+    delete player;
 }
 
 void Fase::executar(){
@@ -36,16 +38,18 @@ void Fase::loop(){
             }
         }
         draw();
-        gg->mostrar();
+        gc->colidir();
         listaI.percorrer();
         listaO.percorrer();
-        gc->colidir();
-        gg->limpar();
+        player->executar();
+        gg->mostrar();
         sf::sleep(sf::milliseconds(25));
+        gg->limpar();
     }
 }
 
 void Fase::draw(){
+    player->draw();
     listaI.draw();
     listaO.draw();
 }

@@ -2,7 +2,7 @@
 #include <ente/Ente.h>
 #include "CriadorEntidades.h"
 #include <gerenciadores/GerenciadorColisoes.h>
-
+#include <ente/entidades/Jogador.h>
 namespace Fases{
 
 class Fase:public Ente{
@@ -10,6 +10,7 @@ class Fase:public Ente{
     Listas::ListaInimigos listaI;
     Listas::ListaObstaculos listaO;
     Gerenciadores::GerenciadorColisoes* gc;
+    Entidades::Jogador* player;
     public:
     Fase(CriadorEntidades* ce=NULL);
     virtual ~Fase();

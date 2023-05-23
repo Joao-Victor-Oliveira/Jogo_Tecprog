@@ -29,6 +29,6 @@ void Personagem::danar_se(const int dano){
     num_vidas-=1;
 }
 
-void Personagem::colid(Obstaculo* pObs){}
-void Personagem::colid(Inimigo* pIni){}
-void Personagem::colid(Jogador* pJog){}
+void Personagem::colid(Obstaculo* pObs,sf::Vector2f dmin,sf::Vector2f  d){}
+void Personagem::colid(Inimigo* pIni,sf::Vector2f dmin,sf::Vector2f  d){}
+void Personagem::colid(Jogador* pJog,sf::Vector2f dmin,sf::Vector2f  d){}

@@ -1,5 +1,6 @@
 #include <ente/entidades/inimigos/Saltador.h>
 #include <ente/entidades/obstaculos/Obstaculo.h>
+#include <ente/entidades/Jogador.h>
 
 using namespace Entidades;
 
@@ -13,24 +14,31 @@ Saltador::~Saltador(){
 
 }
 
-void Saltador::colid(Obstaculo* pObs){
-    sf::Vector2f distanciaCentro(std::abs(getPosicao().x-pObs->getPosicao().x),std::abs(getPosicao().y-pObs->getPosicao().y));
-    sf::Vector2f distanciaTamanho(std::abs(getTamanho().x-pObs->getTamanho().x)/2,std::abs(getTamanho().y-pObs->getTamanho().y)/2);
-    sf::Vector2f resultante(distanciaCentro - distanciaTamanho);
-    
+void Saltador::colid(Obstaculo* pObs,sf::Vector2f dmin,sf::Vector2f  d){
+    sf::Vector2f resultante(d-dmin);
     if(resultante.y>=resultante.x)
         velocidade.y = -17.f;
     else
         velocidade.x = velocidade.x*-1;
 }
 
-void Saltador::colid(Inimigo* pIni){
-    sf::Vector2f distanciaCentro(std::abs(getPosicao().x-pIni->getPosicao().x),std::abs(getPosicao().y-pIni->getPosicao().y));
-    sf::Vector2f distanciaTamanho(std::abs(getTamanho().x-pIni->getTamanho().x)/2,std::abs(getTamanho().y-pIni->getTamanho().y)/2);
-    sf::Vector2f resultante(distanciaCentro - distanciaTamanho);
+void Saltador::colid(Inimigo* pIni,sf::Vector2f dmin,sf::Vector2f  d){
+    sf::Vector2f resultante(d - dmin);
     
-    if(resultante.y>=resultante.x)
+    if(resultante.y<=resultante.x){
         velocidade.y = -17.f;
+    }
     else
         velocidade.x = velocidade.x*-1;
+}
+
+void Saltador::colid(Jogador* pJog,sf::Vector2f dmin,sf::Vector2f  d){
+     sf::Vector2f resultante(d - dmin);
+    
+    if(resultante.y<=resultante.x){
+       velocidade.y = -17.f;
+    }
+    else{
+        velocidade.x = velocidade.x*-1;
+    }
 }

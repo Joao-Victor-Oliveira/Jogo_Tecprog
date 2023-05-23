@@ -22,9 +22,9 @@ class Personagem: public Entidade{
     virtual void atacar();
     virtual void danar_se(const int dano);
 
-    virtual void colid(Obstaculo* pObs,sf::Vector2f dmin,sf::Vector2f  d);
-    virtual void colid(Inimigo* pIni,sf::Vector2f dmin,sf::Vector2f  d);
-    virtual void colid(Jogador* pJog,sf::Vector2f dmin,sf::Vector2f  d);
+    virtual void colid(Obstaculo* pObs,sf::Vector2f deslocamento);
+    virtual void colid(Inimigo* pIni,sf::Vector2f deslocamento);
+    virtual void colid(Jogador* pJog,sf::Vector2f deslocamento);
 };
 
 }

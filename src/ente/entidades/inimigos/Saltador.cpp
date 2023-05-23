@@ -14,28 +14,25 @@ Saltador::~Saltador(){
 
 }
 
-void Saltador::colid(Obstaculo* pObs,sf::Vector2f dmin,sf::Vector2f  d){
-    sf::Vector2f resultante(d-dmin);
-    if(resultante.y>=resultante.x)
+void Saltador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
+    if(deslocamento.y<=deslocamento.x)
         velocidade.y = -17.f;
     else
         velocidade.x = velocidade.x*-1;
 }
 
-void Saltador::colid(Inimigo* pIni,sf::Vector2f dmin,sf::Vector2f  d){
-    sf::Vector2f resultante(d - dmin);
-    
-    if(resultante.y<=resultante.x){
+void Saltador::colid(Inimigo* pIni,sf::Vector2f deslocamento){
+
+    if(deslocamento.y<=deslocamento.x){
         velocidade.y = -17.f;
     }
     else
         velocidade.x = velocidade.x*-1;
 }
 
-void Saltador::colid(Jogador* pJog,sf::Vector2f dmin,sf::Vector2f  d){
-     sf::Vector2f resultante(d - dmin);
-    
-    if(resultante.y<=resultante.x){
+void Saltador::colid(Jogador* pJog,sf::Vector2f deslocamento){
+
+    if(deslocamento.y<=deslocamento.x){
        velocidade.y = -17.f;
     }
     else{

@@ -38,10 +38,10 @@ void Fase::loop(){
             }
         }
         draw();
-        gc->colidir();
         listaI.percorrer();
         listaO.percorrer();
         player->executar();
+        gc->colidir();
         gg->mostrar();
         sf::sleep(sf::milliseconds(25));
         gg->limpar();

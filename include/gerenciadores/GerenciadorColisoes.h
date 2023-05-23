@@ -21,6 +21,7 @@ class GerenciadorColisoes{
 
     void colidir();
 
+    sf::Vector2f verificaColisao(sf::Vector2f pos1,sf::Vector2f pos2,sf::Vector2f tam1,sf::Vector2f tam2);
 };
 
 }

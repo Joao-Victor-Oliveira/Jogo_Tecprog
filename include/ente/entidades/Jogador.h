@@ -10,10 +10,10 @@ class Jogador:public Personagem{
     Jogador();
     virtual ~Jogador();
 
-    void colid(Obstaculo* pObs,sf::Vector2f dmin,sf::Vector2f  d);
-    void colid(Jogador* pJog,sf::Vector2f dmin,sf::Vector2f  d);
+    void colid(Obstaculo* pObs,sf::Vector2f deslocamento);
+    void colid(Jogador* pJog,sf::Vector2f deslocamento);
 
-    //void executar();
+    void executar();
 };
 
 }

@@ -7,7 +7,7 @@ GerenciadorGrafico* GerenciadorGrafico::getInstance() {
 }
 
 GerenciadorGrafico::GerenciadorGrafico() {
-    janela.create(sf::VideoMode(1280, 720), "Jogo");
+    janela.create(sf::VideoMode(1290, 720), "Jogo");
 }
 
 GerenciadorGrafico::~GerenciadorGrafico() {

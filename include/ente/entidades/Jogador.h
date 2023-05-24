@@ -6,6 +6,7 @@ namespace Entidades{
 class Jogador:public Personagem{
     private:
     std::string nome;
+    bool pulando;
     public:
     Jogador();
     virtual ~Jogador();

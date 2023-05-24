@@ -2,7 +2,7 @@
 #include <ente/entidades/obstaculos/Obstaculo.h>
 using namespace Entidades;
 
-Jogador::Jogador():Personagem("../../imagens/default.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)){
+Jogador::Jogador():Personagem("../../imagens/default.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),pulando(false){
     
 }
 
@@ -10,7 +10,12 @@ Jogador::~Jogador(){}
 
 void Jogador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
     if(deslocamento.y<=deslocamento.x){
-        (velocidade.y >=0 )?move(sf::Vector2f(0.f,deslocamento.y*-1)):move(sf::Vector2f(0.f,deslocamento.y));
+        if(velocidade.y >=0 ){
+            move(sf::Vector2f(0.f,deslocamento.y*-1));
+            pulando = false;
+        }
+        else
+            move(sf::Vector2f(0.f,deslocamento.y));
         velocidade.y =0.f;
     }
     else{
@@ -27,8 +32,10 @@ void Jogador::executar(){
     velocidade.x=0;
     velocidade.y+= GRAVIDADE;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        if(velocidade.y==GRAVIDADE)
+        if(!pulando){
             velocidade.y = -20.f;
+            pulando =true;
+        }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         velocidade.x = -10.f;

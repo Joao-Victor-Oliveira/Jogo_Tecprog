@@ -2,7 +2,7 @@
 
 using namespace Entidades;
 
-Inimigo::Inimigo(const std::string s,sf::Vector2f pos,const int d):Personagem(s,pos),dano(d){
+Inimigo::Inimigo(const std::string s,sf::Vector2f pos,const sf::Vector2f tam,const int d):Personagem(s,pos,tam),dano(d){
     
 }
 

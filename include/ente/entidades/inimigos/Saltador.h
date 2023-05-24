@@ -9,6 +9,10 @@ class Saltador:public Inimigo{
     public:
     Saltador(sf::Vector2f pos= sf::Vector2f(0.f,0.f));
     ~Saltador();
+
+    void colid(Obstaculo* pObs,sf::Vector2f deslocamento);
+    void colid(Inimigo* pIni,sf::Vector2f deslocamento);
+    void colid(Jogador* pJog,sf::Vector2f deslocamento);
 };
 
 }

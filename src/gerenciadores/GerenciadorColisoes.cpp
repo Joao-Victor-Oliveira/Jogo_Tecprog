@@ -10,6 +10,7 @@ void GerenciadorColisoes::setLista(Listas::ListaInimigos* li){pli=li;}
 void GerenciadorColisoes::setLista(Listas::ListaObstaculos* lo){plo=0;}
 void GerenciadorColisoes::setLista(Listas::ListaInimigos* li,Listas::ListaObstaculos* lo){pli=li;plo=lo;}
 void GerenciadorColisoes::setLista(Listas::ListaObstaculos* lo,Listas::ListaInimigos* li){pli=li;plo=lo;}
+void GerenciadorColisoes::setProjeteis(std::vector<Entidades::Projetil*>* v){plp = v;}
 
 #define ERRO 0.5
 void GerenciadorColisoes::colidir(){

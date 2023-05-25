@@ -1,6 +1,8 @@
 #include <ente/entidades/Entidade.h>
 using namespace Entidades;
 
+Jogador* Entidade::jogador1(NULL);
+
 Entidade::Entidade(const std::string caminho, const sf::Vector2f pos,const sf::Vector2f tam):velocidade(0.f,0.f),posicao(pos){
     try {
         if (!texture.loadFromFile(caminho)) {
@@ -40,3 +42,9 @@ void Entidade::move(const sf::Vector2f d){
     posicao +=d;
     corpo.setPosition(posicao);
 }
+
+void Entidade::colid(Obstaculo* pObs,sf::Vector2f deslocamento){}
+void Entidade::colid(Inimigo* pIni,sf::Vector2f deslocamento){}
+void Entidade::colid(Jogador* pJog,sf::Vector2f deslocamento){}
+
+void Entidade::setJogador(Jogador* jg){jogador1=jg;}

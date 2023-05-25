@@ -10,13 +10,17 @@ Fase::Fase(CriadorEntidades* ce):listaI(),listaO(){
         delete ce;
     }
     player = new Entidades::Jogador;
+    Entidades::Entidade::setJogador(player);
     gc = new Gerenciadores::GerenciadorColisoes(player);
     gc->setLista(&listaI,&listaO);
+    gc->setProjeteis(&listaP);
+    Entidades::Projetil::setListaProjetil(&listaP);
 }
 
 Fase::~Fase(){
     delete gc;
     delete player;
+    listaP.clear();
 }
 
 void Fase::executar(){
@@ -38,10 +42,8 @@ void Fase::loop(){
             }
         }
         draw();
-        listaI.percorrer();
-        listaO.percorrer();
-        player->executar();
         gc->colidir();
+        percorrer();
         gg->mostrar();
         sf::sleep(sf::milliseconds(25));
         gg->limpar();
@@ -52,4 +54,16 @@ void Fase::draw(){
     player->draw();
     listaI.draw();
     listaO.draw();
+    int tam = listaP.size();
+    for(int i=0;i<tam;i++)
+        listaP[i]->draw();
+}
+
+void Fase::percorrer(){
+    listaI.percorrer();
+    listaO.percorrer();
+    int tam = listaP.size();
+    for(int i=0;i<tam;i++)
+        listaP[i]->executar();
+    player->executar();
 }

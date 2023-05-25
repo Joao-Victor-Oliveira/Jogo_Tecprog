@@ -3,12 +3,14 @@
 #include "CriadorEntidades.h"
 #include <gerenciadores/GerenciadorColisoes.h>
 #include <ente/entidades/Jogador.h>
+#include <ente/entidades/Projetil.h>
 namespace Fases{
 
 class Fase:public Ente{
     protected:
     Listas::ListaInimigos listaI;
     Listas::ListaObstaculos listaO;
+    std::vector<Entidades::Projetil*> listaP;
     Gerenciadores::GerenciadorColisoes* gc;
     Entidades::Jogador* player;
     public:
@@ -17,6 +19,7 @@ class Fase:public Ente{
     virtual void executar();
     virtual void draw();
     virtual void loop();
+    virtual void percorrer();
 };
 
 }

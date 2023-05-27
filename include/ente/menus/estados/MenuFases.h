@@ -1,3 +1,4 @@
+#pragma once
 #include "../MenuState.h"
 #include <fases/Fase.h>
 class MenuPrincipal;

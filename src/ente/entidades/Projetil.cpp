@@ -11,7 +11,7 @@ dano(d)
     velocidade = vel ;
 }
 
-Projetil::~Projetil(){
+Projetil::~Projetil(){  
 }
 
 void Projetil::executar(){

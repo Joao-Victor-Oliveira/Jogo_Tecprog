@@ -49,7 +49,7 @@ void GerenciadorColisoes::colidir(){
 sf::Vector2f GerenciadorColisoes::verificaColisao(sf::Vector2f pos1,sf::Vector2f pos2,sf::Vector2f tam1,sf::Vector2f tam2){
     sf::Vector2f distancia((std::fabs(pos1.x-pos2.x)),(std::fabs(pos1.y-pos2.y)));
     sf::Vector2f distancia_min((tam1+tam2)/2.f);
-    if(distancia.x<= distancia_min.x-ERRO && distancia.y <= distancia_min.y-ERRO){
+    if(distancia.x<= distancia_min.x+ERRO && distancia.y <= distancia_min.y+ERRO){
         return sf::Vector2f(std::fabs(distancia_min.x-distancia.x),std::fabs(distancia_min.y-distancia.y));
     }
     else

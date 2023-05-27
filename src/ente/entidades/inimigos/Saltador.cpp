@@ -16,13 +16,13 @@ Saltador::~Saltador(){
 
 void Saltador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
     if(deslocamento.y<=deslocamento.x){
-        if(velocidade.y >=0 ){
+        if(pObs->getPosicao().y >= getPosicao().y){
             move(sf::Vector2f(0.f,deslocamento.y*-1));
             velocidade.y =-17.f;
         }
         else{
             move(sf::Vector2f(0.f,deslocamento.y));
-            velocidade.y =8.f;
+            velocidade.y =5.f;
         }
     }
     else{

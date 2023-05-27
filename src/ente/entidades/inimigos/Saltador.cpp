@@ -50,9 +50,8 @@ void Saltador::colid(Inimigo* pIni,sf::Vector2f deslocamento){
 }
 
 void Saltador::colid(Jogador* pJog,sf::Vector2f deslocamento){
-
     if(deslocamento.y<=deslocamento.x){
-        if(posicao.y > pJog->getPosicao().y){
+        if(posicao.y < pJog->getPosicao().y){
             move(sf::Vector2f(0.f,deslocamento.y*-1));
             velocidade.y =-17.f;
         }

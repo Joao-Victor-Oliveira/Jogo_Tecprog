@@ -14,7 +14,7 @@ void GerenciadorColisoes::setProjeteis(std::vector<Entidades::Projetil*>* v){plp
 
 #define ERRO 0.5
 void GerenciadorColisoes::colidir(){
-    int tam1 = pli->getTamanho(),tam2 = plo->getTamanho();
+    int tam1 = pli->getTamanho(),tam2 = plo->getTamanho(),tam3 = plp->size();
     
     for(int i=0;i<tam1;i++){
         //inimigo // obstaculo
@@ -43,7 +43,21 @@ void GerenciadorColisoes::colidir(){
                                                     pPl->getTamanho(),plo->operator[](j)->getTamanho());
         if(deslocamento.x || deslocamento.y)
             pPl->colid(plo->operator[](j),deslocamento);
+    //projetil // obstaculo
+        for(int k=0;k<tam3;k++){
+            sf::Vector2f deslocamento = verificaColisao(plp->operator[](k)->getPosicao(),plo->operator[](j)->getPosicao(),  
+                                                        plp->operator[](k)->getTamanho(),plo->operator[](j)->getTamanho());
+            if(deslocamento.x || deslocamento.y)
+                plp->operator[](k)->colid(plo->operator[](j),deslocamento);
+        }
     }
+    //projetil // jogador
+    for(int k=0;k<tam3;k++){
+            sf::Vector2f deslocamento = verificaColisao(plp->operator[](k)->getPosicao(),pPl->getPosicao(),  
+                                                        plp->operator[](k)->getTamanho(),pPl->getTamanho());
+            if(deslocamento.x || deslocamento.y)
+                plp->operator[](k)->colid(pPl,deslocamento);
+        }
 }
 
 sf::Vector2f GerenciadorColisoes::verificaColisao(sf::Vector2f pos1,sf::Vector2f pos2,sf::Vector2f tam1,sf::Vector2f tam2){

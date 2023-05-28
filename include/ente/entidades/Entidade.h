@@ -27,7 +27,7 @@ class Entidade: public Ente{
 
 
     virtual void executar(); 
-    virtual void draw(); //Não sei se vou usar o virtual , qualquer coisa lembrar de tirar
+    virtual void draw();
 
     void move (const sf::Vector2f d);
 

@@ -13,7 +13,7 @@ bala(1,"../../imagens/default.png",sf::Vector2f(-20.f,-20.f),sf::Vector2f(15,15)
 Atirador::~Atirador(){
 
 }
-#define VY -20.f
+#define VY -22.f
 bool count=false;
 void Atirador::executar(){
     if(!count){

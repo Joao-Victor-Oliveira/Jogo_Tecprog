@@ -7,6 +7,8 @@ class Jogador:public Personagem{
     private:
     std::string nome;
     bool pulando;
+    bool coliE;
+    bool coliD;
     public:
     Jogador();
     virtual ~Jogador();

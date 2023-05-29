@@ -1,26 +1,29 @@
+#pragma once
 #include "Lista.h"
 #include <ente/entidades/Entidade.h>
+#include <ente/entidades/inimigos/Inimigo.h>
+#include <ente/entidades/obstaculos/Obstaculo.h>
+#include <ente/entidades/Projetil.h>
 
 namespace Listas{
+
     template<class TIPO>
     class ListaEntidade{
     private:
     Lista<Entidades::Entidade> entidades;
     public:
+    
     ListaEntidade(){
-        TIPO* aux = new TIPO;
-        if(!dynamic_cast <Entidade*> (aux))
-            printf("conversao invalida");
-        delete aux;
     }
+    
     ~ListaEntidade(){}
 
     void adicionar(TIPO* elem){
-        entidades.push_back()
+        entidades.push_back(static_cast<Entidades::Entidade*> (elem));
     }
 
     void remover(TIPO* elem){
-        entidades.remover(static_cast<Entidades*> elem)
+        entidades.remover(static_cast<Entidades::Entidade*> (elem));
     }
 
     const int getTamanho(){
@@ -28,28 +31,33 @@ namespace Listas{
     }
 
     TIPO* operator[](const int i){
-        return static_cast<TIPO*> entidades[i];
+        return static_cast<TIPO*> (entidades[i]);
     }
 
     void percorrer(){
-        Lista<Entidades::Entidade>::Iterador * it = entidades.getPrimeiro();
-        while(it != NULL){
-            it->getConteudo()->executar();
-            it++;
+        Lista<Entidades::Entidade>::Iterador it;
+        it.operator=(entidades.getPrimeiro());
+        while (!it.fim()) {
+            Entidades::Entidade* aux = it.getConteudo();
+            aux->executar();
+            ++it;
         }
     }
 
     void draw(){
-        Lista<Entidades::Entidade>::Iterador * it = entidades.getPrimeiro();
-        while(it != NULL){
-            it->getConteudo()->draw();
-            it++;
+        Lista<Entidades::Entidade>::Iterador it;
+        it.operator=(entidades.getPrimeiro());
+        while (!it.fim()) {
+            Entidades::Entidade* aux = it.getConteudo();
+            aux->draw();
+            ++it; 
         }
     }
-    bool vazia(){
+
+    const bool vazia(){
         return entidades.empty();
     }
-
-    }
+    
+    };
 
 }

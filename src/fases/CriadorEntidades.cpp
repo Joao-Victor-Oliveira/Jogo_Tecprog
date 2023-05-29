@@ -1,5 +1,5 @@
 #include <fases/CriadorEntidades.h>
-
+#include <ente/entidades/inimigos/Inimigo.h>
 
 
 using namespace Fases;
@@ -9,7 +9,7 @@ CriadorEntidades::CriadorEntidades(){}
 
 CriadorEntidades::~CriadorEntidades(){printf("Foram criadas %d entidades\n", num_entidades);}
 
-void CriadorEntidades::add(ListaInimigos* li ,Entidades::Inimigo* i){
+void CriadorEntidades::add(ListaEntidade<Entidades::Inimigo>* li ,Entidades::Inimigo* i){
     num_entidades++;
     if(!li || !i)
         throw std::invalid_argument("argumento nulo");
@@ -43,7 +43,7 @@ void CriadorEntidades::criarLimites(Listas::ListaObstaculos* lo,char fase [][41]
 }
 
 /* Exemplo
-void Criarinimigos(ListaInimigos* li){
+void Criarinimigos(ListaEntidade<Entidades::Inimigo>* li){
     add(li,new inimigo1);
     for(int i=0,i<5,i++){add(li,new inimigo2);}
 }

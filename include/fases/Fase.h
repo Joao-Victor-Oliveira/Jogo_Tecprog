@@ -8,7 +8,7 @@ namespace Fases{
 
 class Fase:public Ente{
     protected:
-    Listas::ListaInimigos listaI;
+    Listas::ListaEntidade<Entidades::Inimigo> listaI;
     Listas::ListaObstaculos listaO;
     std::vector<Entidades::Projetil*> listaP;
     Gerenciadores::GerenciadorColisoes* gc;

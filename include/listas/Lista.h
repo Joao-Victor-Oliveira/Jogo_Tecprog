@@ -13,7 +13,6 @@ namespace Listas {
         private:
             Elemento<TE> *pProx;
             TE *pInfo;
-
         public:
             Elemento() : pProx(NULL), pInfo(NULL) {}
             ~Elemento() {
@@ -82,7 +81,7 @@ namespace Listas {
                 else
                     return false;
             }
-            Elemento<TL*> getElemento()
+            Elemento<TL>* getElemento()
             {
                 return elemento;
             }
@@ -96,9 +95,10 @@ namespace Listas {
             {
                 elemento = El;
             }
-            void operator ++()
-            {
+            void operator++() {
+                if  (elemento != nullptr) {
                 elemento = elemento->getProx();
+                }
             }
         };
 

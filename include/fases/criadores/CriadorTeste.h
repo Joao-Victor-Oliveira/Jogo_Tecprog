@@ -8,7 +8,7 @@ class CriadorTeste:public CriadorEntidades{
     CriadorTeste();
     ~CriadorTeste();
 
-    void criarInimigos(Listas::ListaInimigos* li);
+    void criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li);
     void criarObstaculos(Listas::ListaObstaculos* lo);
 };
 

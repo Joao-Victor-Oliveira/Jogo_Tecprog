@@ -21,7 +21,8 @@ void Atirador::executar(){
         bala = new Projetil(1,"../../imagens/default.png",sf::Vector2f(-20.f,-20.f),sf::Vector2f(15,15),sf::Vector2f(0.f,0.f));
         plp->adicionar(bala);
     }
-    if(jogador1 && !bala->ativo){
+    static sf::Clock relogio;
+    if(jogador1 && relogio.getElapsedTime().asSeconds()>2){
         float distx = jogador1->getPosicao().x - getPosicao().x;
         float disty = jogador1->getPosicao().y - getPosicao().y;
 
@@ -33,6 +34,7 @@ void Atirador::executar(){
             float velocidadex = distx/(tempoQueda+tempoSubida);
 
             disparar(velocidadex);
+            relogio.restart();
         }
     }
     move(velocidade);

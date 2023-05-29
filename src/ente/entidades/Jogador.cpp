@@ -23,11 +23,13 @@ void Jogador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
     else{
         if(pObs->getPosicao().x >= getPosicao().x ){
             move(sf::Vector2f(deslocamento.x*-1,0.f));
-            coliD = true;
+            if(deslocamento.x > 0.1)
+                coliD = true;
         }
         else{
             move(sf::Vector2f(deslocamento.x,0.f));
-            coliE = true;
+            if(deslocamento.x > 0.1)
+                coliE = true;
         }
         velocidade.x=0.f;
     }

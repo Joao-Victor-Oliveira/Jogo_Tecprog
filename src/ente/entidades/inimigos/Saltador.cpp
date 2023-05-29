@@ -6,8 +6,13 @@ using namespace Entidades;
 
 #define VX 5.0
 
-Saltador::Saltador(sf::Vector2f pos):Inimigo("../../imagens/inimigos/Saltador.png",pos,sf::Vector2f(30.f,30.f),1){
-    (rand()%2)?setVelocidade(sf::Vector2f(VX,0.f)):setVelocidade(sf::Vector2f(-1*VX,0.f));
+Saltador::Saltador(sf::Vector2f pos):Inimigo("../../imagens/inimigos/Saltador.png",pos,sf::Vector2f(30.f,30.f),1),
+irritado(!rand()%1),
+vx((irritado)?VX*2:VX)
+{
+    if(irritado)
+        corpo.setFillColor(sf::Color::Red);
+    (rand()%2)?setVelocidade(sf::Vector2f(vx,0.f)):setVelocidade(sf::Vector2f(-1*vx,0.f));
 }
 
 Saltador::~Saltador(){
@@ -32,7 +37,6 @@ void Saltador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
 }
 
 void Saltador::colid(Inimigo* pIni,sf::Vector2f deslocamento){
-
     if(deslocamento.y<=deslocamento.x){
         if(velocidade.y >=0 ){
             move(sf::Vector2f(0.f,deslocamento.y*-1));
@@ -44,7 +48,7 @@ void Saltador::colid(Inimigo* pIni,sf::Vector2f deslocamento){
         }
     }
     else{
-        (velocidade.x >=0)?move(sf::Vector2f(deslocamento.x*-1,0.f)):move(sf::Vector2f(deslocamento.x,0.f));
+        (velocidade.x <=0)?move(sf::Vector2f(deslocamento.x*-1,0.f)):move(sf::Vector2f(deslocamento.x,0.f));
         velocidade.x *= -1;
     }
 }

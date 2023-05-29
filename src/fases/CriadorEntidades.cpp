@@ -1,6 +1,6 @@
 #include <fases/CriadorEntidades.h>
 #include <ente/entidades/inimigos/Inimigo.h>
-
+#include <ente/entidades/inimigos/Atirador.h>
 
 using namespace Fases;
 using namespace Listas;
@@ -40,6 +40,10 @@ void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>*
                     add(lo,new Entidades::Obstaculo("../../imagens/plataforma.png",sf::Vector2f(j*30+45,i*30+45),sf::Vector2f(30,30)));
             }
     }
+}
+
+void CriadorEntidades::listaProjeteis(Listas::ListaEntidade<Entidades::Projetil>* lp){
+    Entidades::Atirador::setListaProjetil(lp);
 }
 
 /* Exemplo

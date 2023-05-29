@@ -2,8 +2,9 @@
 
 using namespace Fases;
 
-Fase::Fase(CriadorEntidades* ce):listaI(),listaO(){
+Fase::Fase(CriadorEntidades* ce):listaI(),listaO(),listaP(){
     if(ce){
+        ce->listaProjeteis(&listaP);
         ce->criarInimigos(&listaI);
         ce->criarObstaculos(&listaO);
             //foi feito pra receber um new static_cast<CriadorEntidades*> new alguma_coisa derivada do CriadorEntidades, então é importante nesse caso
@@ -14,13 +15,11 @@ Fase::Fase(CriadorEntidades* ce):listaI(),listaO(){
     gc = new Gerenciadores::GerenciadorColisoes(player);
     gc->setLista(&listaI,&listaO);
     gc->setProjeteis(&listaP);
-    Entidades::Projetil::setListaProjetil(&listaP);
 }
 
 Fase::~Fase(){
     delete gc;
     delete player;
-    listaP.clear();
 }
 
 void Fase::executar(){
@@ -54,16 +53,12 @@ void Fase::draw(){
     player->draw();
     listaI.draw();
     listaO.draw();
-    int tam = listaP.size();
-    for(int i=0;i<tam;i++)
-        listaP[i]->draw();
+    listaP.draw();
 }
 
 void Fase::percorrer(){
     listaI.percorrer();
     listaO.percorrer();
-    int tam = listaP.size();
-    for(int i=0;i<tam;i++)
-        listaP[i]->executar();
+    listaP.percorrer();
     player->executar();
 }

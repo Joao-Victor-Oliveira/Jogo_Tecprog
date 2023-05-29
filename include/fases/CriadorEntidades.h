@@ -1,8 +1,8 @@
 #pragma once
 #include <listas/ListaEntidade.h>
-#include <listas/ListaEntidade.h>
 #include <ente/entidades/obstaculos/Obstaculo.h>
-#include <listas/ListaEntidade.h>
+#include <ente/entidades/Projetil.h>
+
 namespace Fases{
 
 class CriadorEntidades{
@@ -20,6 +20,8 @@ class CriadorEntidades{
     virtual void criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo)=0;
 
     virtual void criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41]);
+
+    void listaProjeteis(Listas::ListaEntidade<Entidades::Projetil>* lp);
 };
 
 }

@@ -2,14 +2,11 @@
 
 using namespace Entidades;
 
-std::vector<Projetil*>* Projetil::pVp(NULL);
-
 Projetil::Projetil(const int d,const std::string caminho, const sf::Vector2f pos,const sf::Vector2f tam,const sf::Vector2f vel):
 Entidade(caminho,pos,tam),
 dano(d),
 ativo(false)
 {
-    printf("testando");
     corpo.setFillColor(sf::Color::Yellow);
     velocidade = vel ;
 }
@@ -34,15 +31,9 @@ void Projetil::colid(Jogador* pJog,sf::Vector2f deslocamento){
     ativo = false;
 }
 
-void Projetil::setListaProjetil(std::vector<Projetil*>* v){pVp=v;}
-
 
 void Projetil::draw(){
     if(ativo && gg){
         gg->desenhar(corpo);
     }
-}
-
-void Projetil::registrar(){
-    pVp->push_back(this);
 }

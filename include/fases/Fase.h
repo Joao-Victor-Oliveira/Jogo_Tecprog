@@ -10,7 +10,7 @@ class Fase:public Ente{
     protected:
     Listas::ListaEntidade<Entidades::Inimigo> listaI;
     Listas::ListaEntidade<Entidades::Obstaculo> listaO;
-    std::vector<Entidades::Projetil*> listaP;
+    Listas::ListaEntidade<Entidades::Projetil> listaP;
     Gerenciadores::GerenciadorColisoes* gc;
     Entidades::Jogador* player;
     public:

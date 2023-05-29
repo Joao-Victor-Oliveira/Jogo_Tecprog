@@ -7,7 +7,7 @@ using namespace Entidades;
 #define VX 5.0
 
 Saltador::Saltador(sf::Vector2f pos):Inimigo("../../imagens/inimigos/Saltador.png",pos,sf::Vector2f(30.f,30.f),1),
-irritado(!rand()%1),
+irritado((rand()%4==3)?1:0),
 vx((irritado)?VX*2:VX)
 {
     if(irritado)

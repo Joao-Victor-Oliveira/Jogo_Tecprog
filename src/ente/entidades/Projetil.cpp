@@ -15,16 +15,12 @@ Projetil::~Projetil(){
 }
 
 void Projetil::executar(){
-    if(ativo){
     move(velocidade);
     velocidade.y+= GRAVIDADE;
-    }
 }
 
 void Projetil::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
     ativo = false;
-    posicao = sf::Vector2f(-200.f,-200.f);
-    velocidade = sf::Vector2f(0.f,0.f);
 }
 
 void Projetil::colid(Jogador* pJog,sf::Vector2f deslocamento){

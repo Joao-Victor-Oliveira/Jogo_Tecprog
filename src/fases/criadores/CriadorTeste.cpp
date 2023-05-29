@@ -18,6 +18,6 @@ void CriadorTeste::criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li){
     add(li,new Entidades::Atirador(sf::Vector2f(600.f,200.f)));
 }
 
-void CriadorTeste::criarObstaculos(Listas::ListaObstaculos* lo){
+void CriadorTeste::criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
     criarLimites(lo,mFase1);
 }

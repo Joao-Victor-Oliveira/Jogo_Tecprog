@@ -1,6 +1,6 @@
 #pragma once
 #include <listas/ListaEntidade.h>
-#include <listas/ListaObstaculos.h>
+#include <listas/ListaEntidade.h>
 #include <ente/entidades/obstaculos/Obstaculo.h>
 #include <listas/ListaEntidade.h>
 namespace Fases{
@@ -10,16 +10,16 @@ class CriadorEntidades{
     int num_entidades;    
     public:
     void add(Listas::ListaEntidade<Entidades::Inimigo>* li,Entidades::Inimigo* i);
-    void add(Listas::ListaObstaculos* lo,Entidades::Obstaculo* o);
+    void add(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Entidades::Obstaculo* o);
     
     CriadorEntidades();
     // muito importante ser virtual, pois irei destruir por polimorfismo
     virtual ~CriadorEntidades();
 
     virtual void criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li)=0;                
-    virtual void criarObstaculos(Listas::ListaObstaculos* lo)=0;
+    virtual void criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo)=0;
 
-    virtual void criarLimites(Listas::ListaObstaculos* lo,char fase [][41]);
+    virtual void criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41]);
 };
 
 }

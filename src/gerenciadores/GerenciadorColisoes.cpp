@@ -7,9 +7,9 @@ GerenciadorColisoes::~GerenciadorColisoes(){}
     
 
 void GerenciadorColisoes::setLista(Listas::ListaEntidade<Entidades::Inimigo>* li){pli=li;}
-void GerenciadorColisoes::setLista(Listas::ListaObstaculos* lo){plo=0;}
-void GerenciadorColisoes::setLista(Listas::ListaEntidade<Entidades::Inimigo>* li,Listas::ListaObstaculos* lo){pli=li;plo=lo;}
-void GerenciadorColisoes::setLista(Listas::ListaObstaculos* lo,Listas::ListaEntidade<Entidades::Inimigo>* li){pli=li;plo=lo;}
+void GerenciadorColisoes::setLista(Listas::ListaEntidade<Entidades::Obstaculo>* lo){plo=0;}
+void GerenciadorColisoes::setLista(Listas::ListaEntidade<Entidades::Inimigo>* li,Listas::ListaEntidade<Entidades::Obstaculo>* lo){pli=li;plo=lo;}
+void GerenciadorColisoes::setLista(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Listas::ListaEntidade<Entidades::Inimigo>* li){pli=li;plo=lo;}
 void GerenciadorColisoes::setProjeteis(std::vector<Entidades::Projetil*>* v){plp = v;}
 
 #define ERRO 0.5

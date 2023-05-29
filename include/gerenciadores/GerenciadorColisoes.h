@@ -1,6 +1,5 @@
 #pragma once
 #include <listas/ListaEntidade.h>
-#include <listas/ListaObstaculos.h>
 #include <ente/entidades/Jogador.h>
 #include <ente/entidades/Projetil.h>
 namespace Gerenciadores{
@@ -8,7 +7,7 @@ namespace Gerenciadores{
 class GerenciadorColisoes{
     private:
     Listas::ListaEntidade<Entidades::Inimigo>* pli;
-    Listas::ListaObstaculos* plo;
+    Listas::ListaEntidade<Entidades::Obstaculo>* plo;
     std::vector<Entidades::Projetil*>* plp;
     Entidades::Jogador* pPl;
     public:
@@ -16,9 +15,9 @@ class GerenciadorColisoes{
     ~GerenciadorColisoes();
     
     void setLista(Listas::ListaEntidade<Entidades::Inimigo>* li);
-    void setLista(Listas::ListaObstaculos* lo);
-    void setLista(Listas::ListaEntidade<Entidades::Inimigo>* li,Listas::ListaObstaculos* lo);
-    void setLista(Listas::ListaObstaculos* lo,Listas::ListaEntidade<Entidades::Inimigo>* li);
+    void setLista(Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+    void setLista(Listas::ListaEntidade<Entidades::Inimigo>* li,Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+    void setLista(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Listas::ListaEntidade<Entidades::Inimigo>* li);
     void setProjeteis(std::vector<Entidades::Projetil*>* v);
 
     void colidir();

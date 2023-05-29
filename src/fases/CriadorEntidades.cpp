@@ -17,7 +17,7 @@ void CriadorEntidades::add(ListaEntidade<Entidades::Inimigo>* li ,Entidades::Ini
         li->adicionar(i);
 }
 
-void CriadorEntidades::add(Listas::ListaObstaculos* lo,Entidades::Obstaculo* o){
+void CriadorEntidades::add(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Entidades::Obstaculo* o){
     num_entidades++;
     if(!lo || !o)
         throw std::invalid_argument("argumento nulo");
@@ -25,7 +25,7 @@ void CriadorEntidades::add(Listas::ListaObstaculos* lo,Entidades::Obstaculo* o){
         lo->adicionar(o);
 }
 
-void CriadorEntidades::criarLimites(Listas::ListaObstaculos* lo,char fase [][41]){
+void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41]){
     add(lo,new Entidades::Obstaculo("../../imagens/plataforma.png",sf::Vector2f(1000,705),sf::Vector2f(2000,30)));
     add(lo,new Entidades::Obstaculo("../../imagens/plataforma.png",sf::Vector2f(15,1000),sf::Vector2f(30,2000)));
     add(lo,new Entidades::Obstaculo("../../imagens/plataforma.png",sf::Vector2f(1275,1000),sf::Vector2f(30,2000)));

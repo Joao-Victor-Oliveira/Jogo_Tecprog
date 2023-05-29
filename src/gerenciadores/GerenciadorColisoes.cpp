@@ -6,15 +6,15 @@ GerenciadorColisoes::GerenciadorColisoes(Entidades::Jogador* p):pli(NULL),plo(NU
 GerenciadorColisoes::~GerenciadorColisoes(){}
     
 
-void GerenciadorColisoes::setLista(Listas::ListaInimigos* li){pli=li;}
-void GerenciadorColisoes::setLista(Listas::ListaObstaculos* lo){plo=0;}
-void GerenciadorColisoes::setLista(Listas::ListaInimigos* li,Listas::ListaObstaculos* lo){pli=li;plo=lo;}
-void GerenciadorColisoes::setLista(Listas::ListaObstaculos* lo,Listas::ListaInimigos* li){pli=li;plo=lo;}
-void GerenciadorColisoes::setProjeteis(std::vector<Entidades::Projetil*>* v){plp = v;}
+void GerenciadorColisoes::setLista(Listas::ListaEntidade<Entidades::Inimigo>* li){pli=li;}
+void GerenciadorColisoes::setLista(Listas::ListaEntidade<Entidades::Obstaculo>* lo){plo=0;}
+void GerenciadorColisoes::setLista(Listas::ListaEntidade<Entidades::Inimigo>* li,Listas::ListaEntidade<Entidades::Obstaculo>* lo){pli=li;plo=lo;}
+void GerenciadorColisoes::setLista(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Listas::ListaEntidade<Entidades::Inimigo>* li){pli=li;plo=lo;}
+void GerenciadorColisoes::setProjeteis(Listas::ListaEntidade<Entidades::Projetil>* v){plp = v;}
 
 #define ERRO 0.5
 void GerenciadorColisoes::colidir(){
-    int tam1 = pli->getTamanho(),tam2 = plo->getTamanho(),tam3 = plp->size();
+    int tam1 = pli->getTamanho(),tam2 = plo->getTamanho(),tam3 = plp->getTamanho();
     
     for(int i=0;i<tam1;i++){
         //inimigo // obstaculo

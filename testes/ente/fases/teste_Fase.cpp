@@ -7,6 +7,7 @@ using namespace Entidades;
 #include <stdexcept>
 using namespace Listas;
 
+
 void segfault_handler2(int sig) {
   throw std::runtime_error("Segmentation fault");
 }
@@ -15,20 +16,20 @@ class CriadorTeste:public CriadorEntidades{
     public:
     CriadorTeste(){}
     virtual ~CriadorTeste(){}
-    void criarInimigos(ListaInimigos* li){for(int i=0;i<10;i++)add(li,new Inimigo);}          
-    void criarObstaculos(ListaObstaculos* lo){for(int i=0;i<10;i++)add(lo,new Obstaculo);}
+    void criarInimigos(ListaEntidade<Entidades::Inimigo>* li){for(int i=0;i<10;i++)add(li,new Inimigo);}          
+    void criarObstaculos(ListaEntidade<Entidades::Obstaculo>* lo){for(int i=0;i<10;i++)add(lo,new Obstaculo);}
 };
 
 TEST(CriadorEntidadesTest, Add) {
     CriadorTeste criador;
-    ListaInimigos listaInimigos;
-    ListaObstaculos listaObstaculos;
+    ListaEntidade<Entidades::Inimigo> ListaEntidade<Entidades::Inimigo>;
+    ListaEntidade<Entidades::Obstaculo> ListaEntidade<Entidades::Obstaculo>;
 
     Inimigo* inimigo = new Inimigo();
     Obstaculo* obstaculo = new Obstaculo();
 
-    EXPECT_NO_THROW(criador.add(&listaInimigos, inimigo));
-    EXPECT_NO_THROW(criador.add(&listaObstaculos, obstaculo));
+    EXPECT_NO_THROW(criador.add(&ListaEntidade<Entidades::Inimigo>, inimigo));
+    EXPECT_NO_THROW(criador.add(&ListaEntidade<Entidades::Obstaculo>, obstaculo));
 
     delete obstaculo;
     delete inimigo;
@@ -36,25 +37,25 @@ TEST(CriadorEntidadesTest, Add) {
 
 TEST(CriadorEntidadesTest, ListaNula){
     CriadorTeste criador;
-    ListaInimigos* listaInimigos=NULL;
-    ListaObstaculos* listaObstaculos=NULL;
+    ListaEntidade<Entidades::Inimigo>* ListaEntidade<Entidades::Inimigo>=NULL;
+    ListaEntidade<Entidades::Obstaculo>* ListaEntidade<Entidades::Obstaculo>=NULL;
 
     Inimigo* inimigo = new Inimigo();
     Obstaculo* obstaculo = new Obstaculo();
-    EXPECT_THROW(criador.add(listaInimigos, inimigo),std::invalid_argument);
-    EXPECT_THROW(criador.add(listaObstaculos, obstaculo),std::invalid_argument);
+    EXPECT_THROW(criador.add(ListaEntidade<Entidades::Inimigo>, inimigo),std::invalid_argument);
+    EXPECT_THROW(criador.add(ListaEntidade<Entidades::Obstaculo>, obstaculo),std::invalid_argument);
 }
 
 TEST(CriadorEntidadesTest, EntidadeNula){
     CriadorTeste criador;
-    ListaInimigos listaInimigos;
-    ListaObstaculos listaObstaculos;
+    ListaEntidade<Entidades::Inimigo> ListaEntidade<Entidades::Inimigo>;
+    ListaEntidade<Entidades::Obstaculo> ListaEntidade<Entidades::Obstaculo>;
 
     Inimigo* inimigo = NULL;
     Obstaculo* obstaculo = NULL;
 
-    EXPECT_THROW(criador.add(&listaInimigos, inimigo),std::invalid_argument);
-    EXPECT_THROW(criador.add(&listaObstaculos, obstaculo),std::invalid_argument);
+    EXPECT_THROW(criador.add(&ListaEntidade<Entidades::Inimigo>, inimigo),std::invalid_argument);
+    EXPECT_THROW(criador.add(&ListaEntidade<Entidades::Obstaculo>, obstaculo),std::invalid_argument);
 }
 
 

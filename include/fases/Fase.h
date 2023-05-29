@@ -8,9 +8,9 @@ namespace Fases{
 
 class Fase:public Ente{
     protected:
-    Listas::ListaInimigos listaI;
-    Listas::ListaObstaculos listaO;
-    std::vector<Entidades::Projetil*> listaP;
+    Listas::ListaEntidade<Entidades::Inimigo> listaI;
+    Listas::ListaEntidade<Entidades::Obstaculo> listaO;
+    Listas::ListaEntidade<Entidades::Projetil> listaP;
     Gerenciadores::GerenciadorColisoes* gc;
     Entidades::Jogador* player;
     public:

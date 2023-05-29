@@ -1,25 +1,24 @@
 #pragma once
-#include <listas/ListaInimigos.h>
-#include <listas/ListaObstaculos.h>
+#include <listas/ListaEntidade.h>
 #include <ente/entidades/Jogador.h>
 #include <ente/entidades/Projetil.h>
 namespace Gerenciadores{
 
 class GerenciadorColisoes{
     private:
-    Listas::ListaInimigos* pli;
-    Listas::ListaObstaculos* plo;
-    std::vector<Entidades::Projetil*>* plp;
+    Listas::ListaEntidade<Entidades::Inimigo>* pli;
+    Listas::ListaEntidade<Entidades::Obstaculo>* plo;
+    Listas::ListaEntidade<Entidades::Projetil>* plp;
     Entidades::Jogador* pPl;
     public:
     GerenciadorColisoes(Entidades::Jogador* p=NULL);
     ~GerenciadorColisoes();
     
-    void setLista(Listas::ListaInimigos* li);
-    void setLista(Listas::ListaObstaculos* lo);
-    void setLista(Listas::ListaInimigos* li,Listas::ListaObstaculos* lo);
-    void setLista(Listas::ListaObstaculos* lo,Listas::ListaInimigos* li);
-    void setProjeteis(std::vector<Entidades::Projetil*>* v);
+    void setLista(Listas::ListaEntidade<Entidades::Inimigo>* li);
+    void setLista(Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+    void setLista(Listas::ListaEntidade<Entidades::Inimigo>* li,Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+    void setLista(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Listas::ListaEntidade<Entidades::Inimigo>* li);
+    void setProjeteis(Listas::ListaEntidade<Entidades::Projetil>* v);
 
     void colidir();
 

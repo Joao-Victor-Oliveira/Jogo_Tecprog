@@ -1,5 +1,6 @@
 #pragma once
 #include "../CriadorEntidades.h"
+#include <ente/entidades/obstaculos/Obstaculo.h>
 
 namespace Fases{
 
@@ -8,8 +9,8 @@ class CriadorTeste:public CriadorEntidades{
     CriadorTeste();
     ~CriadorTeste();
 
-    void criarInimigos(Listas::ListaInimigos* li);
-    void criarObstaculos(Listas::ListaObstaculos* lo);
+    void criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li);
+    void criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo);
 };
 
 

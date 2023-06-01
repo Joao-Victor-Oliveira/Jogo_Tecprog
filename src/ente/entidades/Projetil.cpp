@@ -1,14 +1,14 @@
 #include <ente/entidades/Projetil.h>
-
+#include <ente/entidades/Jogador.h>
 using namespace Entidades;
 
 Projetil::Projetil(const int d,const std::string caminho, const sf::Vector2f pos,const sf::Vector2f tam,const sf::Vector2f vel):
 Entidade(caminho,pos,tam),
-dano(d),
-ativo(false)
+dano(d)
 {
     corpo.setFillColor(sf::Color::Yellow);
     velocidade = vel ;
+    ativo = false;
 }
 
 Projetil::~Projetil(){  
@@ -25,6 +25,7 @@ void Projetil::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
 
 void Projetil::colid(Jogador* pJog,sf::Vector2f deslocamento){
     ativo = false;
+    pJog->danar_se(dano);
 }
 
 

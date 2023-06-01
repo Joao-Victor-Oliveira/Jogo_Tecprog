@@ -17,6 +17,8 @@ class Atirador: public Inimigo{
 
     void executar();
     void disparar(const float vel);
+
+    void colid(Jogador* pJog,sf::Vector2f deslocamento);
 };
 
 }

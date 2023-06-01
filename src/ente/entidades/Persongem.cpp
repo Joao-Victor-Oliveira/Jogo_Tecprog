@@ -21,10 +21,6 @@ const int Personagem::getVidas(){
     return num_vidas;
 }
 
-void Personagem::atacar(){
-    //nada por enquanto
-}
-
 void Personagem::danar_se(const int dano){
     num_vidas-=1;
 }

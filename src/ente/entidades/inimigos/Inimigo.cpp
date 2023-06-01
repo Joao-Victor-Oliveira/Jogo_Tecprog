@@ -10,10 +10,9 @@ Inimigo::~Inimigo(){
 
 }
 
-void Inimigo::causar_dano(){
-    //implementar dps do gerenciador de colisões
-}
 
 void Inimigo::danar_se(const int dano){
-    //implementar dps do gerenciador de colisões
+    num_vidas-=dano;
+    if(num_vidas<=0)
+        ativo =false;
 }

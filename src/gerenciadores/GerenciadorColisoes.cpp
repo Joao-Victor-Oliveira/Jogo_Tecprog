@@ -17,26 +17,33 @@ void GerenciadorColisoes::colidir(){
     int tam1 = pli->getTamanho(),tam2 = plo->getTamanho(),tam3 = plp->getTamanho();
     
     for(int i=0;i<tam1;i++){
-        //inimigo // obstaculo
-        for(int j=0;j<tam2;j++){
-            sf::Vector2f deslocamento = verificaColisao(pli->operator[](i)->getPosicao(),plo->operator[](j)->getPosicao(),  
-                                                        pli->operator[](i)->getTamanho(),plo->operator[](j)->getTamanho());
+        if(pli->operator[](i)->getAtivo()){
+            //inimigo // obstaculo
+            for(int j=0;j<tam2;j++){
+                if(pli->operator[](i)->getAtivo()){
+                sf::Vector2f deslocamento = verificaColisao(pli->operator[](i)->getPosicao(),plo->operator[](j)->getPosicao(),  
+                                                            pli->operator[](i)->getTamanho(),plo->operator[](j)->getTamanho());
+                if(deslocamento.x || deslocamento.y)
+                    pli->operator[](i)->colid(plo->operator[](j),deslocamento);
+                }
+            }
+            //inimigo // inimigo
+            for(int k=i+1;k<tam1;k++){
+                if(pli->operator[](k)->getAtivo()){
+                sf::Vector2f deslocamento = verificaColisao(pli->operator[](i)->getPosicao(),pli->operator[](k)->getPosicao(),  
+                                                            pli->operator[](i)->getTamanho(),pli->operator[](k)->getTamanho());
+                if(deslocamento.x || deslocamento.y)
+                    pli->operator[](i)->colid(pli->operator[](k),deslocamento);
+                }
+            }
+            //jogador // inimimigo
+            sf::Vector2f deslocamento = verificaColisao(pli->operator[](i)->getPosicao(),pPl->getPosicao(),  
+                                                        pli->operator[](i)->getTamanho(),pPl->getTamanho());
             if(deslocamento.x || deslocamento.y)
-                pli->operator[](i)->colid(plo->operator[](j),deslocamento);
+                    pli->operator[](i)->colid(pPl,deslocamento);
         }
-        //inimigo // inimigo
-        for(int k=i+1;k<tam1;k++){
-            sf::Vector2f deslocamento = verificaColisao(pli->operator[](i)->getPosicao(),pli->operator[](k)->getPosicao(),  
-                                                        pli->operator[](i)->getTamanho(),pli->operator[](k)->getTamanho());
-            if(deslocamento.x || deslocamento.y)
-                pli->operator[](i)->colid(pli->operator[](k),deslocamento);
-        }
-        //jogador // inimimigo
-        sf::Vector2f deslocamento = verificaColisao(pli->operator[](i)->getPosicao(),pPl->getPosicao(),  
-                                                    pli->operator[](i)->getTamanho(),pPl->getTamanho());
-        if(deslocamento.x || deslocamento.y)
-                pli->operator[](i)->colid(pPl,deslocamento);
     }
+    
     //jogador // obstaculo
     for(int j=0;j<tam2;j++){
         sf::Vector2f deslocamento = verificaColisao(pPl->getPosicao(),plo->operator[](j)->getPosicao(),  

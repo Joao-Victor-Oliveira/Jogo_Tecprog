@@ -2,10 +2,12 @@
 #include <ente/entidades/obstaculos/Obstaculo.h>
 using namespace Entidades;
 
+#define VIDAS 10
 Jogador::Jogador():Personagem("../../imagens/default.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),
 pulando(false),coliE(false),coliD(false)
 {
     corpo.setFillColor(sf::Color::Green);
+    num_vidas =VIDAS;
 }
 
 Jogador::~Jogador(){}
@@ -41,19 +43,33 @@ void Jogador::colid(Jogador* pJog,sf::Vector2f deslocamento){
 
 void Jogador::executar(){
     velocidade.x=0;
-    velocidade.y+= GRAVIDADE;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+    gravidade();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         if(!pulando){
             velocidade.y = -20.f;
             pulando =true;
         }
     }
-    if (!coliE &&sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+    if (!coliE &&sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         velocidade.x = -10.f;
     }
-    if (!coliD && sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+    if (!coliD && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         velocidade.x = 10.f;
     }
     coliD = false; coliE= false;
     move(velocidade);
 }
+
+void Jogador::danar_se(const int dano){
+    static sf::Clock relogio;
+
+    if(relogio.getElapsedTime().asSeconds()>2 || num_vidas == VIDAS)
+    {
+        if(num_vidas<=0)
+            printf("jog morto\n");
+        num_vidas--;
+        printf("jog danado\n");
+        relogio.restart();
+    }
+}
+

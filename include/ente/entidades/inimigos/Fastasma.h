@@ -15,6 +15,8 @@ class Fantasma:public Inimigo{
     void colid(Jogador* pJog,sf::Vector2f deslocamento);
 
     void executar();
+
+    void danar_se(const int dano);
 };
 
 }

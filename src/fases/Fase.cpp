@@ -35,7 +35,7 @@ void Fase::loop(){
         sf::Event evento;
         while (gg->adicionarEvento(evento))
         {
-            if (evento.type == sf::Event::Closed){
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
                 gg->limpar();
                 return;
             }

@@ -12,6 +12,7 @@ class Entidade: public Ente{
     sf::Vector2f posicao;
     sf::Texture texture;
     static Jogador* jogador1;
+    bool ativo;
 
     public:
     Entidade(const std::string caminho="../../imagens/default.png", const sf::Vector2f pos=sf::Vector2f(0.f,0.f),const sf::Vector2f tam= sf::Vector2f(0.f,0.f));
@@ -36,5 +37,9 @@ class Entidade: public Ente{
     virtual void colid(Jogador* pJog,sf::Vector2f deslocamento);
 
     static void setJogador(Jogador* jg);
+
+    const bool getAtivo()const;
+
+    void gravidade();
 };
 }

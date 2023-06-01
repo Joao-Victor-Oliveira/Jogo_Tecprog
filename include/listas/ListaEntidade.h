@@ -39,7 +39,8 @@ namespace Listas{
         it.operator=(entidades.getPrimeiro());
         while (!it.fim()) {
             Entidades::Entidade* aux = it.getConteudo();
-            aux->executar();
+            if(aux->getAtivo())
+                aux->executar();
             ++it;
         }
     }
@@ -49,13 +50,26 @@ namespace Listas{
         it.operator=(entidades.getPrimeiro());
         while (!it.fim()) {
             Entidades::Entidade* aux = it.getConteudo();
-            aux->draw();
+            if(aux->getAtivo())
+                aux->draw();
             ++it; 
         }
     }
 
     const bool vazia(){
         return entidades.empty();
+    }
+
+    const bool ativa(){
+        Lista<Entidades::Entidade>::Iterador it;
+        it.operator=(entidades.getPrimeiro());
+
+        while (!it.fim()) {
+            Entidades::Entidade* aux = it.getConteudo();
+            if(aux->getAtivo())
+                return 1;
+        }
+        return 0;
     }
     
     };

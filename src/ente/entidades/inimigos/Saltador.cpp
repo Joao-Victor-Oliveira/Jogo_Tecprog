@@ -13,6 +13,7 @@ vx((irritado)?VX*2:VX)
     if(irritado)
         corpo.setFillColor(sf::Color::Red);
     (rand()%2)?setVelocidade(sf::Vector2f(vx,0.f)):setVelocidade(sf::Vector2f(-1*vx,0.f));
+    num_vidas = 1;
 }
 
 Saltador::~Saltador(){
@@ -58,14 +59,18 @@ void Saltador::colid(Jogador* pJog,sf::Vector2f deslocamento){
         if(posicao.y < pJog->getPosicao().y){
             move(sf::Vector2f(0.f,deslocamento.y*-1));
             velocidade.y =-17.f;
+            pJog->danar_se(dano);
         }
         else{
             move(sf::Vector2f(0.f,deslocamento.y));
             velocidade.y =8.f;
+            danar_se(1);
+            pJog->setVelocidade(sf::Vector2f(0.f,-12.f));
         }
     }
     else{
         (velocidade.x >=0)?move(sf::Vector2f(deslocamento.x*-1,0.f)):move(sf::Vector2f(deslocamento.x,0.f));
         velocidade.x *= -1;
+        pJog->danar_se(dano);
     }
 }

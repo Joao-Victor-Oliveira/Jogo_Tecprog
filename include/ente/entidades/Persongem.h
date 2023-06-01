@@ -19,7 +19,6 @@ class Personagem: public Entidade{
     void operator-=(const int num);
     const int getVidas();
 
-    virtual void atacar();
     virtual void danar_se(const int dano);
 
     virtual void colid(Obstaculo* pObs,sf::Vector2f deslocamento);

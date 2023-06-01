@@ -10,6 +10,7 @@ Inimigo("../../imagens/default.png",pos,sf::Vector2f(30.f,60.f)),
 bala(NULL)
 {
     corpo.setFillColor(sf::Color::Red);
+    num_vidas = 3;
 }
 
 Atirador::~Atirador(){
@@ -48,3 +49,26 @@ void Atirador::disparar(const float vel){
 }
 
 void Atirador::setListaProjetil(Listas::ListaEntidade<Projetil>* lp){plp=lp;}
+
+void Atirador::colid(Jogador* pJog,sf::Vector2f deslocamento){
+    if(deslocamento.y<=deslocamento.x){
+        if(pJog->getPosicao().y > getPosicao().y){
+            pJog->move(sf::Vector2f(0.f,deslocamento.y));
+            pJog->danar_se(dano);
+        }
+        else{
+            pJog->move(sf::Vector2f(0.f,deslocamento.y*-1));
+            danar_se(1);
+            pJog->setVelocidade(sf::Vector2f(0.f,-18.f));
+        }
+        velocidade.y =0.f;
+    }
+    else{
+        if(pJog->getPosicao().x > getPosicao().x)
+            pJog->move(sf::Vector2f(deslocamento.x,0.f));
+        else
+            pJog->move(sf::Vector2f(deslocamento.x*-1,0.f));
+        velocidade.x=0.f;
+        pJog->danar_se(dano);
+    }
+}

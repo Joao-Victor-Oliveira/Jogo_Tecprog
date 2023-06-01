@@ -6,7 +6,11 @@ using namespace Entidades;
 
 Jogador* Entidade::jogador1(NULL);
 
-Entidade::Entidade(const std::string caminho, const sf::Vector2f pos,const sf::Vector2f tam):velocidade(0.f,0.f),posicao(pos){
+Entidade::Entidade(const std::string caminho, const sf::Vector2f pos,const sf::Vector2f tam):
+velocidade(0.f,0.f),
+posicao(pos),
+ativo(1)
+{
     try {
         if (!texture.loadFromFile(caminho)) {
             throw std::runtime_error("Não foi possível carregar a textura:"+caminho+'\n');
@@ -35,9 +39,10 @@ const sf::Vector2f Entidade::getTamanho()const{return corpo.getSize();}
 
 void Entidade::executar(){
     move(velocidade);
-    (velocidade.y >=10 )?velocidade.y+= GRAVIDADE:velocidade.y+= GRAVIDADE;
+    gravidade();
 }
 
+void Entidade::gravidade(){(velocidade.y >=10 )?velocidade.y+= GRAVIDADE:velocidade.y+= GRAVIDADE;}
 
 void Entidade::draw(){gg->desenhar(corpo);}
 
@@ -48,8 +53,9 @@ void Entidade::move(const sf::Vector2f d){
 
 void Entidade::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
     if(deslocamento.y<=deslocamento.x){
-        if(pObs->getPosicao().y > getPosicao().y)
+        if(pObs->getPosicao().y > getPosicao().y){
             move(sf::Vector2f(0.f,deslocamento.y*-1));
+        }
         else
             move(sf::Vector2f(0.f,deslocamento.y));
         velocidade.y =0.f;
@@ -96,3 +102,5 @@ void Entidade::colid(Jogador* pJog,sf::Vector2f deslocamento){
 }
 
 void Entidade::setJogador(Jogador* jg){jogador1=jg;}
+
+const bool Entidade::getAtivo()const {return ativo;}

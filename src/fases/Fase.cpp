@@ -2,7 +2,9 @@
 
 using namespace Fases;
 
-Fase::Fase(CriadorEntidades* ce):listaI(),listaO(),listaP(){
+Fase::Fase(CriadorEntidades* ce):listaI(),listaO(),listaP(),
+vidas()
+{
     if(ce){
         ce->listaProjeteis(&listaP);
         ce->criarInimigos(&listaI);
@@ -15,6 +17,15 @@ Fase::Fase(CriadorEntidades* ce):listaI(),listaO(),listaP(){
     gc = new Gerenciadores::GerenciadorColisoes(player);
     gc->setLista(&listaI,&listaO);
     gc->setProjeteis(&listaP);
+
+    
+    if(!font_vidas.loadFromFile("../../imagens/04B_30__.TTF"))
+        printf("n achou a fonte");
+
+    vidas.setFont(font_vidas);
+    vidas.setPosition(1170.f,660.f);
+    vidas.setCharacterSize(40);
+    vidas.setFillColor(sf::Color::Yellow);
 }
 
 Fase::~Fase(){
@@ -54,6 +65,7 @@ void Fase::draw(){
     listaI.draw();
     listaO.draw();
     listaP.draw();
+    gg->desenhar(vidas);
 }
 
 void Fase::percorrer(){
@@ -61,4 +73,8 @@ void Fase::percorrer(){
     listaO.percorrer();
     listaP.percorrer();
     player->executar();
+
+    std::string aux = std::to_string(player->getVidas());
+    aux += "x";
+    vidas.setString(aux);
 }

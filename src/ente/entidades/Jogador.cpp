@@ -3,33 +3,32 @@
 using namespace Entidades;
 
 #define VIDAS 10
-Jogador::Jogador():Personagem("../../imagens/default.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),
+Jogador::Jogador():Personagem("../../imagens/Jogador.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),
 pulando(false),coliE(false),coliD(false)
 {
-    corpo.setFillColor(sf::Color::Green);
     num_vidas =VIDAS;
 }
 
 Jogador::~Jogador(){}
 
 void Jogador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
-    if(deslocamento.y<=deslocamento.x){
+    if(deslocamento.y-2<=deslocamento.x){
         if(pObs->getPosicao().y >= getPosicao().y){
-            move(sf::Vector2f(0.f,deslocamento.y*-1));
+            move(sf::Vector2f(0.f,deslocamento.y*-1-1));
             pulando = false;
         }
         else
-            move(sf::Vector2f(0.f,deslocamento.y));
+            move(sf::Vector2f(0.f,deslocamento.y+1));
         velocidade.y =0.f;
     }
     else{
         if(pObs->getPosicao().x >= getPosicao().x ){
-            move(sf::Vector2f(deslocamento.x*-1,0.f));
+            move(sf::Vector2f(deslocamento.x*-1-10,0.f));
             if(deslocamento.x > 0.1)
                 coliD = true;
         }
         else{
-            move(sf::Vector2f(deslocamento.x,0.f));
+            move(sf::Vector2f(deslocamento.x+10,0.f));
             if(deslocamento.x > 0.1)
                 coliE = true;
         }
@@ -50,11 +49,13 @@ void Jogador::executar(){
             pulando =true;
         }
     }
-    if (!coliE &&sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        velocidade.x = -10.f;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        if(!coliE)
+            velocidade.x = -10.f;
     }
-    if (!coliD && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        velocidade.x = 10.f;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        if(!coliD)
+            velocidade.x = 10.f;
     }
     coliD = false; coliE= false;
     move(velocidade);
@@ -68,7 +69,6 @@ void Jogador::danar_se(const int dano){
         if(num_vidas<=0)
             printf("jog morto\n");
         num_vidas--;
-        printf("jog danado\n");
         relogio.restart();
     }
 }

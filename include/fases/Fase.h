@@ -13,6 +13,8 @@ class Fase:public Ente{
     Listas::ListaEntidade<Entidades::Projetil> listaP;
     Gerenciadores::GerenciadorColisoes* gc;
     Entidades::Jogador* player;
+    sf::Text vidas;
+    sf::Font font_vidas;
     public:
     Fase(CriadorEntidades* ce=NULL);
     virtual ~Fase();

@@ -6,10 +6,9 @@ using namespace Entidades;
 Listas::ListaEntidade<Projetil>* Atirador::plp(NULL);
 
 Atirador::Atirador(sf::Vector2f pos):
-Inimigo("../../imagens/default.png",pos,sf::Vector2f(30.f,60.f)),
+Inimigo("../../imagens/inimigos/Atirador.png",pos,sf::Vector2f(30.f,60.f)),
 bala(NULL)
 {
-    corpo.setFillColor(sf::Color::Red);
     num_vidas = 3;
 }
 
@@ -19,7 +18,7 @@ Atirador::~Atirador(){
 #define VY -22.f
 void Atirador::executar(){
     if(!bala){
-        bala = new Projetil(1,"../../imagens/default.png",sf::Vector2f(-20.f,-20.f),sf::Vector2f(15,15),sf::Vector2f(0.f,0.f));
+        bala = new Projetil(1,"../../imagens/inimigos/Projetil.png",sf::Vector2f(-20.f,-20.f),sf::Vector2f(15,15),sf::Vector2f(0.f,0.f));
         plp->adicionar(bala);
     }
     static sf::Clock relogio;
@@ -65,9 +64,9 @@ void Atirador::colid(Jogador* pJog,sf::Vector2f deslocamento){
     }
     else{
         if(pJog->getPosicao().x > getPosicao().x)
-            pJog->move(sf::Vector2f(deslocamento.x,0.f));
+            pJog->move(sf::Vector2f(deslocamento.x+10,0.f));
         else
-            pJog->move(sf::Vector2f(deslocamento.x*-1,0.f));
+            pJog->move(sf::Vector2f(deslocamento.x*-1-10,0.f));
         velocidade.x=0.f;
         pJog->danar_se(dano);
     }

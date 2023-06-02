@@ -18,9 +18,9 @@ ativo(1)
     }
     catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
-        corpo.setFillColor(sf::Color::Red);
+        corpo.setFillColor(sf::Color::Black);
     }
-    //corpo.setTexture(&texture);
+    corpo.setTexture(&texture);
     corpo.setSize(tam);
     corpo.setOrigin(tam/2.f);
     corpo.setPosition(pos);

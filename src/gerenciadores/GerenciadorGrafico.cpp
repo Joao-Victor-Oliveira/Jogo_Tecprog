@@ -6,8 +6,19 @@ GerenciadorGrafico* GerenciadorGrafico::getInstance() {
     return &gerenciador;
 }
 
-GerenciadorGrafico::GerenciadorGrafico() {
-    janela.create(sf::VideoMode(1290, 720), "Jogo");
+GerenciadorGrafico::GerenciadorGrafico():
+janela(sf::VideoMode(1290, 720), "Jogo", sf::Style::Default)
+{
+    sf::Vector2u phaseSize(1290, 720);
+
+    // Redimensionar a janela para o modo de tela cheia (fullscreen) mantendo a proporção original
+    sf::VideoMode fullscreenMode = sf::VideoMode::getFullscreenModes()[0];
+    float scaleFactor = std::min(fullscreenMode.width / static_cast<float>(phaseSize.x),
+                                 fullscreenMode.height / static_cast<float>(phaseSize.y));
+    sf::Vector2u fullscreenSize(static_cast<unsigned int>(phaseSize.x * scaleFactor),
+                                static_cast<unsigned int>(phaseSize.y * scaleFactor));
+    janela.setSize(fullscreenSize);
+    janela.setPosition(sf::Vector2i(0, 0));
 }
 
 GerenciadorGrafico::~GerenciadorGrafico() {

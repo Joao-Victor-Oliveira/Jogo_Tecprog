@@ -26,10 +26,10 @@ void CriadorEntidades::add(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Entid
 }
 
 void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41]){
-    add(lo,new Entidades::Obstaculo("../../imagens/plataforma.png",sf::Vector2f(1000,705),sf::Vector2f(2000,30)));
-    add(lo,new Entidades::Obstaculo("../../imagens/plataforma.png",sf::Vector2f(15,1000),sf::Vector2f(30,2000)));
-    add(lo,new Entidades::Obstaculo("../../imagens/plataforma.png",sf::Vector2f(1275,1000),sf::Vector2f(30,2000)));
-    add(lo,new Entidades::Obstaculo("../../imagens/plataforma.png",sf::Vector2f(1000,15),sf::Vector2f(2000,30)));
+    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma2.png",sf::Vector2f(645,705),sf::Vector2f(1290,30)));
+    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma3.png",sf::Vector2f(15,360),sf::Vector2f(30,720)));
+    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma3.png",sf::Vector2f(1275,360),sf::Vector2f(30,720)));
+    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma2.png",sf::Vector2f(645,15),sf::Vector2f(1290,30)));
 
     for(int i=0;i<22;i++)
         for(int j=0;j<41;j++){
@@ -37,7 +37,7 @@ void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>*
             if(aux == '*'){}
             else{
                 if(aux == '#')
-                    add(lo,new Entidades::Obstaculo("../../imagens/plataforma.png",sf::Vector2f(j*30+45,i*30+45),sf::Vector2f(30,30)));
+                    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma.png",sf::Vector2f(j*30+45,i*30+45),sf::Vector2f(30,30)));
             }
     }
 }

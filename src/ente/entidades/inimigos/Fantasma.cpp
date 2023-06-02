@@ -4,10 +4,9 @@
 using namespace Entidades;
 #define VIDAS 5
 Fantasma::Fantasma(sf::Vector2f pos):
-Inimigo("../../imagens/inimigos/fantasma.png",pos,sf::Vector2f(60,60),1),
-aceleracao(1.1)
+Inimigo("../../imagens/inimigos/Fantasma.png",pos,sf::Vector2f(60,60),1),
+aceleracao(1.4)
 {
-    corpo.setFillColor(sf::Color::Magenta);
     num_vidas=VIDAS;
 }
 
@@ -47,9 +46,8 @@ void Fantasma::executar(){
 }
 
 void Fantasma::danar_se(const int dano){
-    printf("Fantasma danado\n");
     num_vidas -=dano;
-    switch (rand()%4+1)
+    switch (rand()%3+1)
     {
     case 1:
         move(sf::Vector2f(400.f,0.f));
@@ -58,9 +56,6 @@ void Fantasma::danar_se(const int dano){
         move(sf::Vector2f(-400.f,0.f));
         break;
     case 3:
-        move(sf::Vector2f(0.f,400.f));
-        break;
-    case 4:
         move(sf::Vector2f(0.f,-400.f));
         break;
     }

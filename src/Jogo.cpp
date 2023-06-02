@@ -12,7 +12,7 @@ Jogo::~Jogo(){}
 
 void Jogo::executar(){
 	Ente::setGG(GerenciadorGrafico::getInstance());
-    MenuState::setfonte("../../imagens/Lobster-Regular.ttf");
+    MenuState::setfonte("../../imagens/04B_30__.TTF");
     
     Menu testando;
     MenuPrincipal teste;

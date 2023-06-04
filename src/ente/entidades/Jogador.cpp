@@ -12,28 +12,32 @@ pulando(false),coliE(false),coliD(false)
 Jogador::~Jogador(){}
 
 void Jogador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
-    if(deslocamento.y-2<=deslocamento.x){
-        if(pObs->getPosicao().y >= getPosicao().y){
-            move(sf::Vector2f(0.f,deslocamento.y*-1-1));
-            pulando = false;
-        }
-        else
-            move(sf::Vector2f(0.f,deslocamento.y+1));
-        velocidade.y =0.f;
-    }
-    else{
-        if(pObs->getPosicao().x >= getPosicao().x ){
-            move(sf::Vector2f(deslocamento.x*-1-10,0.f));
-            if(deslocamento.x > 0.1)
-                coliD = true;
+    if(pObs->getSolido()){
+        if(deslocamento.y-2<=deslocamento.x){
+            if(pObs->getPosicao().y >= getPosicao().y){
+                move(sf::Vector2f(0.f,deslocamento.y*-1-1));
+                pulando = false;
+            }
+            else
+                move(sf::Vector2f(0.f,deslocamento.y+1));
+            velocidade.y =0.f;
         }
         else{
-            move(sf::Vector2f(deslocamento.x+10,0.f));
-            if(deslocamento.x > 0.1)
-                coliE = true;
+            if(pObs->getPosicao().x >= getPosicao().x ){
+                move(sf::Vector2f(deslocamento.x*-1-10,0.f));
+                if(deslocamento.x > 0.1)
+                    coliD = true;
+            }
+            else{
+                move(sf::Vector2f(deslocamento.x+10,0.f));
+                if(deslocamento.x > 0.1)
+                    coliE = true;
+            }
+            velocidade.x=0.f;
         }
-        velocidade.x=0.f;
     }
+
+    pObs->interagir(this);
 }
 
 void Jogador::colid(Jogador* pJog,sf::Vector2f deslocamento){
@@ -62,8 +66,6 @@ void Jogador::executar(){
 }
 
 void Jogador::danar_se(const int dano){
-    static sf::Clock relogio;
-
     if(relogio.getElapsedTime().asSeconds()>2 || num_vidas == VIDAS)
     {
         if(num_vidas<=0)

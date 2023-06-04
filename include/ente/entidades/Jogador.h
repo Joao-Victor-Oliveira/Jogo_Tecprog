@@ -6,6 +6,7 @@ namespace Entidades{
 class Jogador:public Personagem{
     private:
     std::string nome;
+    sf::Clock relogio;
     bool pulando;
     bool coliE;
     bool coliD;

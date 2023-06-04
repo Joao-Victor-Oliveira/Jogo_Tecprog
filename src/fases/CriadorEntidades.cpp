@@ -26,10 +26,10 @@ void CriadorEntidades::add(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Entid
 }
 
 void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41]){
-    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma2.png",sf::Vector2f(645,705),sf::Vector2f(1290,30)));
-    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma3.png",sf::Vector2f(15,360),sf::Vector2f(30,720)));
-    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma3.png",sf::Vector2f(1275,360),sf::Vector2f(30,720)));
-    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma2.png",sf::Vector2f(645,15),sf::Vector2f(1290,30)));
+    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma2.png",sf::Vector2f(645,690),sf::Vector2f(1290,60)));
+    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma3.png",sf::Vector2f(30,360),sf::Vector2f(60,720)));
+    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma3.png",sf::Vector2f(1260,360),sf::Vector2f(60,720)));
+    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma2.png",sf::Vector2f(645,30),sf::Vector2f(1290,60)));
 
     for(int i=0;i<22;i++)
         for(int j=0;j<41;j++){

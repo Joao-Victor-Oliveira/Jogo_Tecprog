@@ -7,6 +7,7 @@ namespace Entidades{
 
 class Atirador: public Inimigo{
     private:
+    sf::Clock relogio;
     Projetil* bala;
     static Listas::ListaEntidade<Entidades::Projetil>* plp;
     public:

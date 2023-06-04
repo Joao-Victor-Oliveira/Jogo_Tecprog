@@ -1,6 +1,7 @@
 #include <fases/CriadorEntidades.h>
 #include <ente/entidades/inimigos/Inimigo.h>
 #include <ente/entidades/inimigos/Atirador.h>
+#include <ente/entidades/obstaculos/Plataforma.h>
 
 using namespace Fases;
 using namespace Listas;
@@ -26,20 +27,37 @@ void CriadorEntidades::add(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Entid
 }
 
 void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41]){
-    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma2.png",sf::Vector2f(645,690),sf::Vector2f(1290,60)));
-    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma3.png",sf::Vector2f(30,360),sf::Vector2f(60,720)));
-    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma3.png",sf::Vector2f(1260,360),sf::Vector2f(60,720)));
-    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma2.png",sf::Vector2f(645,30),sf::Vector2f(1290,60)));
-
+    add(lo,new Entidades::Plataforma(sf::Vector2f(645,0),43,2));
+    add(lo,new Entidades::Plataforma(sf::Vector2f(645,720),43,2));
+    add(lo,new Entidades::Plataforma(sf::Vector2f(0,360),2,24));
+    add(lo,new Entidades::Plataforma(sf::Vector2f(1290,360),2,24));
+    
+    int cont =0;
+    
     for(int i=0;i<22;i++)
         for(int j=0;j<41;j++){
             char aux = fase[i][j];
             if(aux == '*'){}
             else{
-                if(aux == '#')
-                    add(lo,new Entidades::Obstaculo("../../imagens/obstaculos/plataforma.png",sf::Vector2f(j*30+45,i*30+45),sf::Vector2f(30,30)));
+                if(aux == '#'){
+                    for(cont++;1;cont++){
+                        if(j+cont < 41 && fase[i][j+cont]=='#'){
+                            fase[i][j+cont]= 'a';
+                        }
+                        else{
+                            add(lo,new Entidades::Plataforma(sf::Vector2f((j+cont/2.f)*30+45,i*30+45),cont,1));
+                            break;
+                        }
+                    }
+                    cont =0;
+                }
             }
-    }
+        }
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++)
+            if(fase[i][j]== 'a')
+                fase[i][j]='#';
+
 }
 
 void CriadorEntidades::listaProjeteis(Listas::ListaEntidade<Entidades::Projetil>* lp){

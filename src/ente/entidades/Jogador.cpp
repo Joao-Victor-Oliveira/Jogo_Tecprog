@@ -4,9 +4,10 @@ using namespace Entidades;
 
 #define VIDAS 10
 Jogador::Jogador():Personagem("../../imagens/Jogador.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),
-pulando(false),coliE(false),coliD(false)
+pulando(false),coliE(false),coliD(false),danado(false)
 {
     num_vidas =VIDAS;
+    corpo.setOutlineColor(sf::Color::White);
 }
 
 Jogador::~Jogador(){}
@@ -62,16 +63,22 @@ void Jogador::executar(){
             velocidade.x = 10.f;
     }
     coliD = false; coliE= false;
+    if(danado && relogio.getElapsedTime().asSeconds()>2){
+        danado=0; 
+        corpo.setOutlineThickness(0);
+    }
     move(velocidade);
 }
 
 void Jogador::danar_se(const int dano){
     if(relogio.getElapsedTime().asSeconds()>2 || num_vidas == VIDAS)
     {
+        danado = true;
         if(num_vidas<=0)
             printf("jog morto\n");
         num_vidas--;
         relogio.restart();
+        corpo.setOutlineThickness(5);
     }
 }
 

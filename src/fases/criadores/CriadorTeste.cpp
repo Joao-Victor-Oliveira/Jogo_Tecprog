@@ -4,6 +4,7 @@
 #include <ente/entidades/inimigos/Fastasma.h>
 #include <fases/MatrizFases.h>
 #include <ente/entidades/obstaculos/Pote.h>
+#include <ente/entidades/obstaculos/Espinhos.h>
 
 using namespace Fases;
 

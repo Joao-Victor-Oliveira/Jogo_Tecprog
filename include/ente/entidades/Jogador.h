@@ -10,6 +10,7 @@ class Jogador:public Personagem{
     bool pulando;
     bool coliE;
     bool coliD;
+    bool danado;
     public:
     Jogador();
     virtual ~Jogador();

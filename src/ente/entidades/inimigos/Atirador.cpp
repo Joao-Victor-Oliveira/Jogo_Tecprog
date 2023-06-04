@@ -6,7 +6,7 @@ using namespace Entidades;
 Listas::ListaEntidade<Projetil>* Atirador::plp(NULL);
 
 Atirador::Atirador(sf::Vector2f pos):
-Inimigo("../../imagens/inimigos/Atirador.png",pos,sf::Vector2f(30.f,60.f)),
+Inimigo("../../imagens/inimigos/Atirador.png",pos,sf::Vector2f(24.f,60.f)),
 bala(NULL)
 {
     num_vidas = 3;

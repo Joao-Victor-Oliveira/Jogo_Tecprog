@@ -16,11 +16,11 @@ void Jogador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
     if(pObs->getSolido()){
         if(deslocamento.y-2<=deslocamento.x){
             if(pObs->getPosicao().y >= getPosicao().y){
-                move(sf::Vector2f(0.f,deslocamento.y*-1-1));
+                move(sf::Vector2f(0.f,deslocamento.y*-1));
                 pulando = false;
             }
             else
-                move(sf::Vector2f(0.f,deslocamento.y+1));
+                move(sf::Vector2f(0.f,deslocamento.y));
             velocidade.y =0.f;
         }
         else{

@@ -29,13 +29,11 @@ void EstadoFases::executar(){
         case 0:
             if(pFase)
                 delete pFase;
-            pFase = new FaseTeste(static_cast<CriadorEntidades*> (new CriadorTeste()));
+            pFase = new FaseTeste();
             pFase->executar();
             pFase->loop();
         break;
         case 1:
-            if(pFase)
-                delete pFase;
         break;
         case 2:
         if(menu)

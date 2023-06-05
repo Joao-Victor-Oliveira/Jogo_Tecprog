@@ -18,7 +18,7 @@ void EstadoPrincipal::setTextos(){
     }
 
     opcoes[0]->setString("Jogar");
-    opcoes[1]->setString("opcoes");
+    opcoes[1]->setString("Ranking");
     opcoes[2]->setString("sair");
 }
 

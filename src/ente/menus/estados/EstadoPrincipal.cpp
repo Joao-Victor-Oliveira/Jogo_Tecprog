@@ -1,14 +1,14 @@
-#include <ente/menus/estados/MenuPrincipal.h>
-#include <ente/menus/estados/MenuFases.h>
+#include <ente/menus/estados/EstadoPrincipal.h>
+#include <ente/menus/estados/EstadoFases.h>
 
-MenuPrincipal::MenuPrincipal():MenuState(3){
+EstadoPrincipal::EstadoPrincipal():Estado(3){
     setTextos();
-    pFases = new MenuFases(this);
+    pFases = new EstadoFases(this);
 }
 
-MenuPrincipal::~MenuPrincipal(){delete pFases;}
+EstadoPrincipal::~EstadoPrincipal(){delete pFases;}
 
-void MenuPrincipal::setTextos(){
+void EstadoPrincipal::setTextos(){
     for(int i=0;i<tam;i++){
             opcoes[i]->setFont(fonte);
             opcoes[i]->setCharacterSize(40);
@@ -22,7 +22,7 @@ void MenuPrincipal::setTextos(){
     opcoes[2]->setString("sair");
 }
 
-void MenuPrincipal::executar(){
+void EstadoPrincipal::executar(){
     if(!menu)
         return;
 

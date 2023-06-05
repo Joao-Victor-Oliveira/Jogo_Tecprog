@@ -1,15 +1,15 @@
 #include <ente/menus/Menu.h>
-#include <ente/menus/MenuState.h>
+#include <ente/menus/Estado.h>
 
 Menu::Menu():estado(nullptr){
-    MenuState::setMenu(this);
+    Estado::setMenu(this);
 }
 
 Menu::~Menu(){
     estado=NULL;
 }
 
-void Menu::setEstado(MenuState* est){
+void Menu::setEstado(Estado* est){
     estado=est;
 }
 

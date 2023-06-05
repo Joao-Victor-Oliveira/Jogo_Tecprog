@@ -1,16 +1,16 @@
 #pragma once
 #include <ente/Ente.h>
 
-class MenuState;
+class Estado;
 
 class Menu:public Ente{
     private:
-    MenuState* estado;
+    Estado* estado;
     public:
     Menu();
     ~Menu();
 
-    void setEstado(MenuState* est);
+    void setEstado(Estado* est);
 
     void executar();
     void draw();

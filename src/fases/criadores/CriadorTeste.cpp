@@ -29,5 +29,6 @@ void CriadorTeste::criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li){
 
 void CriadorTeste::criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
     add(lo,new Entidades::Pote(sf::Vector2f(1000.f,200.f)));
+    add(lo,new Entidades::Espinhos(4,sf::Vector2f(1100.f,200.f)));
     criarLimites(lo,mFase1);
 }

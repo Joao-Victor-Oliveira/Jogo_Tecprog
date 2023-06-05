@@ -11,6 +11,7 @@ class Jogador:public Personagem{
     bool coliE;
     bool coliD;
     bool danado;
+    sf::Vector2f impulso;
     public:
     Jogador();
     virtual ~Jogador();
@@ -21,6 +22,10 @@ class Jogador:public Personagem{
     void colid(Jogador* pJog,sf::Vector2f deslocamento);
 
     void executar();
+
+    void setImpulso(const sf::Vector2f imp);
+    const sf::Vector2f getImpulso()const;
+    void resetImpulso();
 };
 
 }

@@ -21,19 +21,21 @@ Saltador::~Saltador(){
 }
 
 void Saltador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
-    if(deslocamento.y<=deslocamento.x){
-        if(pObs->getPosicao().y >= getPosicao().y){
-            move(sf::Vector2f(0.f,deslocamento.y*-1));
-            velocidade.y =-17.f;
+    if(pObs->getSolido()){
+        if(deslocamento.y<=deslocamento.x){
+            if(pObs->getPosicao().y >= getPosicao().y){
+                move(sf::Vector2f(0.f,deslocamento.y*-1));
+                velocidade.y =-17.f;
+            }
+            else{
+                move(sf::Vector2f(0.f,deslocamento.y));
+                velocidade.y =5.f;
+            }
         }
         else{
-            move(sf::Vector2f(0.f,deslocamento.y));
-            velocidade.y =5.f;
+            (velocidade.x >=0)?move(sf::Vector2f(deslocamento.x*-1,0.f)):move(sf::Vector2f(deslocamento.x,0.f));
+            velocidade.x *= -1;
         }
-    }
-    else{
-        (velocidade.x >=0)?move(sf::Vector2f(deslocamento.x*-1,0.f)):move(sf::Vector2f(deslocamento.x,0.f));
-        velocidade.x *= -1;
     }
 }
 

@@ -3,8 +3,10 @@
 using namespace Entidades;
 
 #define VIDAS 10
-Jogador::Jogador():Personagem("../../imagens/Jogador.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),
-pulando(false),coliE(false),coliD(false),danado(false)
+Jogador::Jogador():
+Personagem("../../imagens/Jogador.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),
+pulando(false),coliE(false),coliD(false),danado(false),
+impulso(10.f,-20.f)
 {
     num_vidas =VIDAS;
     corpo.setOutlineColor(sf::Color::White);
@@ -50,17 +52,17 @@ void Jogador::executar(){
     gravidade();
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         if(!pulando){
-            velocidade.y = -20.f;
+            velocidade.y = impulso.y;
             pulando =true;
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         if(!coliE)
-            velocidade.x = -10.f;
+            velocidade.x = impulso.x*-1;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         if(!coliD)
-            velocidade.x = 10.f;
+            velocidade.x = impulso.x;
     }
     coliD = false; coliE= false;
     if(danado && relogio.getElapsedTime().asSeconds()>2){
@@ -68,6 +70,7 @@ void Jogador::executar(){
         corpo.setOutlineThickness(0);
     }
     move(velocidade);
+    resetImpulso();
 }
 
 void Jogador::danar_se(const int dano){
@@ -82,3 +85,14 @@ void Jogador::danar_se(const int dano){
     }
 }
 
+void Jogador::setImpulso(const sf::Vector2f imp){
+    impulso = imp;
+}
+
+const sf::Vector2f Jogador::getImpulso()const{
+    return impulso;
+}
+
+void Jogador::resetImpulso(){
+    impulso = sf::Vector2f(10.f,-20.f);
+}

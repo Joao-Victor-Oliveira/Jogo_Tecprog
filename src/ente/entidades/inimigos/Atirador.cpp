@@ -7,7 +7,8 @@ Listas::ListaEntidade<Projetil>* Atirador::plp(NULL);
 
 Atirador::Atirador(sf::Vector2f pos):
 Inimigo("../../imagens/inimigos/Atirador.png",pos,sf::Vector2f(24.f,60.f)),
-bala(NULL)
+bala(NULL),
+range(500)
 {
     num_vidas = 3;
 }
@@ -26,7 +27,7 @@ void Atirador::executar(){
         float distx = jogador1->getPosicao().x - getPosicao().x;
         float disty = jogador1->getPosicao().y - getPosicao().y;
 
-        if(std::fabs(distx) < 300){
+        if(std::fabs(distx) < range){
             float deltaS = VY*VY/(2*GRAVIDADE);
 
             float tempoQueda = std::sqrt(2*(deltaS+disty)/GRAVIDADE);

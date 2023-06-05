@@ -2,16 +2,9 @@
 
 using namespace Fases;
 
-Fase::Fase(CriadorEntidades* ce):listaI(),listaO(),listaP(),
+Fase::Fase():listaI(),listaO(),listaP(),
 vidas()
 {
-    if(ce){
-        ce->listaProjeteis(&listaP);
-        ce->criarInimigos(&listaI);
-        ce->criarObstaculos(&listaO);
-            //foi feito pra receber um new static_cast<CriadorEntidades*> new alguma_coisa derivada do CriadorEntidades, então é importante nesse caso
-        delete ce;
-    }
     player = new Entidades::Jogador;
     Entidades::Entidade::setJogador(player);
     gc = new Gerenciadores::GerenciadorColisoes(player);
@@ -77,4 +70,12 @@ void Fase::percorrer(){
     std::string aux = std::to_string(player->getVidas());
     aux += "x";
     vidas.setString(aux);
+}
+
+void Fase::criarEntidades(CriadorEntidades* ce){
+    if(ce){
+        ce->listaProjeteis(&listaP);
+        ce->criarInimigos(&listaI);
+        ce->criarObstaculos(&listaO);
+    }
 }

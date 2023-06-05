@@ -1,7 +1,7 @@
 #pragma once
 #include "MenuComponent.h"
 
-class MenuState: public MenuComponent{
+class Estado: public MenuComponent{
     protected:
     
     static sf::Font fonte;
@@ -24,8 +24,8 @@ class MenuState: public MenuComponent{
     Contador indice;
 
     public:
-    MenuState(const int op=0);
-    virtual ~MenuState();
+    Estado(const int op=0);
+    virtual ~Estado();
     void destacar(const int indice);
 
     static void setfonte(const char* s);

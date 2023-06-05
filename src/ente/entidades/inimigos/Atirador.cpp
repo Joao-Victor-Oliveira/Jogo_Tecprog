@@ -6,8 +6,9 @@ using namespace Entidades;
 Listas::ListaEntidade<Projetil>* Atirador::plp(NULL);
 
 Atirador::Atirador(sf::Vector2f pos):
-Inimigo("../../imagens/inimigos/Atirador.png",pos,sf::Vector2f(30.f,60.f)),
-bala(NULL)
+Inimigo("../../imagens/inimigos/Atirador.png",pos,sf::Vector2f(24.f,60.f)),
+bala(NULL),
+range(500)
 {
     num_vidas = 3;
 }
@@ -21,12 +22,12 @@ void Atirador::executar(){
         bala = new Projetil(1,"../../imagens/inimigos/Projetil.png",sf::Vector2f(-20.f,-20.f),sf::Vector2f(15,15),sf::Vector2f(0.f,0.f));
         plp->adicionar(bala);
     }
-    static sf::Clock relogio;
+    
     if(jogador1 && relogio.getElapsedTime().asSeconds()>2){
         float distx = jogador1->getPosicao().x - getPosicao().x;
         float disty = jogador1->getPosicao().y - getPosicao().y;
 
-        if(std::fabs(distx) < 300){
+        if(std::fabs(distx) < range){
             float deltaS = VY*VY/(2*GRAVIDADE);
 
             float tempoQueda = std::sqrt(2*(deltaS+disty)/GRAVIDADE);

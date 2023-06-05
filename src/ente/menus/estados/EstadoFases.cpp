@@ -1,16 +1,16 @@
-#include <ente/menus/estados/MenuFases.h>
-#include <ente/menus/estados/MenuPrincipal.h>
+#include <ente/menus/estados/EstadoFases.h>
+#include <ente/menus/estados/EstadoPrincipal.h>
 #include <fases/FaseTeste.h>
 #include <fases/criadores/CriadorTeste.h>
 using namespace Fases;
 
-MenuFases::MenuFases(MenuPrincipal* mp):MenuState(3),pMP(mp),pFase(NULL){
+EstadoFases::EstadoFases(EstadoPrincipal* mp):Estado(3),pMP(mp),pFase(NULL){
     setTextos();
 }
 
-MenuFases::~MenuFases(){if(pFase) delete pFase;}
+EstadoFases::~EstadoFases(){if(pFase) delete pFase;}
 
-void MenuFases::setTextos(){
+void EstadoFases::setTextos(){
     for(int i=0;i<tam;i++){
             opcoes[i]->setFont(fonte);
             opcoes[i]->setCharacterSize(40);
@@ -24,22 +24,20 @@ void MenuFases::setTextos(){
     opcoes[2]->setString("Voltar");
 }
 
-void MenuFases::executar(){
+void EstadoFases::executar(){
     switch (comando){
         case 0:
             if(pFase)
                 delete pFase;
-            pFase = new FaseTeste(static_cast<CriadorEntidades*> (new CriadorTeste()));
+            pFase = new FaseTeste();
             pFase->executar();
             pFase->loop();
         break;
         case 1:
-            if(pFase)
-                delete pFase;
         break;
         case 2:
         if(menu)
-            menu->setEstado(static_cast<MenuState*>(pMP));
+            menu->setEstado(static_cast<Estado*>(pMP));
         break;
     }
 }

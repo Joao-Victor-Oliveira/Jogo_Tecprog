@@ -1,24 +1,24 @@
-#include <ente/menus/MenuState.h>
+#include <ente/menus/Estado.h>
 #include <iostream>
 #include <unistd.h>
-    sf::Font MenuState::fonte;
+    sf::Font Estado::fonte;
 
-    MenuState::MenuState(const int op):tam(op){
+    Estado::Estado(const int op):tam(op){
         for(int i=0;i<tam;i++)
             opcoes.push_back(new sf::Text);
     }
     
-    MenuState::~MenuState(){
+    Estado::~Estado(){
         for(int i=0;i<tam;i++){
             if(opcoes[i])
                 delete opcoes[i];
             else
-                printf("warning: MenuState error memória\n");
+                printf("warning: Estado error memória\n");
         }
         opcoes.clear();
     }
 
-    void MenuState::draw(){
+    void Estado::draw(){
         if(!gg)
             setGG(Gerenciadores::GerenciadorGrafico::getInstance());
         
@@ -26,7 +26,7 @@
             gg->desenhar(*opcoes[i]);
     }
     
-    void MenuState::loop(){
+    void Estado::loop(){
         indice.setMax(tam);
         while (gg->aberto())
         {
@@ -58,7 +58,7 @@
         }
     }
 
-    void MenuState::setfonte(const char* s){
+    void Estado::setfonte(const char* s){
         try {
         if (!fonte.loadFromFile(s)) {
             throw std::runtime_error("Erro ao carregar a fonte");
@@ -68,7 +68,7 @@
         }
     }
 
-    void MenuState::destacar(const int indice){
+    void Estado::destacar(const int indice){
         for(int i=0;i<tam;i++)
             opcoes[i]->setOutlineThickness(0);
 

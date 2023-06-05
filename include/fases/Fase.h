@@ -16,12 +16,13 @@ class Fase:public Ente{
     sf::Text vidas;
     sf::Font font_vidas;
     public:
-    Fase(CriadorEntidades* ce=NULL);
+    Fase();
     virtual ~Fase();
     virtual void executar();
     virtual void draw();
     virtual void loop();
     virtual void percorrer();
+    void criarEntidades(Fases::CriadorEntidades* ce);
 };
 
 }

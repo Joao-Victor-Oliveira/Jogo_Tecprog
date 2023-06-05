@@ -46,6 +46,8 @@ void GerenciadorColisoes::colidir(){
     
     //jogador // obstaculo
     for(int j=0;j<tam2;j++){
+        if(!plo->operator[](j)->getAtivo())
+            continue; 
         sf::Vector2f deslocamento = verificaColisao(pPl->getPosicao(),plo->operator[](j)->getPosicao(),  
                                                     pPl->getTamanho(),plo->operator[](j)->getTamanho());
         if(deslocamento.x || deslocamento.y)
@@ -57,6 +59,16 @@ void GerenciadorColisoes::colidir(){
                                                             plp->operator[](k)->getTamanho(),plo->operator[](j)->getTamanho());
                 if(deslocamento.x || deslocamento.y)
                     plp->operator[](k)->colid(plo->operator[](j),deslocamento);
+            }
+        }
+    //obstaculo // obstaculo
+        for(int k=j+1;k<tam2;k++){
+            if(!(plo->operator[](k)->getEstatico() && plo->operator[](j)->getEstatico()) && 
+                plo->operator[](k)->getAtivo()){
+                sf::Vector2f deslocamento = verificaColisao(plo->operator[](k)->getPosicao(),plo->operator[](j)->getPosicao(),  
+                                                            plo->operator[](k)->getTamanho(),plo->operator[](j)->getTamanho());
+                if(deslocamento.x || deslocamento.y)
+                    plo->operator[](j)->colid(plo->operator[](k),deslocamento);
             }
         }
     }

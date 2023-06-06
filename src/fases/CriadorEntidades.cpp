@@ -1,7 +1,12 @@
 #include <fases/CriadorEntidades.h>
 #include <ente/entidades/inimigos/Inimigo.h>
 #include <ente/entidades/inimigos/Atirador.h>
+#include <ente/entidades/inimigos/Saltador.h>
+#include <ente/entidades/inimigos/Fastasma.h>
 #include <ente/entidades/obstaculos/Plataforma.h>
+#include <ente/entidades/obstaculos/Pote.h>
+#include <ente/entidades/obstaculos/Espinhos.h>
+#include <ente/entidades/obstaculos/Gelatina.h>
 
 using namespace Fases;
 using namespace Listas;
@@ -37,7 +42,7 @@ void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>*
     for(int i=0;i<22;i++)
         for(int j=0;j<41;j++){
             char aux = fase[i][j];
-            if(aux == '*'){}
+            if(aux != '#'){}
             else{
                 if(aux == '#'){
                     for(cont++;1;cont++){
@@ -60,15 +65,147 @@ void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>*
 
 }
 
+
+
+
 void CriadorEntidades::listaProjeteis(Listas::ListaEntidade<Entidades::Projetil>* lp){
     Entidades::Atirador::setListaProjetil(lp);
 }
 
-/* Exemplo
-void Criarinimigos(ListaEntidade<Entidades::Inimigo>* li){
-    add(li,new inimigo1);
-    for(int i=0,i<5,i++){add(li,new inimigo2);}
+void CriadorEntidades::criarAtiradores(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n){
+    int contEntidades=0;
+    int contVetor=0;
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++){
+            char aux = fase[i][j];
+            if(aux != 'A'){}
+            else{
+                if(v[contVetor]==contEntidades){
+                    add(li,new Entidades::Atirador(sf::Vector2f((j + 1)*30+ 12, (i+1)*30+ 15)));
+                    contVetor++;
+                    if(contVetor>=n)
+                        return;   
+                }
+                contEntidades++;
+            }
+        }   
 }
 
-CriarObjetos analogo a CriarInimigos
-*/
+void CriadorEntidades::criarSaltadores(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n){
+    int contEntidades=0;
+    int contVetor=0;
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++){
+            char aux = fase[i][j];
+            if(aux != 'D'){}
+            else{
+                if(v[contVetor]==contEntidades){
+                    add(li,new Entidades::Saltador(sf::Vector2f((j + 1)*30+ 15, (i+1)*30+ 15)));
+                    contVetor++;
+                    if(contVetor>=n)
+                        return;   
+                }
+                contEntidades++;
+            }
+        }   
+}
+
+void CriadorEntidades::criarFantasmas(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n){
+    int contEntidades=0;
+    int contVetor=0;
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++){
+            char aux = fase[i][j];
+            if(aux != 'D'){}
+            else{
+                if(v[contVetor]==contEntidades){
+                    add(li,new Entidades::Fantasma(sf::Vector2f((j + 1)*30+ 30, (i+1)*30+ 30)));
+                    contVetor++;
+                    if(contVetor>=n)
+                        return;   
+                }
+                contEntidades++;
+            }
+        }   
+}
+
+
+void CriadorEntidades::criarPote(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n){
+    int contEntidades=0;
+    int contVetor=0;
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++){
+            char aux = fase[i][j];
+            if(aux != 'f'){}
+            else{
+                if(v[contVetor]==contEntidades){
+                    add(lo,new Entidades::Pote(sf::Vector2f((j + 1)*30+ 15, (i+1)*30+ 15)));
+                    contVetor++;
+                    if(contVetor>=n)
+                        return;   
+                }
+                contEntidades++;
+            }
+        }   
+}
+
+void CriadorEntidades::criarEspinhos(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n){
+    int contEntidades=0;
+    int contVetor=0;
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++){
+            char aux = fase[i][j];
+            if(aux != 'p'){}
+            else{
+                if(v[contVetor]==contEntidades){
+                    int aux = rand()%3 +1;
+                    add(lo,new Entidades::Espinhos(aux*2,sf::Vector2f((j + 1)*30+ 15*(aux+1), (i+1)*30+ 15)));
+                    contVetor++;
+                    if(contVetor>=n)
+                        return;   
+                }
+                contEntidades++;
+            }
+        }   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void CriadorEntidades::preencher(int v[],const int max,const int quantidade){
+    int i=0,j=0;
+
+    for(i=0;i<quantidade;i++){
+        v[i] = rand() % max;
+        for(j=0;j<i;j++){
+            if(v[j]==v[i]){
+                i--;
+                break;
+            }
+        }
+    }
+    sort(v,quantidade);
+}
+
+void CriadorEntidades::sort(int v[], const int n) {
+    int i, j, aux;
+    for (i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (j = i + 1; j < n; j++) {
+            if (v[j] < v[minIndex]) {
+                minIndex = j;
+            }
+        }
+        aux = v[i];
+        v[i] = v[minIndex];
+        v[minIndex] = aux;
+    }
+}

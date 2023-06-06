@@ -16,7 +16,7 @@ range(500)
 Atirador::~Atirador(){
 
 }
-#define VY -22.f
+#define VY -18.f
 void Atirador::executar(){
     if(!bala){
         bala = new Projetil(1,"../../imagens/inimigos/Projetil.png",sf::Vector2f(-20.f,-20.f),sf::Vector2f(15,15),sf::Vector2f(0.f,0.f));

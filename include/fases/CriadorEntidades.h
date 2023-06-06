@@ -22,6 +22,18 @@ class CriadorEntidades{
     virtual void criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41]);
 
     void listaProjeteis(Listas::ListaEntidade<Entidades::Projetil>* lp);
+
+    void criarAtiradores(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
+    void criarSaltadores(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
+    void criarFantasmas(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
+
+    void criarPote(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n);
+    void criarEspinhos(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n);
+    
+
+
+    void preencher(int v[],const int max,const int quantidade);
+    void sort(int v[],const int n);
 };
 
 }

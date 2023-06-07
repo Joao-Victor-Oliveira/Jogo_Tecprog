@@ -12,16 +12,16 @@ void segfault_handler2(int sig) {
   throw std::runtime_error("Segmentation fault");
 }
 
-class CriadorTeste:public CriadorEntidades{
+class CriadorBosque:public CriadorEntidades{
     public:
-    CriadorTeste(){}
-    virtual ~CriadorTeste(){}
+    CriadorBosque(){}
+    virtual ~CriadorBosque(){}
     void criarInimigos(ListaEntidade<Entidades::Inimigo>* li){for(int i=0;i<10;i++)add(li,new Inimigo);}          
     void criarObstaculos(ListaEntidade<Entidades::Obstaculo>* lo){for(int i=0;i<10;i++)add(lo,new Obstaculo);}
 };
 
 TEST(CriadorEntidadesTest, Add) {
-    CriadorTeste criador;
+    CriadorBosque criador;
     ListaEntidade<Entidades::Inimigo> ListaEntidade<Entidades::Inimigo>;
     ListaEntidade<Entidades::Obstaculo> ListaEntidade<Entidades::Obstaculo>;
 
@@ -36,7 +36,7 @@ TEST(CriadorEntidadesTest, Add) {
 }
 
 TEST(CriadorEntidadesTest, ListaNula){
-    CriadorTeste criador;
+    CriadorBosque criador;
     ListaEntidade<Entidades::Inimigo>* ListaEntidade<Entidades::Inimigo>=NULL;
     ListaEntidade<Entidades::Obstaculo>* ListaEntidade<Entidades::Obstaculo>=NULL;
 
@@ -47,7 +47,7 @@ TEST(CriadorEntidadesTest, ListaNula){
 }
 
 TEST(CriadorEntidadesTest, EntidadeNula){
-    CriadorTeste criador;
+    CriadorBosque criador;
     ListaEntidade<Entidades::Inimigo> ListaEntidade<Entidades::Inimigo>;
     ListaEntidade<Entidades::Obstaculo> ListaEntidade<Entidades::Obstaculo>;
 
@@ -62,7 +62,7 @@ TEST(CriadorEntidadesTest, EntidadeNula){
 TEST(FaseTest,Execucao){
     signal(SIGSEGV, segfault_handler2);
     Ente::setGG(Gerenciadores::GerenciadorGrafico::getInstance());
-    Fase teste01(new CriadorTeste),teste02;
+    Fase teste01(new CriadorBosque),teste02;
     EXPECT_NO_THROW(teste01.executar());
     EXPECT_NO_THROW(teste02.executar());
 }

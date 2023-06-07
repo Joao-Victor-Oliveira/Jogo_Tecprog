@@ -1,4 +1,4 @@
-#include <fases/criadores/CriadorTeste.h>
+#include <fases/criadores/CriadorBosque.h>
 
 using namespace Fases;
 
@@ -30,46 +30,46 @@ char mFase1[22][41] = {//9 A //8 D -- //6 f //5 p
 
 
 
-CriadorTeste::CriadorTeste(){}
+CriadorBosque::CriadorBosque(){}
 
-CriadorTeste::~CriadorTeste(){}
+CriadorBosque::~CriadorBosque(){}
 
 #define AtMIN 5
 #define AtMAX 9
 
 #define DMIN 6
 #define DMAX 8
-void CriadorTeste::criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li){
+void CriadorBosque::criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li){
     int n = rand()% (DMAX-DMIN)+DMIN;
     int *v =  (int*) malloc(n*sizeof(int));
     preencher(v,DMAX,n);
-    criarSaltadores(li,mFase1,v,n);
+    criarRosquinhas(li,mFase1,v,n);
     free(v);
     
     n = rand()% (AtMAX-AtMIN)+AtMIN;
     v =  (int*) malloc(n*sizeof(int));
     preencher(v,AtMAX,n);
-    criarAtiradores(li,mFase1,v,n);
+    criarCookies(li,mFase1,v,n);
     free(v);
 }
 
-#define POTEMAX 6
-#define POTEMIN 3
+#define FioDentalMAX 6
+#define FioDentalMIN 3
 
 #define EpMAX 5
 #define EpMIN 3
-void CriadorTeste::criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
+void CriadorBosque::criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
     criarLimites(lo,mFase1);
 
-    int n = rand()% (POTEMAX-POTEMIN)+POTEMIN;
+    int n = rand()% (FioDentalMAX-FioDentalMIN)+FioDentalMIN;
     int *v =  (int*) malloc(n*sizeof(int));
-    preencher(v,POTEMAX,n);
-    criarPote(lo,mFase1,v,n);
+    preencher(v,FioDentalMAX,n);
+    criarFioDental(lo,mFase1,v,n);
     free(v);
 
     n = rand()% (EpMAX-EpMIN)+EpMIN;
     v =  (int*) malloc(n*sizeof(int));
     preencher(v,EpMAX,n);
-    criarEspinhos(lo,mFase1,v,n);
+    criarPirulitos(lo,mFase1,v,n);
     free(v);
 }

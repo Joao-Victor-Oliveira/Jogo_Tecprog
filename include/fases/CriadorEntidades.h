@@ -7,7 +7,7 @@ namespace Fases{
 
 class CriadorEntidades{
     private:
-    int num_entidades;    
+    int num_entidades;
     public:
     void add(Listas::ListaEntidade<Entidades::Inimigo>* li,Entidades::Inimigo* i);
     void add(Listas::ListaEntidade<Entidades::Obstaculo>* lo,Entidades::Obstaculo* o);
@@ -23,12 +23,12 @@ class CriadorEntidades{
 
     void listaProjeteis(Listas::ListaEntidade<Entidades::Projetil>* lp);
 
-    void criarAtiradores(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
-    void criarSaltadores(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
+    void criarCookies(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
+    void criarRosquinhas(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
     void criarFantasmas(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
 
-    void criarPote(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n);
-    void criarEspinhos(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n);
+    void criarFioDental(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n);
+    void criarPirulitos(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n);
     
 
 

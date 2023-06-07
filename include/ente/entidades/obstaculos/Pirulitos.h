@@ -4,13 +4,13 @@
 
 namespace Entidades{
 
-class Espinhos: public Obstaculo{
+class Pirulitos: public Obstaculo{
     private:
-    const int num_espinhos; 
+    const int num_Pirulitos; 
     sf::Sprite desenho;
     public:
-    Espinhos(const int np=1,const sf::Vector2f pos = sf::Vector2f(0.f,0.f));
-    ~Espinhos();
+    Pirulitos(const int np=1,const sf::Vector2f pos = sf::Vector2f(0.f,0.f));
+    ~Pirulitos();
 
     void interagir(Jogador* pJog);
     void executar();

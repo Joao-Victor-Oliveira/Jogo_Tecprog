@@ -4,11 +4,11 @@
 
 namespace Fases{
 
-class CriadorTeste:public CriadorEntidades{
+class CriadorBosque:public CriadorEntidades{
     
     public:
-    CriadorTeste();
-    ~CriadorTeste();
+    CriadorBosque();
+    ~CriadorBosque();
 
     void criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li);
     void criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo);

@@ -1,10 +1,10 @@
 #include <fases/criadores/CriadorCastelo.h>
-#include <ente/entidades/inimigos/Atirador.h>
-#include <ente/entidades/inimigos/Saltador.h>
+#include <ente/entidades/inimigos/Cookie.h>
+#include <ente/entidades/inimigos/Rosquinha.h>
 #include <ente/entidades/inimigos/Fastasma.h>
 #include <ente/entidades/obstaculos/Plataforma.h>
-#include <ente/entidades/obstaculos/Pote.h>
-#include <ente/entidades/obstaculos/Espinhos.h>
+#include <ente/entidades/obstaculos/FioDental.h>
+#include <ente/entidades/obstaculos/Pirulitos.h>
 #include <ente/entidades/obstaculos/Gelatina.h>
 
 
@@ -43,15 +43,15 @@ CriadorCastelo::CriadorCastelo(){}
 CriadorCastelo::~CriadorCastelo(){}
 
 void CriadorCastelo::criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li){
-    add(li,new Entidades::Saltador(sf::Vector2f(30,600.f)));
-    add(li,new Entidades::Atirador(sf::Vector2f(230,600.f)));
+    add(li,new Entidades::Rosquinha(sf::Vector2f(30,600.f)));
+    add(li,new Entidades::Cookie(sf::Vector2f(230,600.f)));
     add(li,new Entidades::Fantasma(sf::Vector2f(330,600.f)));
 }
 
 void CriadorCastelo::criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
     criarLimites(lo,mFase2);
     add(lo,new Entidades::Plataforma(sf::Vector2f(430,600.f)));
-    add(lo,new Entidades::Pote(sf::Vector2f(530,600.f)));
-    add(lo,new Entidades::Espinhos(3,sf::Vector2f(630,600.f)));
+    add(lo,new Entidades::FioDental(sf::Vector2f(530,600.f)));
+    add(lo,new Entidades::Pirulitos(3,sf::Vector2f(630,600.f)));
     add(lo,new Entidades::Gelatina(sf::Vector2f(730,600.f)));
 }

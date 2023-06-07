@@ -1,6 +1,6 @@
 #include <ente/menus/estados/EstadoFases.h>
 #include <ente/menus/estados/EstadoPrincipal.h>
-#include <fases/FaseTeste.h>
+#include <fases/BosqueDosCookies.h>
 #include <fases/CasteloAssombrado.h>
 
 using namespace Fases;
@@ -30,7 +30,7 @@ void EstadoFases::executar(){
         case 0:
             if(pFase)
                 delete pFase;
-            pFase = new FaseTeste();
+            pFase = new BosqueDosCookies();
             pFase->executar();
             pFase->loop();
         break;

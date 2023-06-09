@@ -2,10 +2,10 @@
 #include <ente/entidades/Jogador.h>
 
 using namespace Entidades;
-#define VIDAS 5
+#define VIDAS 10
 Fantasma::Fantasma(sf::Vector2f pos):
 Inimigo("../../imagens/inimigos/Fantasma.png",pos,sf::Vector2f(60,60),1),
-aceleracao(1.4)
+aceleracao(1.2)
 {
     num_vidas=VIDAS;
 }

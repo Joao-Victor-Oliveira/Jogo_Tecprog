@@ -1,4 +1,6 @@
 #include <fases/criadores/CriadorBosque.h>
+#include <ente/entidades/inimigos/Cookie.h>
+#include <ente/entidades/obstaculos/Pirulitos.h>
 
 using namespace Fases;
 
@@ -30,46 +32,92 @@ char mFase1[22][41] = {//9 A //8 D -- //6 f //5 p
 
 
 
-CriadorBosque::CriadorBosque(){}
+#define CMIN 5
+#define CMAX 9
+
+#define RMIN 6
+#define RMAX 8
+
+#define FDMAX 6
+#define FDMIN 3
+
+#define PMAX 5
+#define PMIN 3
+
+CriadorBosque::CriadorBosque():
+num_Cookies(gerar(CMIN,CMAX)),
+num_Pirulitos(gerar(PMIN,PMAX))
+{
+    num_Rosquinhas = gerar(RMIN,RMAX);
+    num_FioDental = gerar(FDMIN,FDMAX);
+}
 
 CriadorBosque::~CriadorBosque(){}
 
-#define AtMIN 5
-#define AtMAX 9
 
-#define DMIN 6
-#define DMAX 8
 void CriadorBosque::criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li){
-    int n = rand()% (DMAX-DMIN)+DMIN;
-    int *v =  (int*) malloc(n*sizeof(int));
-    preencher(v,DMAX,n);
-    criarRosquinhas(li,mFase1,v,n);
+    int *v =  (int*) malloc(num_Rosquinhas*sizeof(int));
+    preencher(v,RMAX,num_Rosquinhas);
+    criarRosquinhas(li,mFase1,v,num_Rosquinhas);
     free(v);
-    
-    n = rand()% (AtMAX-AtMIN)+AtMIN;
-    v =  (int*) malloc(n*sizeof(int));
-    preencher(v,AtMAX,n);
-    criarCookies(li,mFase1,v,n);
+
+    v =  (int*) malloc(num_Cookies*sizeof(int));
+    preencher(v,CMAX,num_Cookies);
+    criarCookies(li,mFase1,v,num_Cookies);
     free(v);
 }
 
-#define FioDentalMAX 6
-#define FioDentalMIN 3
 
-#define EpMAX 5
-#define EpMIN 3
 void CriadorBosque::criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
     criarLimites(lo,mFase1);
 
-    int n = rand()% (FioDentalMAX-FioDentalMIN)+FioDentalMIN;
-    int *v =  (int*) malloc(n*sizeof(int));
-    preencher(v,FioDentalMAX,n);
-    criarFioDental(lo,mFase1,v,n);
+    int *v =  (int*) malloc(num_FioDental*sizeof(int));
+    preencher(v,FDMAX,num_FioDental);
+    criarFioDental(lo,mFase1,v,num_FioDental);
     free(v);
 
-    n = rand()% (EpMAX-EpMIN)+EpMIN;
-    v =  (int*) malloc(n*sizeof(int));
-    preencher(v,EpMAX,n);
-    criarPirulitos(lo,mFase1,v,n);
+    v =  (int*) malloc(num_Pirulitos*sizeof(int));
+    preencher(v,PMAX,num_Pirulitos);
+    criarPirulitos(lo,mFase1,v,num_Pirulitos);
     free(v);
 }
+
+void CriadorBosque::criarCookies(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n){
+    int contEntidades=0;
+    int contVetor=0;
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++){
+            char aux = fase[i][j];
+            if(aux != 'A'){}
+            else{
+                if(v[contVetor]==contEntidades){
+                    add(li,new Entidades::Cookie(sf::Vector2f((j + 1)*30+ 12, (i+1)*30+ 15)));
+                    contVetor++;
+                    if(contVetor>=n)
+                        return;   
+                }
+                contEntidades++;
+            }
+        }   
+}
+
+void CriadorBosque::criarPirulitos(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n){
+    int contEntidades=0;
+    int contVetor=0;
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++){
+            char aux = fase[i][j];
+            if(aux != 'p'){}
+            else{
+                if(v[contVetor]==contEntidades){
+                    int aux = rand()%3 +1;
+                    add(lo,new Entidades::Pirulitos(aux*2,sf::Vector2f((j + 1)*30+ 15*(aux+1), (i+1)*30+ 15)));
+                    contVetor++;
+                    if(contVetor>=n)
+                        return;   
+                }
+                contEntidades++;
+            }
+        }   
+}
+

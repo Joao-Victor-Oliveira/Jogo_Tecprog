@@ -5,13 +5,15 @@
 #include <ente/entidades/inimigos/Fastasma.h>
 #include <ente/entidades/obstaculos/Plataforma.h>
 #include <ente/entidades/obstaculos/FioDental.h>
-#include <ente/entidades/obstaculos/Pirulitos.h>
 #include <ente/entidades/obstaculos/Gelatina.h>
 
 using namespace Fases;
 using namespace Listas;
 
-CriadorEntidades::CriadorEntidades(){}
+CriadorEntidades::CriadorEntidades():
+num_entidades(0)
+{
+}
 
 CriadorEntidades::~CriadorEntidades(){printf("Foram criadas %d entidades\n", num_entidades);}
 
@@ -50,7 +52,7 @@ void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>*
                             fase[i][j+cont]= 'a';
                         }
                         else{
-                            add(lo,new Entidades::Plataforma(sf::Vector2f((j+cont/2.f)*30+45,i*30+45),cont,1));
+                            add(lo,new Entidades::Plataforma(sf::Vector2f((j+cont/2.f + 1 )*30,i*30+45),cont,1));
                             break;
                         }
                     }
@@ -72,24 +74,7 @@ void CriadorEntidades::listaProjeteis(Listas::ListaEntidade<Entidades::Projetil>
     Entidades::Cookie::setListaProjetil(lp);
 }
 
-void CriadorEntidades::criarCookies(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n){
-    int contEntidades=0;
-    int contVetor=0;
-    for(int i=0;i<22;i++)
-        for(int j=0;j<41;j++){
-            char aux = fase[i][j];
-            if(aux != 'A'){}
-            else{
-                if(v[contVetor]==contEntidades){
-                    add(li,new Entidades::Cookie(sf::Vector2f((j + 1)*30+ 12, (i+1)*30+ 15)));
-                    contVetor++;
-                    if(contVetor>=n)
-                        return;   
-                }
-                contEntidades++;
-            }
-        }   
-}
+
 
 void CriadorEntidades::criarRosquinhas(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n){
     int contEntidades=0;
@@ -101,25 +86,6 @@ void CriadorEntidades::criarRosquinhas(Listas::ListaEntidade<Entidades::Inimigo>
             else{
                 if(v[contVetor]==contEntidades){
                     add(li,new Entidades::Rosquinha(sf::Vector2f((j + 1)*30+ 15, (i+1)*30+ 15)));
-                    contVetor++;
-                    if(contVetor>=n)
-                        return;   
-                }
-                contEntidades++;
-            }
-        }   
-}
-
-void CriadorEntidades::criarFantasmas(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n){
-    int contEntidades=0;
-    int contVetor=0;
-    for(int i=0;i<22;i++)
-        for(int j=0;j<41;j++){
-            char aux = fase[i][j];
-            if(aux != 'D'){}
-            else{
-                if(v[contVetor]==contEntidades){
-                    add(li,new Entidades::Fantasma(sf::Vector2f((j + 1)*30+ 30, (i+1)*30+ 30)));
                     contVetor++;
                     if(contVetor>=n)
                         return;   
@@ -148,33 +114,6 @@ void CriadorEntidades::criarFioDental(Listas::ListaEntidade<Entidades::Obstaculo
             }
         }   
 }
-
-void CriadorEntidades::criarPirulitos(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n){
-    int contEntidades=0;
-    int contVetor=0;
-    for(int i=0;i<22;i++)
-        for(int j=0;j<41;j++){
-            char aux = fase[i][j];
-            if(aux != 'p'){}
-            else{
-                if(v[contVetor]==contEntidades){
-                    int aux = rand()%3 +1;
-                    add(lo,new Entidades::Pirulitos(aux*2,sf::Vector2f((j + 1)*30+ 15*(aux+1), (i+1)*30+ 15)));
-                    contVetor++;
-                    if(contVetor>=n)
-                        return;   
-                }
-                contEntidades++;
-            }
-        }   
-}
-
-
-
-
-
-
-
 
 
 
@@ -208,4 +147,8 @@ void CriadorEntidades::sort(int v[], const int n) {
         v[i] = v[minIndex];
         v[minIndex] = aux;
     }
+}
+
+int CriadorEntidades::gerar(const int min,const int max){
+    return rand()%(max-min)+min;
 }

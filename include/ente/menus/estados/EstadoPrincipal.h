@@ -12,4 +12,6 @@ class EstadoPrincipal:public Estado{
 
     void executar();
     void setTextos();
+
+    void mostrar();
 };

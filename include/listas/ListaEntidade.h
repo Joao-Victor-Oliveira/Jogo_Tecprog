@@ -68,6 +68,7 @@ namespace Listas{
             Entidades::Entidade* aux = it.getConteudo();
             if(aux->getAtivo())
                 return 1;
+            ++it;
         }
         return 0;
     }

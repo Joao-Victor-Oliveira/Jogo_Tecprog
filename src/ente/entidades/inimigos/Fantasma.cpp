@@ -8,6 +8,7 @@ Inimigo("../../imagens/inimigos/Fantasma.png",pos,sf::Vector2f(60,60),1),
 aceleracao(1.2)
 {
     num_vidas=VIDAS;
+    pontos = 500;
 }
 
 Fantasma::~Fantasma(){}
@@ -59,6 +60,8 @@ void Fantasma::danar_se(const int dano){
         move(sf::Vector2f(0.f,-400.f));
         break;
     }
-    if(num_vidas<=0)
+    if(num_vidas<=0){
         ativo=false;
+        jogador1->incrementarPontos(pontos);
+    }
 }

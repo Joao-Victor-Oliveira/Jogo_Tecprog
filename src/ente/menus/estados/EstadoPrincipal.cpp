@@ -1,5 +1,6 @@
 #include <ente/menus/estados/EstadoPrincipal.h>
 #include <ente/menus/estados/EstadoFases.h>
+#include <Ranking.h>
 
 EstadoPrincipal::EstadoPrincipal():Estado(3){
     setTextos();
@@ -32,9 +33,16 @@ void EstadoPrincipal::executar(){
             menu->setEstado(pFases);    
         break;
         case 1:
+            mostrar();
         break;
         case 2:
             menu->setEstado(NULL);
         break;
     }
+}
+
+void EstadoPrincipal::mostrar(){
+    Ranking r;
+    r.mostrar();
+    return;
 }

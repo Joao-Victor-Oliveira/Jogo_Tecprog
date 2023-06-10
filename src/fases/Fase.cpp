@@ -1,4 +1,5 @@
 #include <fases/Fase.h>
+#include <Ranking.h>
 
 using namespace Fases;
 
@@ -34,6 +35,7 @@ void Fase::executar(){
 }   
 
 void Fase::loop(){
+    relogio.restart();
     while (gg->aberto())
     {
         sf::Event evento;
@@ -50,6 +52,11 @@ void Fase::loop(){
         gg->mostrar();
         sf::sleep(sf::milliseconds(25));
         gg->limpar();
+        if(player->getVidas()<=0 || !listaI.ativa()){
+            (player->getVidas()<=0)?encerar(0):encerar(1);
+            break;
+        }
+
     }
 }
 
@@ -78,4 +85,21 @@ void Fase::criarEntidades(CriadorEntidades* ce){
         ce->criarInimigos(&listaI);
         ce->criarObstaculos(&listaO);
     }
+}
+
+void Fase::encerar(const bool ganhou){
+    if(!ganhou){
+        return;
+    }
+    else{
+        pontuar();
+        Ranking r;
+        r.salvar(r.getNome(),player->getPontos());
+        return;
+    }
+}
+
+void Fase::pontuar(){
+    player->incrementarPontos(player->getVidas()*200);
+    player->incrementarPontos(10000 - (relogio.getElapsedTime().asSeconds()*4));
 }

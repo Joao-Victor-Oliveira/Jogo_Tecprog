@@ -11,6 +11,7 @@ bala(NULL),
 range(500)
 {
     num_vidas = 3;
+    pontos = 200;
 }
 
 Cookie::~Cookie(){

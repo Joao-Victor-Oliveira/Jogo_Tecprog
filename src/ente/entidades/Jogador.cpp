@@ -2,17 +2,25 @@
 #include <ente/entidades/obstaculos/Obstaculo.h>
 using namespace Entidades;
 
+int Jogador::pontos(0);
+int Jogador::num_vidas(0);
+
 #define VIDAS 10
+
 Jogador::Jogador():
 Personagem("../../imagens/Jogador.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),
 pulando(false),coliE(false),coliD(false),danado(false),
 impulso(10.f,-20.f)
 {
+    pontos =0;
     num_vidas =VIDAS;
     corpo.setOutlineColor(sf::Color::White);
 }
 
-Jogador::~Jogador(){}
+Jogador::~Jogador(){
+    pontos =0;
+    num_vidas=VIDAS;
+}
 
 void Jogador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
     if(pObs->getSolido()){
@@ -96,3 +104,11 @@ const sf::Vector2f Jogador::getImpulso()const{
 void Jogador::resetImpulso(){
     impulso = sf::Vector2f(10.f,-20.f);
 }
+
+void Jogador::incrementarPontos(const int p){
+    pontos +=p;
+}
+
+const int Jogador::getPontos(){return pontos;}
+
+const int Jogador::getVidas(){return num_vidas;}

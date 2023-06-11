@@ -12,7 +12,7 @@ vidas(rand()%4+2)
 FioDental::~FioDental(){}
 
 void FioDental::interagir(Jogador* pJog){
-    pJog->operator+=(vidas);
+    pJog->danar_se(-1*vidas);
     ativo = false;
 }
 

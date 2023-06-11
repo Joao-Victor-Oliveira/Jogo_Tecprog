@@ -82,12 +82,14 @@ void Jogador::executar(){
 }
 
 void Jogador::danar_se(const int dano){
-    if(relogio.getElapsedTime().asSeconds()>2 || num_vidas == VIDAS)
+    if(dano<=0)
+        num_vidas-= dano;
+    else if(relogio.getElapsedTime().asSeconds()>2 || num_vidas == VIDAS)
     {
         danado = true;
         if(num_vidas<=0)
             printf("jog morto\n");
-        num_vidas--;
+        num_vidas-= dano;
         relogio.restart();
         corpo.setOutlineThickness(5);
     }

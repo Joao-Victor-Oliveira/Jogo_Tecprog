@@ -73,8 +73,8 @@ void Ranking::mostrar() {
     texto.setPosition(100, 100);
 
     std::string rankingStr = "Ranking:\n";
-    for (const auto& item : dados) {
-        rankingStr += item.second + " - " + std::to_string(item.first) + " pontos\n";
+    for (auto it = dados.rbegin(); it != dados.rend(); ++it) {
+        rankingStr += it->second + " - " + std::to_string(it->first) + " pontos\n";
     }
     texto.setString(rankingStr);
 
@@ -91,6 +91,8 @@ void Ranking::mostrar() {
         }
     }
 }
+
+
 
 
 

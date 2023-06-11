@@ -1,4 +1,4 @@
-#include <ente/entidades/inimigos/Saltador.h>
+#include <ente/entidades/inimigos/Rosquinha.h>
 #include <ente/entidades/obstaculos/Obstaculo.h>
 #include <ente/entidades/Jogador.h>
 
@@ -6,7 +6,7 @@ using namespace Entidades;
 
 #define VX 5.0
 
-Saltador::Saltador(sf::Vector2f pos):Inimigo("../../imagens/inimigos/Saltador.png",pos,sf::Vector2f(30.f,30.f),1),
+Rosquinha::Rosquinha(sf::Vector2f pos):Inimigo("../../imagens/inimigos/Rosquinha.png",pos,sf::Vector2f(30.f,30.f),1),
 irritado((rand()%4==3)?1:0),
 vx((irritado)?VX*2:VX)
 {
@@ -16,11 +16,11 @@ vx((irritado)?VX*2:VX)
     num_vidas = 1;
 }
 
-Saltador::~Saltador(){
+Rosquinha::~Rosquinha(){
 
 }
 
-void Saltador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
+void Rosquinha::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
     if(pObs->getSolido()){
         if(deslocamento.y<=deslocamento.x){
             if(pObs->getPosicao().y >= getPosicao().y){
@@ -39,7 +39,7 @@ void Saltador::colid(Obstaculo* pObs,sf::Vector2f deslocamento){
     }
 }
 
-void Saltador::colid(Inimigo* pIni,sf::Vector2f deslocamento){
+void Rosquinha::colid(Inimigo* pIni,sf::Vector2f deslocamento){
     if(deslocamento.y<=deslocamento.x){
         if(velocidade.y >=0 ){
             move(sf::Vector2f(0.f,deslocamento.y*-1));
@@ -56,7 +56,7 @@ void Saltador::colid(Inimigo* pIni,sf::Vector2f deslocamento){
     }
 }
 
-void Saltador::colid(Jogador* pJog,sf::Vector2f deslocamento){
+void Rosquinha::colid(Jogador* pJog,sf::Vector2f deslocamento){
     if(deslocamento.y<=deslocamento.x){
         if(posicao.y < pJog->getPosicao().y){
             move(sf::Vector2f(0.f,deslocamento.y*-1));

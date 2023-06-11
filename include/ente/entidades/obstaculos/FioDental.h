@@ -3,12 +3,12 @@
 
 namespace Entidades{
 
-class Pote: public Obstaculo{
+class FioDental: public Obstaculo{
     private:
     int vidas;
     public:
-    Pote(sf::Vector2f pos = sf::Vector2f(0.f,0.f));
-    ~Pote();
+    FioDental(sf::Vector2f pos = sf::Vector2f(0.f,0.f));
+    ~FioDental();
     void interagir(Jogador* pJog);
     void executar();
 };

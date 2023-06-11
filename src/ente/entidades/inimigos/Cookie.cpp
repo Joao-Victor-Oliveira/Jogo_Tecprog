@@ -1,23 +1,24 @@
-#include <ente/entidades/inimigos/Atirador.h>
+#include <ente/entidades/inimigos/Cookie.h>
 #include <ente/entidades/Jogador.h>
 
 using namespace Entidades;
 
-Listas::ListaEntidade<Projetil>* Atirador::plp(NULL);
+Listas::ListaEntidade<Projetil>* Cookie::plp(NULL);
 
-Atirador::Atirador(sf::Vector2f pos):
-Inimigo("../../imagens/inimigos/Atirador.png",pos,sf::Vector2f(24.f,60.f)),
+Cookie::Cookie(sf::Vector2f pos):
+Inimigo("../../imagens/inimigos/Cookie.png",pos,sf::Vector2f(24.f,60.f)),
 bala(NULL),
 range(500)
 {
     num_vidas = 3;
+    pontos = 200;
 }
 
-Atirador::~Atirador(){
+Cookie::~Cookie(){
 
 }
-#define VY -22.f
-void Atirador::executar(){
+#define VY -18.f
+void Cookie::executar(){
     if(!bala){
         bala = new Projetil(1,"../../imagens/inimigos/Projetil.png",sf::Vector2f(-20.f,-20.f),sf::Vector2f(15,15),sf::Vector2f(0.f,0.f));
         plp->adicionar(bala);
@@ -42,15 +43,15 @@ void Atirador::executar(){
     velocidade.y += GRAVIDADE;
 }
 
-void Atirador::disparar(const float vel){
+void Cookie::disparar(const float vel){
     bala->setVelocidade(sf::Vector2f(vel,VY));
     bala->setPosicao(getPosicao());
     bala->ativo = true;
 }
 
-void Atirador::setListaProjetil(Listas::ListaEntidade<Projetil>* lp){plp=lp;}
+void Cookie::setListaProjetil(Listas::ListaEntidade<Projetil>* lp){plp=lp;}
 
-void Atirador::colid(Jogador* pJog,sf::Vector2f deslocamento){
+void Cookie::colid(Jogador* pJog,sf::Vector2f deslocamento){
     if(deslocamento.y<=deslocamento.x){
         if(pJog->getPosicao().y > getPosicao().y){
             pJog->move(sf::Vector2f(0.f,deslocamento.y));

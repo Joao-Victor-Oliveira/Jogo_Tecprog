@@ -1,12 +1,19 @@
 #include <fases/CriadorEntidades.h>
 #include <ente/entidades/inimigos/Inimigo.h>
-#include <ente/entidades/inimigos/Atirador.h>
+#include <ente/entidades/inimigos/Cookie.h>
+#include <ente/entidades/inimigos/Rosquinha.h>
+#include <ente/entidades/inimigos/Fastasma.h>
 #include <ente/entidades/obstaculos/Plataforma.h>
+#include <ente/entidades/obstaculos/FioDental.h>
+#include <ente/entidades/obstaculos/Gelatina.h>
 
 using namespace Fases;
 using namespace Listas;
 
-CriadorEntidades::CriadorEntidades(){}
+CriadorEntidades::CriadorEntidades():
+num_entidades(0)
+{
+}
 
 CriadorEntidades::~CriadorEntidades(){printf("Foram criadas %d entidades\n", num_entidades);}
 
@@ -37,7 +44,7 @@ void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>*
     for(int i=0;i<22;i++)
         for(int j=0;j<41;j++){
             char aux = fase[i][j];
-            if(aux == '*'){}
+            if(aux != '#'){}
             else{
                 if(aux == '#'){
                     for(cont++;1;cont++){
@@ -45,7 +52,7 @@ void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>*
                             fase[i][j+cont]= 'a';
                         }
                         else{
-                            add(lo,new Entidades::Plataforma(sf::Vector2f((j+cont/2.f)*30+45,i*30+45),cont,1));
+                            add(lo,new Entidades::Plataforma(sf::Vector2f((j+cont/2.f + 1 )*30,i*30+45),cont,1));
                             break;
                         }
                     }
@@ -60,15 +67,88 @@ void CriadorEntidades::criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>*
 
 }
 
+
+
+
 void CriadorEntidades::listaProjeteis(Listas::ListaEntidade<Entidades::Projetil>* lp){
-    Entidades::Atirador::setListaProjetil(lp);
+    Entidades::Cookie::setListaProjetil(lp);
 }
 
-/* Exemplo
-void Criarinimigos(ListaEntidade<Entidades::Inimigo>* li){
-    add(li,new inimigo1);
-    for(int i=0,i<5,i++){add(li,new inimigo2);}
+
+
+void CriadorEntidades::criarRosquinhas(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n){
+    int contEntidades=0;
+    int contVetor=0;
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++){
+            char aux = fase[i][j];
+            if(aux != 'D'){}
+            else{
+                if(v[contVetor]==contEntidades){
+                    add(li,new Entidades::Rosquinha(sf::Vector2f((j + 1)*30+ 15, (i+1)*30+ 15)));
+                    contVetor++;
+                    if(contVetor>=n)
+                        return;   
+                }
+                contEntidades++;
+            }
+        }   
 }
 
-CriarObjetos analogo a CriarInimigos
-*/
+
+void CriadorEntidades::criarFioDental(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n){
+    int contEntidades=0;
+    int contVetor=0;
+    for(int i=0;i<22;i++)
+        for(int j=0;j<41;j++){
+            char aux = fase[i][j];
+            if(aux != 'f'){}
+            else{
+                if(v[contVetor]==contEntidades){
+                    add(lo,new Entidades::FioDental(sf::Vector2f((j + 1)*30+ 15, (i+1)*30+ 15)));
+                    contVetor++;
+                    if(contVetor>=n)
+                        return;   
+                }
+                contEntidades++;
+            }
+        }   
+}
+
+
+
+
+
+void CriadorEntidades::preencher(int v[],const int max,const int quantidade){
+    int i=0,j=0;
+
+    for(i=0;i<quantidade;i++){
+        v[i] = rand() % max;
+        for(j=0;j<i;j++){
+            if(v[j]==v[i]){
+                i--;
+                break;
+            }
+        }
+    }
+    sort(v,quantidade);
+}
+
+void CriadorEntidades::sort(int v[], const int n) {
+    int i, j, aux;
+    for (i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (j = i + 1; j < n; j++) {
+            if (v[j] < v[minIndex]) {
+                minIndex = j;
+            }
+        }
+        aux = v[i];
+        v[i] = v[minIndex];
+        v[minIndex] = aux;
+    }
+}
+
+int CriadorEntidades::gerar(const int min,const int max){
+    return rand()%(max-min)+min;
+}

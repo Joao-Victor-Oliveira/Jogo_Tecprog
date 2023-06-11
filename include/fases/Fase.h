@@ -15,6 +15,7 @@ class Fase:public Ente{
     Entidades::Jogador* player;
     sf::Text vidas;
     sf::Font font_vidas;
+    sf::Clock relogio;
     public:
     Fase();
     virtual ~Fase();
@@ -23,6 +24,8 @@ class Fase:public Ente{
     virtual void loop();
     virtual void percorrer();
     void criarEntidades(Fases::CriadorEntidades* ce);
+    void encerar(const bool ganhou);
+    void pontuar();
 };
 
 }

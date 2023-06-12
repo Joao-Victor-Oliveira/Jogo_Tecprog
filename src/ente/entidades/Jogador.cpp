@@ -8,8 +8,7 @@ using namespace Entidades;
 
 Jogador::Jogador():
 Personagem("../../imagens/Jogador.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),
-pulando(false),coliE(false),coliD(false),danado(false),
-pontos(0),
+pontos(0),pulando(false),coliE(false),coliD(false),danado(false),
 impulso(10.f,-20.f)
 {
     pontos =0;

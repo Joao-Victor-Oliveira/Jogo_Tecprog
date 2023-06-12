@@ -1,10 +1,16 @@
-#include <fases/Fase.h>
-#include <fases/CriadorEntidades.h>
+#include <fases/CasteloAssombrado.h>
+#include <fases/BosqueDosCookies.h>
+#include <fases/criadores/CriadorBosque.h>
 #include <gtest/gtest.h>
 using namespace Fases;
 using namespace Entidades;
 #include <csignal>
 #include <stdexcept>
+#include <ente/entidades/inimigos/Rosquinha.h>
+#include <ente/entidades/obstaculos/Plataforma.h>
+#include <listas/ListaEntidade.h>
+#include <fases/criadores/CriadorCastelo.h>
+
 using namespace Listas;
 
 
@@ -12,57 +18,56 @@ void segfault_handler2(int sig) {
   throw std::runtime_error("Segmentation fault");
 }
 
-class CriadorBosque:public CriadorEntidades{
-    public:
-    CriadorBosque(){}
-    virtual ~CriadorBosque(){}
-    void criarInimigos(ListaEntidade<Entidades::Inimigo>* li){for(int i=0;i<10;i++)add(li,new Inimigo);}          
-    void criarObstaculos(ListaEntidade<Entidades::Obstaculo>* lo){for(int i=0;i<10;i++)add(lo,new Obstaculo);}
-};
 
 TEST(CriadorEntidadesTest, Add) {
-    CriadorBosque criador;
-    ListaEntidade<Entidades::Inimigo> ListaEntidade<Entidades::Inimigo>;
-    ListaEntidade<Entidades::Obstaculo> ListaEntidade<Entidades::Obstaculo>;
+    CriadorCastelo criador;
+    CriadorBosque criador2;
+    ListaEntidade<Inimigo> li;
+    ListaEntidade<Obstaculo> lo;
 
-    Inimigo* inimigo = new Inimigo();
-    Obstaculo* obstaculo = new Obstaculo();
+    Inimigo* inimigo = new Rosquinha();
+    Obstaculo* obstaculo = new Plataforma();
 
-    EXPECT_NO_THROW(criador.add(&ListaEntidade<Entidades::Inimigo>, inimigo));
-    EXPECT_NO_THROW(criador.add(&ListaEntidade<Entidades::Obstaculo>, obstaculo));
+    EXPECT_NO_THROW(criador.add(&li, inimigo));
+    EXPECT_NO_THROW(criador.add(&lo, obstaculo));
+
+    EXPECT_NO_THROW(criador2.add(&li, inimigo));
+    EXPECT_NO_THROW(criador2.add(&lo, obstaculo));
 
     delete obstaculo;
     delete inimigo;
 }
 
 TEST(CriadorEntidadesTest, ListaNula){
-    CriadorBosque criador;
-    ListaEntidade<Entidades::Inimigo>* ListaEntidade<Entidades::Inimigo>=NULL;
-    ListaEntidade<Entidades::Obstaculo>* ListaEntidade<Entidades::Obstaculo>=NULL;
+    CriadorCastelo criador;
 
-    Inimigo* inimigo = new Inimigo();
-    Obstaculo* obstaculo = new Obstaculo();
-    EXPECT_THROW(criador.add(ListaEntidade<Entidades::Inimigo>, inimigo),std::invalid_argument);
-    EXPECT_THROW(criador.add(ListaEntidade<Entidades::Obstaculo>, obstaculo),std::invalid_argument);
+    ListaEntidade<Inimigo>* li =NULL;
+    ListaEntidade<Obstaculo>* lo =NULL;
+
+    Inimigo* inimigo = new Rosquinha();
+    Obstaculo* obstaculo = new Plataforma();
+    EXPECT_THROW(criador.add(li, inimigo),std::invalid_argument);
+    EXPECT_THROW(criador.add(lo, obstaculo),std::invalid_argument);
 }
 
 TEST(CriadorEntidadesTest, EntidadeNula){
-    CriadorBosque criador;
-    ListaEntidade<Entidades::Inimigo> ListaEntidade<Entidades::Inimigo>;
-    ListaEntidade<Entidades::Obstaculo> ListaEntidade<Entidades::Obstaculo>;
+    CriadorCastelo criador;
+    ListaEntidade<Inimigo> li;
+    ListaEntidade<Obstaculo> lo;
 
     Inimigo* inimigo = NULL;
     Obstaculo* obstaculo = NULL;
 
-    EXPECT_THROW(criador.add(&ListaEntidade<Entidades::Inimigo>, inimigo),std::invalid_argument);
-    EXPECT_THROW(criador.add(&ListaEntidade<Entidades::Obstaculo>, obstaculo),std::invalid_argument);
+    EXPECT_THROW(criador.add(&li, inimigo),std::invalid_argument);
+    EXPECT_THROW(criador.add(&lo, obstaculo),std::invalid_argument);
 }
 
 
 TEST(FaseTest,Execucao){
     signal(SIGSEGV, segfault_handler2);
     Ente::setGG(Gerenciadores::GerenciadorGrafico::getInstance());
-    Fase teste01(new CriadorBosque),teste02;
+    CasteloAssombrado teste01(0),teste02(1);
+
     EXPECT_NO_THROW(teste01.executar());
     EXPECT_NO_THROW(teste02.executar());
 }

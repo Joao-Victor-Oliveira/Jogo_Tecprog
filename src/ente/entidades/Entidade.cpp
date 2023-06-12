@@ -104,7 +104,7 @@ const bool Entidade::getAtivo()const {return ativo;}
 void Entidade::salvarPosição(std::string s){
         std::ofstream ofs(s,std::ios::app);
         if (ofs.is_open()) {
-            sf::Vector2f posicao = corpo.getPosition();
+            sf::Vector2f posicao = getPosicao();
              ofs << std::fixed << std::setprecision(2) << posicao.x << " " << posicao.y<< std::endl;
             ofs.close();
         } else {

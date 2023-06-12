@@ -9,7 +9,7 @@ class BosqueDosCookies:public Fase{
     private:
     CriadorBosque ct;
     public:
-    BosqueDosCookies(bool recuperar);
+    BosqueDosCookies(bool recuperar=0);
     ~BosqueDosCookies();
     void salvarFase();
 };

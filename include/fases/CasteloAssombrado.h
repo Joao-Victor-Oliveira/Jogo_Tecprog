@@ -9,7 +9,7 @@ class CasteloAssombrado:public Fase{
     private:
     CriadorCastelo ct;
     public:
-    CasteloAssombrado(bool recuperar);
+    CasteloAssombrado(bool recuperar=0);
     ~CasteloAssombrado();
 
     void salvarFase();

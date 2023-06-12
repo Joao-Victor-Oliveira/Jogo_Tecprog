@@ -14,8 +14,6 @@ const bool Obstaculo::getSolido()const{
     return solido;
 }
 
-void Obstaculo::interagir(Jogador* pJog){
-}
 
 const bool Obstaculo::getEstatico()const{
     return estatico;

@@ -100,3 +100,8 @@ void Rosquinha::salvar(){
 }
 
 void Rosquinha::setIrritado(const bool ir){irritado =ir; }
+
+void Rosquinha::executar(){
+    move(velocidade);
+    gravidade();
+}

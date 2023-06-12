@@ -46,3 +46,7 @@ void Plataforma::salvar(){
             std::cerr << "Erro ao abrir o arquivo para salvar a posição." << std::endl;
         }
 }
+
+void Plataforma::interagir(Jogador* pJog){
+
+}

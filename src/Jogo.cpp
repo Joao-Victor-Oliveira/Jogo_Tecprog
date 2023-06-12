@@ -14,9 +14,8 @@ void Jogo::executar(){
 	Ente::setGG(GerenciadorGrafico::getInstance());
     Estado::setfonte("../../imagens/04B_30__.TTF");
     
-    Menu testando;
-    EstadoPrincipal teste;
-    testando.setEstado(&teste);
-    testando.executar();
+    EstadoPrincipal estado1;
+    menu.setEstado(&estado1);
+    menu.executar();
 }
 

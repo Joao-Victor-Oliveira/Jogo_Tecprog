@@ -2,7 +2,7 @@
 #include <stdafx.h>
 
 class Ranking{
-    private:
+    protected:
     std::string arquivo;
     sf::Font fonte;
     public:

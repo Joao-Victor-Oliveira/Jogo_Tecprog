@@ -152,3 +152,72 @@ void CriadorEntidades::sort(int v[], const int n) {
 int CriadorEntidades::gerar(const int min,const int max){
     return rand()%(max-min)+min;
 }
+
+void CriadorEntidades::recuperarRosquinhas(Listas::ListaEntidade<Entidades::Inimigo>* li) {
+    std::ifstream ifs("../../salvamento/Rosquinha.txt");
+    if (ifs.is_open()) {
+        while (ifs) {
+            sf::Vector2f posicao = recuperarPos(ifs); 
+            if(posicao == sf::Vector2f(-1.f,-1.f))
+            break;
+            int irritado;
+            ifs>>irritado;
+            Entidades::Rosquinha* aux = new Entidades::Rosquinha(posicao,irritado);
+            add(li,aux);
+        }
+        ifs.close();
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de rosquinhas." << std::endl;
+    }
+}
+
+
+
+
+void CriadorEntidades::recuperarFioDental(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
+    std::ifstream ifs("../../salvamento/FioDental.txt");
+    if (ifs.is_open()) {
+        while (ifs) {
+            sf::Vector2f posicao = recuperarPos(ifs); if(posicao == sf::Vector2f(-1.f,-1.f))break;
+            add(lo,new Entidades::FioDental(posicao));
+        }
+        ifs.close();
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de rosquinhas." << std::endl;
+    }
+}
+
+sf::Vector2f CriadorEntidades::recuperarPos(std::ifstream& ifs) {
+    float x, y;
+    if (ifs >> x >> y) {
+        return sf::Vector2f(x, y);
+    } else {
+        return sf::Vector2f(-1.f,-1.f);
+    }
+}
+
+
+int CriadorEntidades::recuperarVidas(std::ifstream& ifs) {
+    int vida;
+    if (ifs >> vida) {
+        return vida;
+    } else {
+        std::cerr << "Erro ao ler a vida do arquivo." << std::endl;
+        return 0;
+    }
+}
+
+void CriadorEntidades::recuperarPlataformas(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
+    std::ifstream ifs("../../salvamento/Plataforma.txt");
+    if (ifs.is_open()) {
+        while (ifs) {
+            sf::Vector2f posicao = recuperarPos(ifs); if(posicao == sf::Vector2f(-1.f,-1.f))break;
+            int comp,alt;
+            ifs >>comp >> alt;
+            add(lo,new Entidades::Plataforma(posicao,comp,alt));
+        }
+        ifs.close();
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de rosquinhas." << std::endl;
+    }
+}

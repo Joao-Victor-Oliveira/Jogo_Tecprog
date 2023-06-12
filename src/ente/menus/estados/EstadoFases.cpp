@@ -5,7 +5,7 @@
 
 using namespace Fases;
 
-EstadoFases::EstadoFases(EstadoPrincipal* mp):Estado(3),pMP(mp),pFase(NULL){
+EstadoFases::EstadoFases(EstadoPrincipal* mp):Estado(4),pMP(mp),pFase(NULL){
     setTextos();
 }
 
@@ -22,7 +22,8 @@ void EstadoFases::setTextos(){
 
     opcoes[0]->setString("Bosque dos cookies");
     opcoes[1]->setString("Castelo assombrado");
-    opcoes[2]->setString("Voltar");
+    opcoes[2]->setString("Recuperar Jogo");
+    opcoes[3]->setString("Voltar"); 
 }
 
 void EstadoFases::executar(){
@@ -30,20 +31,49 @@ void EstadoFases::executar(){
         case 0:
             if(pFase)
                 delete pFase;
-            pFase = new BosqueDosCookies();
+            pFase = new BosqueDosCookies(0);
             pFase->executar();
             pFase->loop();
         break;
         case 1:
             if(pFase)
                 delete pFase;
-            pFase = new CasteloAssombrado();
+            pFase = new CasteloAssombrado(0);
             pFase->executar();
             pFase->loop();
         break;
         case 2:
+            if(pFase)
+                delete pFase;
+            recuperarFase();
+            pFase->executar();
+            pFase->loop();   
+        break;
+        case 3:
         if(menu)
             menu->setEstado(static_cast<Estado*>(pMP));
         break;
+    }
+}
+
+
+void EstadoFases::recuperarFase(){
+    std::ifstream ifs("../../salvamento/Fase.txt");
+    int indice=0;
+    if (ifs.is_open()) {
+        ifs>>indice;
+        ifs.close();
+    } else {
+        std::cerr << "Não tem save" << std::endl;
+        return;
+    }
+    switch (indice)
+    {
+    case 0:
+        pFase= new BosqueDosCookies(1);
+    break;
+    case 1:
+        pFase= new CasteloAssombrado(1);
+    break;
     }
 }

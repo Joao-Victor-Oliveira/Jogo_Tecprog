@@ -41,5 +41,9 @@ class Entidade: public Ente{
     const bool getAtivo()const;
 
     void gravidade();
+
+    virtual void salvar() =0;
+
+    void salvarPosição(std::string s);
 };
 }

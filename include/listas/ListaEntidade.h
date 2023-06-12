@@ -72,6 +72,17 @@ namespace Listas{
         }
         return 0;
     }
+
+    void salvar(){
+      Lista<Entidades::Entidade>::Iterador it;
+        it.operator=(entidades.getPrimeiro());
+        while (!it.fim()) {
+            Entidades::Entidade* aux = it.getConteudo();
+            if(aux->getAtivo())
+                aux->salvar();
+            ++it; 
+        }  
+    }
     
     };
 

@@ -38,3 +38,15 @@ void Pirulitos::draw(){
         desenho.setPosition(aux);
     }
 }
+
+void Pirulitos::salvar(){
+    salvarPosição("../../salvamento/Pirulitos.txt");
+
+    std::ofstream ofs("../../salvamento/Pirulitos.txt",std::ios::app);
+        if (ofs.is_open()) {
+            ofs << num_Pirulitos << std::endl;
+            ofs.close();
+        } else {
+            std::cerr << "Erro ao abrir o arquivo para salvar a posição." << std::endl;
+        }
+}

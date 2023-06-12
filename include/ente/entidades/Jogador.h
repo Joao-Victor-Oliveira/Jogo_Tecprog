@@ -5,8 +5,7 @@ namespace Entidades{
 
 class Jogador:public Personagem{
     private:
-    static int pontos;
-    static int num_vidas;
+    int pontos;
     std::string nome;
     sf::Clock relogio;
     bool pulando;
@@ -29,9 +28,11 @@ class Jogador:public Personagem{
     const sf::Vector2f getImpulso()const;
     void resetImpulso();
 
-    static void incrementarPontos(const int p);
-    static const int getPontos();
-    static const int getVidas();
+    void incrementarPontos(const int p);
+    const int getPontos();
+
+    void salvar();
+    void recuperar();
 };
 
 }

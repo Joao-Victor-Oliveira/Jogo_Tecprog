@@ -11,6 +11,8 @@ class FioDental: public Obstaculo{
     ~FioDental();
     void interagir(Jogador* pJog);
     void executar();
+
+    void salvar();
 };
 
 

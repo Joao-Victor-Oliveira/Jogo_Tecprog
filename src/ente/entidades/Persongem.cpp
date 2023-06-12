@@ -55,3 +55,18 @@ void Personagem::colid(Jogador* pJog,sf::Vector2f deslocamento){
         velocidade.x=0.f;
     }
 }
+
+void Personagem::salvarVidas(std::string s){
+    std::ofstream ofs(s, std::ios::app);  // Abre o arquivo em modo de anexação
+        if (ofs.is_open()) {
+            ofs << num_vidas << std::endl;
+            ofs.close();
+            std::cout << "Posição salva com sucesso." << std::endl;
+        } else {
+            std::cerr << "Erro ao abrir o arquivo para salvar a posição." << std::endl;
+        }
+}
+
+void Personagem::setVidas(const int v){
+    num_vidas=v;
+}

@@ -1,6 +1,11 @@
 #include <fases/Fase.h>
 #include <Ranking.h>
 
+#include <iostream>
+#include <filesystem>
+namespace fs = std::filesystem;
+
+
 using namespace Fases;
 
 Fase::Fase():listaI(),listaO(),listaP(),
@@ -42,8 +47,12 @@ void Fase::loop(){
         while (gg->adicionarEvento(evento))
         {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-                gg->limpar();
-                return;
+                pause.loop();
+                int i = pause.getComando();
+                if(i==2)
+                    return;
+                else if(pause.getComando() == 1)
+                    salvarFase();
             }
         }
         draw();
@@ -87,6 +96,15 @@ void Fase::criarEntidades(CriadorEntidades* ce){
     }
 }
 
+void Fase::recuperarEntidades(CriadorEntidades* ce){
+    if(ce){
+        ce->listaProjeteis(&listaP);
+        player->recuperar();
+        ce->recuperarInimigos(&listaI);
+        ce->recuperarObstaculos(&listaO);
+    }
+};
+
 void Fase::encerar(const bool ganhou){
     if(!ganhou){
         return;
@@ -102,4 +120,24 @@ void Fase::encerar(const bool ganhou){
 void Fase::pontuar(){
     player->incrementarPontos(player->getVidas()*200);
     player->incrementarPontos(10000 - (relogio.getElapsedTime().asSeconds()*4));
+}
+
+void Fase::salvar(){
+    listaI.salvar();
+    listaO.salvar();
+    player->salvar();
+    printf("Jogo salvo\n");
+}
+
+void Fase::deleteSave(){
+    try {
+        for (const auto& entry : fs::directory_iterator("../../salvamento/")) {
+            if (entry.is_regular_file()) {
+                fs::remove(entry.path());
+                std::cout << "Arquivo excluído: " << entry.path() << std::endl;
+            }
+        }
+    } catch (const fs::filesystem_error& e) {
+        std::cerr << "Erro ao excluir arquivos do diretório: " << e.what() << std::endl;
+    }
 }

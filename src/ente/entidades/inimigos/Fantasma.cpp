@@ -65,3 +65,8 @@ void Fantasma::danar_se(const int dano){
         jogador1->incrementarPontos(pontos);
     }
 }
+
+void Fantasma::salvar(){
+    salvarPosição("../../salvamento/Fantasma.txt");
+    salvarVidas("../../salvamento/Fantasma.txt");
+}

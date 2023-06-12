@@ -118,3 +118,50 @@ void CriadorCastelo::criarGelatinas(Listas::ListaEntidade<Entidades::Obstaculo>*
             }
         }   
 }
+
+void CriadorCastelo::recuperarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li){
+   recuperarFantasmas(li);
+   recuperarRosquinhas(li);
+}
+
+
+void CriadorCastelo::recuperarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
+    recuperarFioDental(lo);
+    recuperarPlataformas(lo);
+    recuperarGelatinas(lo);
+}
+
+
+void CriadorCastelo::recuperarGelatinas(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
+    std::ifstream ifs("../../salvamento/Gelatina.txt");
+    if (ifs.is_open()) {
+        while (ifs) {
+            sf::Vector2f posicao = recuperarPos(ifs); 
+                if(posicao == sf::Vector2f(-1.f,-1.f))
+                    break;
+            add(lo,new Entidades::Gelatina(posicao));
+        }
+        ifs.close();
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de Gelatinas." << std::endl;
+    }
+}
+
+void CriadorCastelo::recuperarFantasmas(Listas::ListaEntidade<Entidades::Inimigo>* li){
+    std::ifstream ifs("../../salvamento/Fantasma.txt");
+    if (ifs.is_open()) {
+        while (ifs) {
+            sf::Vector2f posicao = recuperarPos(ifs); 
+            if(posicao == sf::Vector2f(-1.f,-1.f))
+                break;
+            Entidades::Fantasma* aux = new Entidades::Fantasma(posicao);
+            int vidas;
+            ifs>>vidas;
+            aux->setVidas(vidas);
+            add(li,aux);
+        }
+        ifs.close();
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de Fantasmas." << std::endl;
+    }
+}

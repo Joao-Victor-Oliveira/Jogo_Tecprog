@@ -121,3 +121,57 @@ void CriadorBosque::criarPirulitos(Listas::ListaEntidade<Entidades::Obstaculo>* 
         }   
 }
 
+
+void CriadorBosque::recuperarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li){
+    recuperarRosquinhas(li);
+    recuperarCookies(li);
+}
+
+void CriadorBosque::recuperarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
+    recuperarPlataformas(lo);
+    recuperarFioDental(lo);
+    recuperarPirulitos(lo);
+}
+
+void CriadorBosque::recuperarCookies(Listas::ListaEntidade<Entidades::Inimigo>* li){
+    std::ifstream ifs("../../salvamento/Cookie.txt");
+    if (ifs.is_open()) {
+        while (ifs) {
+            sf::Vector2f posicao = recuperarPos(ifs); if(posicao == sf::Vector2f(-1.f,-1.f))
+                break;
+            int tem_bala,vidas;
+            ifs>>vidas >>tem_bala;
+            sf::Vector2f posicao_bala = recuperarPos(ifs);
+            sf::Vector2f vel = recuperarPos(ifs);
+            Entidades::Cookie* cookie = new Entidades::Cookie(posicao);
+            cookie->setVidas(vidas);
+            if(!tem_bala)
+                add(li,new Entidades::Cookie(posicao));
+            else{
+                Entidades::Projetil* bala = new Entidades::Projetil(1,"../../imagens/inimigos/Projetil.png",posicao_bala,sf::Vector2f(15,15),vel);
+                bala->ativo = true;
+                cookie->setBala(bala);
+                add(li,cookie);
+            }
+        }
+        ifs.close();
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de rosquinhas." << std::endl;
+    }
+}
+
+
+void CriadorBosque::recuperarPirulitos(Listas::ListaEntidade<Entidades::Obstaculo>* lo){
+    std::ifstream ifs("../../salvamento/Pirulitos.txt");
+    if (ifs.is_open()) {
+        while (ifs) {
+            sf::Vector2f posicao = recuperarPos(ifs); if(posicao == sf::Vector2f(-1.f,-1.f))break;
+            int np;
+            ifs >> np;
+            add(lo,new Entidades::Pirulitos(np,posicao));
+        }
+        ifs.close();
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de rosquinhas." << std::endl;
+    }
+}

@@ -18,6 +18,7 @@ class Projetil:public Entidade{
     virtual void draw();
 
     bool ativo;
+    void salvar();
 };
 
 

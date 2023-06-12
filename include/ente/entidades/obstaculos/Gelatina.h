@@ -11,6 +11,7 @@ class Gelatina:public Obstaculo{
 
     void interagir(Jogador* pJog);
     void executar();
+    void salvar();
 };
 
 }

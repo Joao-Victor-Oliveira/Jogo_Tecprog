@@ -33,3 +33,16 @@ void Plataforma::draw() {
 void Plataforma::executar(){
     gravidade();
 }
+
+void Plataforma::salvar(){
+    salvarPosição("../../salvamento/Plataforma.txt");
+    
+    std::ofstream ofs("../../salvamento/Plataforma.txt",std::ios::app);
+        if (ofs.is_open()) {
+            sf::Vector2f tam = corpo.getSize()/30.f;
+            ofs << (int) tam.x << " " << (int) tam.y << std::endl;
+            ofs.close();
+        } else {
+            std::cerr << "Erro ao abrir o arquivo para salvar a posição." << std::endl;
+        }
+}

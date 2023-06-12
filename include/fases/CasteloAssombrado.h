@@ -9,8 +9,11 @@ class CasteloAssombrado:public Fase{
     private:
     CriadorCastelo ct;
     public:
-    CasteloAssombrado(){criarEntidades(&ct);}
-    ~CasteloAssombrado(){}
+    CasteloAssombrado(bool recuperar);
+    ~CasteloAssombrado();
+
+    void salvarFase();
+    
 };
 
 }   

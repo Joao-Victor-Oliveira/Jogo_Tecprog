@@ -3,6 +3,7 @@ using namespace Entidades;
 #include <ente/entidades/obstaculos/Obstaculo.h> 
 #include <ente/entidades/inimigos/Inimigo.h>
 #include <ente/entidades/Jogador.h>
+#include <iomanip>
 
 Jogador* Entidade::jogador1(NULL);
 
@@ -104,3 +105,14 @@ void Entidade::colid(Jogador* pJog,sf::Vector2f deslocamento){
 void Entidade::setJogador(Jogador* jg){jogador1=jg;}
 
 const bool Entidade::getAtivo()const {return ativo;}
+
+void Entidade::salvarPosição(std::string s){
+        std::ofstream ofs(s,std::ios::app);
+        if (ofs.is_open()) {
+            sf::Vector2f posicao = corpo.getPosition();
+             ofs << std::fixed << std::setprecision(2) << posicao.x << " " << posicao.y<< std::endl;
+            ofs.close();
+        } else {
+            std::cerr << "Erro ao abrir o arquivo para salvar a posição." << std::endl;
+        }
+}

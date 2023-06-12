@@ -30,7 +30,7 @@ void EstadoPrincipal::executar(){
     switch (comando){
         case 0:
             if(pFases)
-            menu->setEstado(pFases);    
+            menu->setEstado(pFases); 
         break;
         case 1:
             mostrar();

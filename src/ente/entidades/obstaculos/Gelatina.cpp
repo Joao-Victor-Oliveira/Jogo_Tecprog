@@ -28,3 +28,7 @@ void Gelatina::executar(){
     move(velocidade);
     gravidade();
 }
+
+void Gelatina::salvar(){
+    salvarPosição("../../salvamento/Gelatina.txt");
+}

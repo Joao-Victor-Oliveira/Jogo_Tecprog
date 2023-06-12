@@ -23,6 +23,10 @@ class Personagem: public Entidade{
     virtual void colid(Obstaculo* pObs,sf::Vector2f deslocamento);
     virtual void colid(Inimigo* pIni,sf::Vector2f deslocamento);
     virtual void colid(Jogador* pJog,sf::Vector2f deslocamento);
+
+    void salvarVidas(std::string s);
+
+    void setVidas(const int vidas);
 };
 
 }

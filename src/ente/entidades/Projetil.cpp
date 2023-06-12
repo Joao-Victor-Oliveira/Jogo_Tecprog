@@ -33,3 +33,7 @@ void Projetil::draw(){
         gg->desenhar(corpo);
     }
 }
+
+void Projetil::salvar(){
+    salvarPosição("../../salvamento/Projetil.txt");
+}

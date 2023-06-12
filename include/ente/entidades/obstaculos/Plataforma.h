@@ -13,6 +13,7 @@ class Plataforma:public Obstaculo{
     ~Plataforma();
     void draw();
     void executar();
+    void salvar();
 };
    
 }

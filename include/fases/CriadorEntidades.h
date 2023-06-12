@@ -23,6 +23,9 @@ class CriadorEntidades{
     virtual void criarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li)=0;                
     virtual void criarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo)=0;
 
+    virtual void recuperarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li)=0;
+    virtual void recuperarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo)=0;
+
     virtual void criarLimites(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41]);
 
     void listaProjeteis(Listas::ListaEntidade<Entidades::Projetil>* lp);
@@ -30,10 +33,18 @@ class CriadorEntidades{
     void criarRosquinhas(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
     void criarFioDental(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n);
 
+    void recuperarRosquinhas(Listas::ListaEntidade<Entidades::Inimigo>* li);
+    void recuperarFioDental(Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+    void recuperarPlataformas(Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+
     void preencher(int v[],const int max,const int quantidade);
     void sort(int v[],const int n);
 
     int gerar(const int min,const int max);
+
+    sf::Vector2f recuperarPos(std::ifstream& ifs);
+    int recuperarVidas(std::ifstream& ifs);
+
 };
 
 }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2.6)
 project(Jogo_Tecprog)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 # Find the SFML library
 find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)

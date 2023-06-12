@@ -15,6 +15,17 @@ vx((irritado)?VX*2:VX)
     (rand()%2)?setVelocidade(sf::Vector2f(vx,0.f)):setVelocidade(sf::Vector2f(-1*vx,0.f));
     num_vidas = 1;
 }
+Rosquinha::Rosquinha(sf::Vector2f pos, bool irrit):
+Inimigo("../../imagens/inimigos/Rosquinha.png",pos,sf::Vector2f(30.f,30.f),1),
+irritado(irrit),
+vx((irritado)?VX*2:VX)
+{
+    if(irritado)
+        corpo.setFillColor(sf::Color::Red);
+    (rand()%2)?setVelocidade(sf::Vector2f(vx,0.f)):setVelocidade(sf::Vector2f(-1*vx,0.f));
+    num_vidas = 1;
+}
+
 
 Rosquinha::~Rosquinha(){
 
@@ -76,3 +87,16 @@ void Rosquinha::colid(Jogador* pJog,sf::Vector2f deslocamento){
         pJog->danar_se(dano);
     }
 }
+
+void Rosquinha::salvar(){
+    salvarPosição("../../salvamento/Rosquinha.txt");
+    std::ofstream ofs("../../salvamento/Rosquinha.txt",std::ios::app);
+        if (ofs.is_open()) {
+            ofs << irritado << std::endl;
+            ofs.close();
+        } else {
+            std::cerr << "Erro ao abrir o arquivo para salvar a posição." << std::endl;
+        }
+}
+
+void Rosquinha::setIrritado(const bool ir){irritado =ir; }

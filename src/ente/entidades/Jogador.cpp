@@ -2,14 +2,14 @@
 #include <ente/entidades/obstaculos/Obstaculo.h>
 using namespace Entidades;
 
-int Jogador::pontos(0);
-int Jogador::num_vidas(0);
+
 
 #define VIDAS 10
 
 Jogador::Jogador():
 Personagem("../../imagens/Jogador.png",sf::Vector2f(100.f,100.f),sf::Vector2f(30.f,30.f)),
 pulando(false),coliE(false),coliD(false),danado(false),
+pontos(0),
 impulso(10.f,-20.f)
 {
     pontos =0;
@@ -113,4 +113,28 @@ void Jogador::incrementarPontos(const int p){
 
 const int Jogador::getPontos(){return pontos;}
 
-const int Jogador::getVidas(){return num_vidas;}
+
+void Jogador::salvar(){
+    salvarPosição("../../salvamento/Jogador.txt");
+    salvarVidas("../../salvamento/Jogador.txt");
+    std::ofstream ofs("../../salvamento/Jogador.txt",std::ios::app);
+        if (ofs.is_open()) {
+            ofs << pontos << std::endl;
+            ofs.close();
+        } else {
+            std::cerr << "Erro ao abrir o arquivo para salvar a posição." << std::endl;
+        }
+}
+
+
+void Jogador::recuperar(){
+    std::ifstream ifs("../../salvamento/Jogador.txt");
+    if (ifs.is_open()) {
+        while (ifs) {
+            ifs>> posicao.x >> posicao.y >> num_vidas >> pontos;
+        }
+        ifs.close();
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de Jogador." << std::endl;
+    }
+}

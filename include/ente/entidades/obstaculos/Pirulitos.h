@@ -15,6 +15,7 @@ class Pirulitos: public Obstaculo{
     void interagir(Jogador* pJog);
     void executar();
     void draw();
+    void salvar();
 };
 
 }

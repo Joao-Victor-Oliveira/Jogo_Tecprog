@@ -17,6 +17,7 @@ class Fantasma:public Inimigo{
     void executar();
 
     void danar_se(const int dano);
+    void salvar();
 };
 
 }

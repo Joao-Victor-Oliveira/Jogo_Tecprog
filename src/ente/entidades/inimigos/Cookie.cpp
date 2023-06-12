@@ -1,6 +1,6 @@
 #include <ente/entidades/inimigos/Cookie.h>
 #include <ente/entidades/Jogador.h>
-
+#include <iomanip>
 using namespace Entidades;
 
 Listas::ListaEntidade<Projetil>* Cookie::plp(NULL);
@@ -72,4 +72,46 @@ void Cookie::colid(Jogador* pJog,sf::Vector2f deslocamento){
         velocidade.x=0.f;
         pJog->danar_se(dano);
     }
+}
+
+
+
+void Cookie::salvar(){
+    salvarPosição("../../salvamento/Cookie.txt");
+    salvarVidas("../../salvamento/Cookie.txt");
+
+    std::ofstream ofs("../../salvamento/Cookie.txt",std::ios::app);
+    if (ofs.is_open()) {
+            bool tem_bala=false;
+            if(bala){
+                if(bala->ativo){
+                    tem_bala = true;
+                    ofs << tem_bala << std::endl;
+                    bala->salvarPosição("../../salvamento/Cookie.txt");
+                    sf::Vector2f vel = bala->getVelocidade();
+                     ofs << std::fixed << std::setprecision(2) << vel.x << " " << vel.y<< std::endl;
+                    ofs.close();
+                }
+                else{
+                    ofs << 0 << std::endl;
+                    ofs << -1.00 << " " << -1.00<<std::endl;
+                    ofs << -1.00 << " " << -1.00<<std::endl;
+                    ofs.close();
+                }    
+            }
+            else{
+                ofs << 0 << std::endl;
+                ofs << -1.00 << " " << -1.00<<std::endl;
+                ofs << -1.00 << " " << -1.00<<std::endl;
+                ofs.close();
+            }
+    } else {
+            std::cerr << "Erro ao abrir o arquivo para salvar projetil." << std::endl;
+    }
+}
+
+
+void Cookie::setBala(Projetil* b){
+    bala=b;
+    plp->adicionar(bala);
 }

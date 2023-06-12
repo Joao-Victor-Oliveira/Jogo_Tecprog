@@ -17,6 +17,13 @@ class CriadorBosque:public CriadorEntidades{
 
     void criarCookies(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
     void criarPirulitos(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n);
+
+    void recuperarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li);
+    void recuperarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+
+    void recuperarCookies(Listas::ListaEntidade<Entidades::Inimigo>* li);
+    void recuperarPirulitos(Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+
 };
 
 

@@ -13,4 +13,5 @@ class EstadoFases:public Estado{
 
     void executar();
     void setTextos();
+    void recuperarFase();
 };

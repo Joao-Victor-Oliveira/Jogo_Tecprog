@@ -17,6 +17,12 @@ class CriadorCastelo:public CriadorEntidades{
 
     void criarFantasmas(Listas::ListaEntidade<Entidades::Inimigo>* li,char fase [][41],int v[],const int n);
     void criarGelatinas(Listas::ListaEntidade<Entidades::Obstaculo>* lo,char fase [][41],int v[],const int n);
+
+    void recuperarInimigos(Listas::ListaEntidade<Entidades::Inimigo>* li);
+    void recuperarObstaculos(Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+
+    void recuperarGelatinas(Listas::ListaEntidade<Entidades::Obstaculo>* lo);
+    void recuperarFantasmas(Listas::ListaEntidade<Entidades::Inimigo>* li);
 };
 
 

@@ -16,6 +16,7 @@ class Rosquinha:public Inimigo{
     void colid(Inimigo* pIni,sf::Vector2f deslocamento);
     void colid(Jogador* pJog,sf::Vector2f deslocamento);
 
+    void executar();
     void salvar();
     void setIrritado(const bool ir);
 };

@@ -14,6 +14,7 @@ class Plataforma:public Obstaculo{
     void draw();
     void executar();
     void salvar();
+    void interagir(Jogador* pJog);
 };
    
 }

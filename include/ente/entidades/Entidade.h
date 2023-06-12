@@ -27,7 +27,7 @@ class Entidade: public Ente{
     const sf::Vector2f getTamanho()const;
 
 
-    virtual void executar(); 
+    virtual void executar()=0; 
     virtual void draw();
 
     void move (const sf::Vector2f d);

@@ -17,7 +17,7 @@ class Obstaculo: public Entidade{
     virtual void executar();
     const bool getSolido()const;
 
-    virtual void interagir(Jogador* pJog);
+    virtual void interagir(Jogador* pJog) =0 ;
 
     const bool getEstatico()const;
 

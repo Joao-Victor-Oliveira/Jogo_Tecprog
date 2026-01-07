@@ -1,15 +1,25 @@
 # Jogo_Tecprog
 
-requires CMake 3.2.6 or higher (lower versions wont work),
-SFML library 2.5 or higher (lower versions may work),
-C++ 17 or higher (lower versions wont work),
-GTest library (optional),
-made in Linux RPM system, but must work in every OS.
+## Pre-requisitos
 
-to build the project execute the command line
+Para compilar e executar este projeto, o ambiente deve atender aos seguintes requisitos:
 
-mkdir build ; cd build ; cmake ..; make
-(whole project)
-mkdir build ; cd build ; cmake ..; make Jogo_Tecprog
-(only the game)
-now you have in bin folder the executable to run the project
+* **C++:** Versão 17 ou superior (versões inferiores não funcionarão).
+* **CMake:** Versão 3.2.6 ou superior (versões inferiores não funcionarão).
+* **SFML Library:** Versão 2.5 ou superior.
+* **Google Test:** Opcional (para rodar testes).
+
+## Como Compilar e Rodar
+
+Para gerar o executável, utilize o terminal na raiz do projeto e siga os comandos abaixo.
+
+### 1. Compilar  o jogo
+
+```bash
+mkdir build
+cd build
+cmake ..
+make Jogo_Tecprog
+```
+
+O executavél vai estar na pasta bin
